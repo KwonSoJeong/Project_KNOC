@@ -29,95 +29,6 @@ h1{
 }
 
 
-/* ------header------ */
-#navbar-nav1{
-    padding-right: 5vw;
-    padding-left: 27vw;
-}
-
-#subnav:hover{
-	display: inline-block;
-}
-
-#subnav {
-	width: 170px;
-	/* display: block; */
-    margin-top: 13px;
-    padding: 21px 26px;
-    background-color: #fff;
-    border: 1px solid rgb(239,239,239);
-    border-radius: 0 0 20px 20px;
-}
-
-#subnav li{
-	list-style: none;
-	font-size: 14px;
-	font-weight: 530;
-	padding: 6px 0;
-	border-bottom: 1px solid #75727233;
-}
-
-#subnav a:hover {
-	color: #000;
-	text-decoration: none;	
-}
-
-#subnav a{
-	color: #3e3a3a;
-}
-
-#fsfc{
-	font-size: 16px;
-	color: #3e3a3a;
-	padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    padding-top: 15px;
-    text-align: center;
-}
-
-.hnav{
-	position: relative;
-    display: flex;
-    padding-top: 5px;
-    flex-wrap: nowrap;
-}
-
-.navbar-nav li ul{
-	display: none;
-}
-
-.navbar-nav li:hover ul{
-	display: block;
-}
-
-.nav-it {
-	font-weight: 900;
-	padding : 3px;
-    width: 172px;
-}
-
-.header {
-    border-bottom: 2px solid #B8E6E1;
-	z-index: 6;
-	top: 0;
-	left: 0;
-	right: 0;
-	position: fixed;
-	height: 70px;
-	background-color: #fff;
-	}
-	
-.navbar-brand1 {
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    padding-left: 5vw;
-    padding-right: 2.5vw;
-}
-.navbar-brand1 ul{
-	width:100%
-	}
-
-
 /* ------main------ */
 #carousel-indicators1 {
     position: absolute;
@@ -185,7 +96,7 @@ h1{
 	margin: 0 auto;
 }
 
-.mnc-Class{
+.mnc-class{
 	width: fit-content;
 	margin-bottom: 15px;
 	font-weight: 600;
@@ -214,31 +125,3 @@ h1{
 }
 
 
-/* ------footer------ */
-.footer{
-	background-color: #e9ecef;
-	height: 10vh;
-	width: 100%;
-	padding-right: 10px;
-	left: 0;
-	bottom: 0;
-	margin-bottom: 0; 
-	position : relative;
-/*   transform : translateY(-100%); */
-	text-align: right;
-}
-
-.footer p{
-	margin: 0 auto;
-	vertical-align: middle;
-    font-size: 13.5px;
-    line-height: 36px;
-    color: rgb(99, 99, 99);
-    letter-spacing: -0.25px;
-}
-
-#wrapper{
-  height: 100vh;
-  min-height: 100%;
-  padding-bottom: 10vh;
-}

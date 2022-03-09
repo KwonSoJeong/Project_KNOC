@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>KNOC</title>
+<link href="../resource/style/main.css" rel='stylesheet' type='text/css'/>
 </head>
 <body style="padding-top: 70px;">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -18,21 +19,21 @@
 			  </ul>
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			      <img src="<%=request.getContextPath() %>/image/one.png" alt="one" width="1100" height="500">
+			      <img src="<%=request.getContextPath() %>/resource/image/one.png" alt="one" width="1100" height="500">
 			      <div class="carousel-caption">
 			        <h3>Title</h3>
 			        <p>content</p>
 			      </div>   
 			    </div>
 			    <div class="carousel-item">
-			      <img src="<%=request.getContextPath() %>/image/two.png" alt="two" width="1100" height="500">
+			      <img src="<%=request.getContextPath() %>/resource/image/two.png" alt="two" width="1100" height="500">
 			      <div class="carousel-caption">
 			        <h3>Title</h3>
 			        <p>content</p>
 			      </div>   
 			    </div>
 			    <div class="carousel-item">
-			      <img src="<%=request.getContextPath() %>/image/three.png" alt="three" width="1100" height="500">
+			      <img src="<%=request.getContextPath() %>/resource/image/three.png" alt="three" width="1100" height="500">
 			      <div class="carousel-caption">
 			        <h3>Title</h3>
 			        <p>content</p>
@@ -55,7 +56,7 @@
 			<form action="#" id="box-def" >
 				<input id="search"  type="text" value="" placeholder="관심 있는 클래스를 입력해보세요.">
 				<button class="searchbtn" type="submit" >
-					<img src="<%=request.getContextPath() %>/image/search1.png">
+					<img src="<%=request.getContextPath() %>/resource/image/search1.png">
 				</button>
 			</form>
 		</div>
