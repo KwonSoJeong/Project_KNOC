@@ -1,0 +1,57 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: "Noto Sans KR";
+}
+
+input:focus {
+	outline:none;
+}
+
+button{
+	padding: 0;
+}
+
+/* ul{
+	width : 100%;
+} */
+
+h1{
+	font-size: 24px;
+	font-weight: normal;
+	padding-left: 3px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #B8E6E1;
+}
+
+/* ------footer------ */
+.footer{
+	background-color: #e9ecef;
+	height: 10vh;
+	width: 100%;
+	padding-right: 10px;
+	left: 0;
+	bottom: 0;
+	margin-bottom: 0; 
+	position : relative;
+/*   transform : translateY(-100%); */
+	text-align: right;
+}
+
+.footer p{
+	margin: 0 auto;
+	vertical-align: middle;
+    font-size: 13.5px;
+    line-height: 36px;
+    color: rgb(99, 99, 99);
+    letter-spacing: -0.25px;
+}
+
+#wrapper{
+  height: 100vh;
+  min-height: 100%;
+  padding-bottom: 10vh;
+}
