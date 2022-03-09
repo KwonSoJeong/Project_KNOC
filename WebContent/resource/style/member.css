@@ -160,3 +160,18 @@ body {
 #member-input-submit button:hover{
     cursor: pointer;
 }
+
+#member-input-password label {
+	display: inline-block;
+	width: 100px;
+}
+
+#member-input-password input {
+	margin-top: 50px;
+    width: 300px;
+    height: 30px;
+    font-family: 'Noto Sans KR';
+    font-size: 16px;
+    padding-left: 5px;
+    border: 1px solid lightgray;
+}
