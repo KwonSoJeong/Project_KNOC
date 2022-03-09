@@ -1,0 +1,118 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: "Noto Sans KR";
+}
+
+input:focus {
+	outline:none;
+}
+
+button{
+	padding: 0;
+}
+
+/* ul{
+	width : 100%;
+} */
+
+h1{
+	font-size: 24px;
+	font-weight: normal;
+	padding-left: 3px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #B8E6E1;
+}
+
+
+/* ------header------ */
+#navbar-nav1{
+    padding-right: 5vw;
+    padding-left: 27vw;
+}
+
+#subnav:hover{
+	display: inline-block;
+}
+
+#subnav {
+	width: 170px;
+	/* display: block; */
+    margin-top: 13px;
+    padding: 21px 26px;
+    background-color: #fff;
+    border: 1px solid rgb(239,239,239);
+    border-radius: 0 0 20px 20px;
+}
+
+#subnav li{
+	list-style: none;
+	font-size: 14px;
+	font-weight: 530;
+	padding: 6px 0;
+	border-bottom: 1px solid #75727233;
+}
+
+#subnav a:hover {
+	color: #000;
+	text-decoration: none;	
+}
+
+#subnav a{
+	color: #3e3a3a;
+}
+
+#fsfc{
+	font-size: 16px;
+	color: #3e3a3a;
+	padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.hnav{
+	position: relative;
+    display: flex;
+    padding-top: 5px;
+    flex-wrap: nowrap;
+}
+
+.navbar-nav li ul{
+	display: none;
+}
+
+.navbar-nav li:hover ul{
+	display: block;
+}
+
+.nav-it {
+	font-weight: 900;
+	padding : 3px;
+    width: 172px;
+}
+
+.header {
+    border-bottom: 2px solid #B8E6E1;
+	z-index: 6;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+	height: 70px;
+	background-color: #fff;
+	}
+	
+.navbar-brand1 {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 5vw;
+    padding-right: 2.5vw;
+}
+.navbar-brand1 ul{
+	width:100%
+	}
+
