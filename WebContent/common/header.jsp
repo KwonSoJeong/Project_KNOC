@@ -37,7 +37,7 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.html" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
@@ -49,7 +49,7 @@
 						<a href="<%=request.getContextPath() %>/classes/classlist" id="fsfc" class="nav-link">클래스 카테고리</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.html" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
