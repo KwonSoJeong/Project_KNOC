@@ -8,13 +8,13 @@ font-size: 24px;
 border-bottom : solid 2px #B8E6E1;
 margin-left: 400px;
 margin-right: 400px;
-margin-top: 200px;
+margin-top: 90px;
 }
 
 .center{
 position: absolute;
 left:22.5%;
-top:38%;
+top:43%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -22,7 +22,7 @@ transform :translate(-50%, -50%);
 .fnete{
 position: absolute;
 left:40.8%;
-top:38%;
+top:43%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -30,7 +30,7 @@ transform :translate(-50%, -50%);
 .ingte{
 position: absolute;
 left:59.2%;
-top:38%;
+top:43%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -38,7 +38,7 @@ transform :translate(-50%, -50%);
 .sing{
 position: absolute;
 left:77.7%;
-top:38%;
+top:43%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -46,7 +46,7 @@ transform :translate(-50%, -50%);
 .hello{
 position: absolute;
 left:22.5%;
-top:73%;
+top:81%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -54,7 +54,7 @@ transform :translate(-50%, -50%);
 .poss{
 position: absolute;
 left:40.8%;
-top:73%;
+top:81%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -62,7 +62,7 @@ transform :translate(-50%, -50%);
 .movie{
 position: absolute;
 left:59.2%;
-top:73%;
+top:81%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -70,9 +70,13 @@ transform :translate(-50%, -50%);
 .week{
 position: absolute;
 left:77.7%;
-top:73%;
+top:81%;
 width: auto;
 transform :translate(-50%, -50%);
+}
+
+.kig{
+transform : translate(1045%, 715%);
 }
 
 .item-wrap{
@@ -93,6 +97,7 @@ transition:0.3s;
 margin:30px;
 text-align: center;
 }
+
 .card > img{
 width:100px;
 }
@@ -124,6 +129,11 @@ display: inline-block;
 .chat{
 margin-right:10px;
 }
+
+#coog{
+transform :translate(100%, 50%);
+}
+
 button{
 width : 100px;
 height: 35px;
@@ -137,7 +147,7 @@ font-size: 15px;
 .form-control{
 width : 200px;
 height: 35px;
-transform : translate(1045%, 660%);
+transform : translate(1045%, 715%);
 }
 #bung{
 width : 100px;
@@ -147,6 +157,6 @@ background-color: #B8E6E1;
 font-size : 13px;
 border:none;
 text-align:center;
-transform : translate(2100%, 660%);
+transform : translate(2300%, 620%);
 font-size: 15px;
 }

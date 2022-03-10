@@ -9,21 +9,22 @@ font-size: 24px;
 border-bottom : solid 2px #B8E6E1;
 margin-left: 400px;
 margin-right: 400px;
-margin-top: 200px;
+margin-top: 170px;
 }
 
 .center{
 position: absolute;
 left:31.0%;
-top:45%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
+text-align: center;
 }
 
 .fnete{
 position: absolute;
 left:68%;
-top:45%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -33,7 +34,6 @@ position: relative;
 }
 
 .card{
-display : inline-block;
 padding:30px;
 color:black;
 width:950px;
@@ -46,10 +46,8 @@ transition:0.3s;
 margin:30px;
 text-align: center;
 }
-.card > img{
-width:100px;
 
-}
+
 
 .card h1{
 font-size: 25px;
@@ -58,25 +56,32 @@ font-weight: bold;
 margin-top: 20px;
 margin-bottom: 20px;
 }
-.card p{
+
+.row p{
 font-size: 14px;
 line-height: 20px;
 margin-bottom: 20px;
+text-align: center;
 }
+
+.son{
+transform :translate(0%, 50%);
+}
+
 .card-info{
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: space-between;
+transform :translate(-80%, 120%);
 }
-.user-name{
-font-size: 15px;
-}
+
 .chat, favorite{
 display: inline-block;
 }
 .chat{
 margin-right:10px;
+transform :translate(-450%, 150%);
 }
 button{
 width : 100px;
@@ -87,4 +92,5 @@ font-size : 13px;
 border:none;
 text-align:center;
 font-size: 15px;
+
 }

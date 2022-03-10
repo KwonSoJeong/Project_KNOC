@@ -21,10 +21,12 @@
 <h1>멘토링 상세정보</h1>
 <div class="row">
 <div class="col-3  bg-light">
-<img src="" width="100" height="120" id="pic"><br>
+<img src="" width="100" height="120"><br>
 멘토 이름: 000 
 </div> 
+<div class="coog">
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
+</div>
 <div class="card-info">
 <div class="user-wrap">
 </div>
@@ -46,17 +48,17 @@
 <h1>멘토링 상세정보</h1>
 <div class="row">
 <div class="col-3  bg-light">
-<img src="" width="100" height="120" id="pic"><br>
+<img src="" width="100" height="100" id="pic"><br>
 멘토 이름: 000
 </div>
-<p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
+<p id = "kig">웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
 </div>
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.html"><button>내용보기</button></a>
+<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -80,7 +82,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.html"><button>내용보기</button></a>
+<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 </div>
 </div>
 </div>
