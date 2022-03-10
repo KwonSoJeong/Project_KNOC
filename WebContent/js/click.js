@@ -1,6 +1,13 @@
 $(document).ready(function(){
-    $("#num2").click(function(){
-        $(this).children(".talk1").stop().slidetoggle(500);
-    });
+    $(".no").click(function(){
+	        $(this).hide();
+	        $(".ya1").fadeIn();
+	        $(".no2").show();
+		});
 
+    $(".no2").click(function(){
+	        $(".no").show();
+	        $(".ya1").hide();
+	        $(this).hide();
+		});
 });
