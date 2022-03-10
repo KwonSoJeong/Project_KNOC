@@ -3901,7 +3901,7 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 30px;
+  height: 25px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -4015,6 +4015,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  flex-direction: column;
 }
 .nav > li {
   display: block;
@@ -4765,7 +4766,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
-  color: #337ab7;
+  color: black;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4798,8 +4799,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 2;
   color: #fff;
   cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #37d3c0;
+  border-color: #37d3c0;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -4934,11 +4935,11 @@ a.label:focus {
   background-color: #449d44;
 }
 .label-info {
-  background-color: #5bc0de;
+  background-color: #b8e6e1;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #31b0d5;
+  background-color: #3cd3c0;
 }
 .label-warning {
   background-color: #f0ad4e;
@@ -8741,11 +8742,11 @@ label.visuallyhidden-with-placeholder {
   left: -999em;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-family: Helvetica Neue, Helvetica, Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', Dotdum;
 }
 a {
-  color: #2a6496;
+  color: black;
 }
 pre.prettyprint {
   padding: 9.5px !important;
@@ -8803,9 +8804,12 @@ pre code {
   border-bottom: 1px solid #eee;
 }
 .layout-container {
-  padding: 0;
-  margin: 0;
-  max-width: 1280px;
+  width: 1180px;
+  margin: 0 auto;
+}
+.wrapper {
+	display: flex;
+	justify-content: center;
 }
 .bootstrap-tagsinput {
   width: 100%;
@@ -10023,7 +10027,7 @@ span.filter-count {
   border-left: 3px #ddd solid !important;
 }
 .list-group-has-note {
-  border-left: 3px #3a93de solid !important;
+  border-left: 3px #37d3c0 solid !important;
 }
 .list-group-success {
   border-left: 3px #2ca526 solid !important;
