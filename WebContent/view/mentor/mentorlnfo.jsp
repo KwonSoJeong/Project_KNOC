@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>logo 프로젝트</title>
-<link rel="stylesheet" href="mentorlnfo.css">
+<link rel="stylesheet" href="/Project_KNOC/resource/style/mentorlnfo.css">
 </head>
 
 <body>
