@@ -36,7 +36,8 @@ body {
     text-align: center;
     width: 380px;
     height: 430px;
-    margin-top: 100px;
+    margin-top: 150px;
+    margin-bottom: 100px;
     border: 2px solid #B8E6E1;
     border-radius: 3%;
 }
@@ -78,7 +79,8 @@ body {
 
 #member-input {
 	width: 700px;
-	margin-top: 40px;
+	margin-top: 140px;
+	margin-bottom: 70px;
 }
 
 #member-input-h1 {
@@ -159,6 +161,11 @@ body {
 
 #member-input-submit button:hover{
     cursor: pointer;
+}
+
+#member-input-password {
+	text-align: center;
+    margin-bottom: 60px;
 }
 
 #member-input-password label {
