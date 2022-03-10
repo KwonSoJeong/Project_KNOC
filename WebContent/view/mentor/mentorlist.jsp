@@ -48,10 +48,11 @@
 <h1>멘토링 상세정보</h1>
 <div class="row">
 <div class="col-3  bg-light">
-<img src="" width="100" height="100" id="pic"><br>
+<img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
-<p id = "kig">웹사이트 디자인 강의 멘토링 하고 있습니다</p>
+<br>
+<p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
 </div>
@@ -75,7 +76,8 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
-<p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
+<br>
+<p id = "kig">웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
 </div>
@@ -98,6 +100,7 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
+<br>
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
@@ -122,6 +125,7 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
+<br>
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
@@ -145,6 +149,7 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
+<br>
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
@@ -168,6 +173,7 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
+<br>
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
@@ -191,6 +197,7 @@
 <img src="" width="100" height="120" id="pic"><br>
 멘토 이름: 000
 </div>
+<br>
 <p>웹사이트 디자인 강의 멘토링 하고 있습니다</p>
 <div class="card-info">
 <div class="user-wrap">
