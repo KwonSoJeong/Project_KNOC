@@ -1,18 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>logo 프로젝트</title>
-<link rel="stylesheet" href="/Project_KNOC/resource/style/mentorlist.css">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/mentorlist.css">
 </head>
-
 <body>
 <form action="#">
 <input class="form-control" type="text" placeholder="검색하기">
-<button id="bung" type="submit">검색</button>
+<button id="bung" type="submit">검색</button>
 </form>
-<!-- /Project_KNOC/view/study/studyWrite.jsp -->
-<h2 id ="font">멘토링</h2>
+
+<h2 id ="font">멘토링</h2>
 <div class="center">
 <div class="item-wrap">
 <div class="card">
@@ -30,7 +31,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -55,7 +56,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -79,7 +80,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -102,7 +103,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -126,7 +127,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -149,7 +150,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -172,7 +173,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
@@ -195,7 +196,7 @@
 </div>
 <div class="icons">
 <div class="chat">
-<a href="mentorlnfo.jsp"><button>내용보기</button></a>
+<a href="mentorlnfo.html"><button>내용보기</button></a>
 </div>
 </div>
 </div>
