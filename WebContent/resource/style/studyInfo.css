@@ -4011,6 +4011,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+   flex-direction: column;
 }
 .nav > li {
   display: block;
@@ -4930,11 +4931,11 @@ a.label:focus {
   background-color: #449d44;
 }
 .label-info {
-  background-color: #5bc0de;
+  background-color: #b8e6e1;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #31b0d5;
+  background-color: #3cd3c0;
 }
 .label-warning {
   background-color: #f0ad4e;
@@ -8443,11 +8444,11 @@ label.visuallyhidden-with-placeholder {
   left: -999em;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-family: Helvetica Neue, Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", Dotdum;
 }
 a {
-  color: #2a6496;
+  color: black;
 }
 pre.prettyprint {
   padding: 9.5px !important;
@@ -8505,9 +8506,12 @@ pre code {
   border-bottom: 1px solid #eee;
 }
 .layout-container {
-  padding: 0;
-  margin: 0;
-  max-width: 1280px;
+  width: 1180px;
+  margin: 0 auto;
+}
+.wrapper {
+	display: flex;
+	justify-content: center;
 }
 .bootstrap-tagsinput {
   width: 100%;
