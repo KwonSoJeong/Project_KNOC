@@ -14,7 +14,9 @@
 <link href="../../resource/style/header.css" rel='stylesheet' type='text/css'/>
 <script src="../../js/hover.js"></script>
 
-<body id="wrapper">
+<body>
+<!-- (푸터용 디브-푸터에서 닫힘) -->
+<div id="wrapper">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ헤더ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<div class="header">
 		<nav class="hnav navbar-expand-lg navbar-light">
@@ -25,6 +27,26 @@
 			<!-- 좌측헤더 -->
 			<ul class="navbar-nav drop" style="flex-direction: row;" >			
 				<c:if test="${memid==null}">			
+					<li id="num1" class="nav-it">
+						<a href="#" id="fsfc" class="nav-link">클래스 ▼</a>
+						<ul id="subnav" class="submenu">
+							<li><a href="#">운동</a></li>
+							<li><a href="#">크리에이티브</a></li>
+							<li><a href="#">디자인</a></li>
+							<li><a href="#">개발/프로그래밍</a></li>
+							<li><a href="#">요리/베이킹</a></li>
+							<li><a href="#">금융/재태크</a></li>
+						</ul>
+					</li>
+					<li class="nav-it">
+						<a href="<%=request.getContextPath() %>/view/mentor/mentorList2.html" id="fsfc" class="nav-link">멘토링</a>
+					</li>
+					<li class="nav-it">
+						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
+					</li>	
+				</c:if>
+		
+				<c:if test="${memid!=null}">
 					<li id="num1" class="nav-it">
 						<a href="/Project_KNOC/view/classes/classlist.html" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
@@ -37,19 +59,7 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.html" id="fsfc" class="nav-link">멘토링</a>
-					</li>
-					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
-					</li>	
-				</c:if>
-		
-				<c:if test="${memid!=null}">
-					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/classes/classlist" id="fsfc" class="nav-link">클래스 카테고리</a>
-					</li>
-					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.html" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/view/mentor/mentorList2.html" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
@@ -69,12 +79,11 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/memberInput.jsp">회원가입</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>
+						<a id="fsfc" class="nav-link" href="#">고객센터</a>
 					</li>
 				</c:if>
 		
-				<c:if test="${memid!=null}">
-				
+				<c:if test="${memid!=null}">				
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link"	href="<%=request.getContextPath() %>/member/logout">로그아웃</a>
 					</li>	
