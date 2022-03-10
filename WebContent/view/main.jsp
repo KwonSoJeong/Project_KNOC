@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="../../js/click.js"></script>
+<script src="../js/click.js"></script>
 <link href="../resource/style/main.css" rel='stylesheet' type='text/css'/>
+
 </head>
 <body style="padding-top: 70px;">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -182,10 +183,19 @@
 		</div>
 	</div>	
 	
-	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ채널톡ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-	<div id="num2" class="m-cht">
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ채널톡ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->	
+	<div class="no m-cht">
 		<img src="<%=request.getContextPath()%>/resource/image/talk.png">
 	</div>
-<!-- 	<div id="m-cht-box" class="talk1"></div> -->
+
+	<div class="ya1" style="display: none;">
+		<div class="m-cht-box">
+			<div class="m-cht-box-title">KNOC</div>
+			<div class="cht-bor-bot"></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="no2 m-cht-box-x" style="display: none;">-</div>
 </body>
 </html>
