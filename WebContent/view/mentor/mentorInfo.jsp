@@ -1,11 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>logo 프로젝트</title>
-<link rel="stylesheet" href="/Project_KNOC/resource/style/mentorlnfo.css">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/mentorlnfo.css">
 </head>
-
 <body>
 <h2 id ="font">멘토링</h2>
 
