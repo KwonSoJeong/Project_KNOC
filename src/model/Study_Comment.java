@@ -1,19 +1,22 @@
 package model;
 
+import java.util.Date;
+
 public class Study_Comment {
 	private String comment_Id;
+	private String content;
 	private int refNum, refLevel, refStep;
+	private Date regDate;
 	
-	public Study_Comment(String comment_Id, int refNum, int refLevel, int refStep) {
-		super();
+	public Study_Comment() {}
+	
+	public Study_Comment(String comment_Id, String content, int refNum, int refLevel, int refStep, Date regDate) {
 		this.comment_Id = comment_Id;
+		this.content = content;
 		this.refNum = refNum;
 		this.refLevel = refLevel;
 		this.refStep = refStep;
-	}
-
-	public Study_Comment() {
-		super();
+		this.regDate = regDate;
 	}
 
 	public String getComment_Id() {
@@ -22,6 +25,14 @@ public class Study_Comment {
 
 	public void setComment_Id(String comment_Id) {
 		this.comment_Id = comment_Id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public int getRefNum() {
@@ -48,12 +59,19 @@ public class Study_Comment {
 		this.refStep = refStep;
 	}
 
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
-		return "Study_Comment [comment_Id=" + comment_Id + ", refNum=" + refNum + ", refLevel=" + refLevel
-				+ ", refStep=" + refStep + "]";
+		return "Study_Comment [comment_Id=" + comment_Id + ", content=" + content + ", refNum=" + refNum + ", refLevel="
+				+ refLevel + ", refStep=" + refStep + ", regDate=" + regDate + "]";
 	}
 	
 	
-
 }
