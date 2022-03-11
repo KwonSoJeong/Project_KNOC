@@ -2,8 +2,8 @@
 
 *{
 box-sizing: border-box;
-
 }
+
 #font{
 font-size: 24px;
 /*border-bottom : solid 2px #B8E6E1;
@@ -94,9 +94,7 @@ margin: 0 auto;
 .card-chat{
 margin: 0 auto;
 }
-.button-p{
-text-decoration: none;
-}
+
 button{
 display: flex;
 width : 100px;
