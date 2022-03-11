@@ -1,5 +1,6 @@
 package controller;
 
-public class HelpController {
-
+//@WebServlet("/help/*")
+public class HelpController extends MskimRequestMapping {
+	
 }
