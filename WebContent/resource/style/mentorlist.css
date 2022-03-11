@@ -15,7 +15,7 @@ margin-right: 400px; */
 #border-bot{
     border-bottom: solid 2px #B8E6E1;
     margin-top: 80px;
-    margin-left: 239px;
+    margin-left: 240px;
     margin-bottom: 12px;
     width: 1486px;
 }
@@ -27,35 +27,46 @@ margin-right: 400px; */
     justify-content: flex-end;
 }
 
+.center-col{
+display: flex;
+width: 70vw;
+margin: 0px auto;
+justify-content: flex-end;
+}
+
 .center{
+display: flex;
 position: absolute;
 left:22.5%;
-top:43%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
 }
 
 .fnete{
+display: flex;
 position: absolute;
 left:41.8%;
-top:43%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
 }
 
 .ingte{
+display: flex;
 position: absolute;
 left:61.2%;
-top:43%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
 }
 
 
 .sing{
+display: flex;
 position: absolute;
 left:80.7%;
-top:43%;
+top:40%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -63,6 +74,7 @@ transform :translate(-50%, -50%);
 /*-----------*/
 
 .hello{
+display: flex;
 position: absolute;
 left:22.5%;
 top:87%;
@@ -71,6 +83,7 @@ transform :translate(-50%, -50%);
 }
 
 .poss{
+display: flex;
 position: absolute;
 left:41.8%;
 top:87%;
@@ -79,6 +92,7 @@ transform :translate(-50%, -50%);
 }
 
 .movie{
+display: flex;
 position: absolute;
 left:61.2%;
 top:87%;
@@ -87,6 +101,7 @@ transform :translate(-50%, -50%);
 }
 
 .week{
+display: flex;
 position: absolute;
 left:80.7%;
 top:87%;
@@ -106,8 +121,8 @@ position: relative;
 display : inline-block;
 padding:30px;
 color:black;
-    width: 18.8vw;
-    height: 39vh;
+width: 18.8vw;
+height: 39vh;
 font-size: 15px;
 text-align: left;
 border-radius: 8px;
@@ -115,7 +130,7 @@ background: #eee;
 transition:0.3s;
 margin:30px;
 text-align: center;
-    border: 1px solid #b9b9b9;
+border: 1px solid #b9b9b9;
 }
 
 .mtl-card > img{
