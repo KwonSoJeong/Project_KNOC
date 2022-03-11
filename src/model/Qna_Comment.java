@@ -1,19 +1,20 @@
 package model;
 
+import java.util.Date;
+
 public class Qna_Comment {
 	private String comment_Id, title, content;
 	private int refNum;
+	private Date regDate;
 	
-	public Qna_Comment(String comment_Id, String title, String content, int refNum) {
-		super();
+	public Qna_Comment() {}
+	
+	public Qna_Comment(String comment_Id, String title, String content, int refNum, Date regDate) {
 		this.comment_Id = comment_Id;
 		this.title = title;
 		this.content = content;
 		this.refNum = refNum;
-	}
-
-	public Qna_Comment() {
-		super();
+		this.regDate = regDate;
 	}
 
 	public String getComment_Id() {
@@ -48,14 +49,18 @@ public class Qna_Comment {
 		this.refNum = refNum;
 	}
 
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Qna_Comment [comment_Id=" + comment_Id + ", title=" + title + ", content=" + content + ", refNum="
-				+ refNum + "]";
+				+ refNum + ", regDate=" + regDate + "]";
 	}
-	
-	
-	
-	
 	
 }
