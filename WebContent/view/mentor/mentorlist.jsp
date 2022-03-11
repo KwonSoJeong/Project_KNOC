@@ -20,7 +20,7 @@
 		<div class="item-wrap">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120"><br>
@@ -48,7 +48,7 @@
 	<div class="fnete">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -73,7 +73,7 @@
 	<div class="ingte">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -97,7 +97,7 @@
 	<div class="sing">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -111,7 +111,7 @@
 		</div>
 		<div class="mtl-center">
 		<div class="chat">
-		<a href="mentorlnfo.html"><button>내용보기</button></a>
+		<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp""><button>내용보기</button></a>
 		</div>
 		</div>
 		</div>
@@ -122,7 +122,7 @@
 	<div class="hello">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -136,7 +136,7 @@
 		</div>
 		<div class="mtl-center">
 		<div class="chat">
-		<a href="mentorlnfo.html"><button>내용보기</button></a>
+		<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp""><button>내용보기</button></a>
 		</div>
 		</div>
 		</div>
@@ -146,7 +146,7 @@
 	<div class="poss">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -160,7 +160,7 @@
 		</div>
 		<div class="mtl-center">
 		<div class="chat">
-		<a href="mentorlnfo.html"><button>내용보기</button></a>
+		<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 		</div>
 		</div>
 		</div>
@@ -170,7 +170,7 @@
 	<div class="movie">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -184,7 +184,7 @@
 		</div>
 		<div class="mtl-center">
 		<div class="chat">
-		<a href="mentorlnfo.html"><button>내용보기</button></a>
+		<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 		</div>
 		</div>
 		</div>
@@ -194,7 +194,7 @@
 	<div class="week">
 		<div class="mtl-card">
 		<img src="" alt="">
-		<h1>멘토링 상세정보</h1>
+		<h4>멘토링 상세정보</h4>
 		<div class="row">
 		<div class="mtl-col-3">
 		<img src="" width="100" height="120" id="pic"><br>
@@ -208,7 +208,7 @@
 		</div>
 		<div class="mtl-center">
 		<div class="chat">
-		<a href="mentorlnfo.html"><button>내용보기</button></a>
+		<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp"><button>내용보기</button></a>
 		</div>
 		</div>
 		</div>
