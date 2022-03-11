@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +15,7 @@
 		<input class="form-control" type="text" placeholder="검색하기">
 		<button id="bung" type="submit">검색</button>
 	</form>
+	<div class="center-col">
 	<div class="center">
 		<div class="item-wrap">
 		<div class="mtl-card">
@@ -41,6 +41,7 @@
 		</div>
 		</div>
 		</div>
+	</div>
 	</div>
 	
 	

@@ -6,25 +6,35 @@ box-sizing: border-box;
 }
 #font{
 font-size: 24px;
-border-bottom : solid 2px #B8E6E1;
+/*border-bottom : solid 2px #B8E6E1;
 margin-left: 400px;
-margin-right: 400px;
-margin-top: 10%;
+margin-right: 400px;*/
+margin-top: 13vh;
+}
+
+#border-pin{
+border-bottom: solid 2px #B8E6E1;
+margin-top: 80px;
+margin-left: 240px;
+margin-bottom: 12px;
+width: 1486px;
 }
 
 .center{
+display: flex;
 position: absolute;
 left:31.0%;
-top:40%;
+top:45%;
 width: auto;
 transform :translate(-50%, -50%);
 text-align: center;
 }
 
 .fnete{
+display: flex;
 position: absolute;
 left:72%;
-top:40%;
+top:45%;
 width: auto;
 transform :translate(-50%, -50%);
 }
@@ -34,10 +44,10 @@ position: relative;
 }
 
 .card{
-padding:30px;
+padding:40px;
 color:black;
-width:800px;
-height:600px;
+width:35vw;
+height:60vh;
 font-size: 15px;
 text-align: left;
 border-radius: 8px;
@@ -45,9 +55,8 @@ background: #eee;
 transition:0.3s;
 margin:30px;
 text-align: center;
+border: 1px solid #b9b9b9;
 }
-
-
 
 .card h1{
 font-size: 25px;
@@ -64,26 +73,32 @@ margin-bottom: 20px;
 text-align: center;
 }
 
-.son{
-transform :translate(0%, 50%);
-}
-
 .card-info{
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: space-between;
-transform :translate(-65%, 120%);
+text-align: center;
 }
 
 .chat, favorite{
 display: inline-block;
 }
+
 .chat{
 margin-right:10px;
-transform :translate(-450%, 150%);
+/*transform :translate(-450%, 150%);*/
+margin: 0 auto;
+}
+
+.card-chat{
+margin: 0 auto;
+}
+.button-p{
+text-decoration: none;
 }
 button{
+display: flex;
 width : 100px;
 height: 35px;
 background-color: #B8E6E1;
@@ -92,5 +107,4 @@ font-size : 13px;
 border:none;
 text-align:center;
 font-size: 15px;
-
 }
