@@ -1,5 +1,6 @@
 package controller;
 
-public class MentorController {
-
+//@WebServlet("/mentor/*")
+public class MentorController extends MskimRequestMapping {
+	
 }

@@ -1,5 +1,6 @@
 package controller;
 
-public class StudyController {
-
+//@WebServlet("/study/*")
+public class StudyController extends MskimRequestMapping {
+	
 }

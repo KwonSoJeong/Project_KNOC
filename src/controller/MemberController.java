@@ -1,6 +1,7 @@
 package controller;
 
-public class MemberController {
-
+//@WebServlet("/member/*")
+public class MemberController extends MskimRequestMapping {
+	
 
 }
