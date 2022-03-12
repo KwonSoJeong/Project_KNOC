@@ -32,7 +32,8 @@
 	<h3>멘토 프로필</h3>
 	<div class="row">
 	<div class="col-3">
-	<img src="" width="100" height="120" id="pic"><br> 멘토 이름: 000
+	<img src="" width="100" height="120" id="pic">
+	<br> 멘토 이름: 000
 	<div class="card-chat">
 	<div class="chat">
 	<a href="#"><button style="">멘토링 신청</button></a>
