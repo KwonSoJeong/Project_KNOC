@@ -5,17 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/member.css" />
+<script>
+function pic_upload() {
+	let loca_left = window.screen.width/2 - 175
+    let loca_top = window.screen.height/2 - 150
+	const option = "width=350, height=300, left=" + loca_left + ", top=" + loca_top
+	open("<%=request.getContextPath()%>/member/pictureForm", "", option)
+}
+</script>
 </head>
 <body>
 <main>
         <div class="container">
             <div id="member-input" class="center-align">
             <h1 id="member-input-h1">회원가입</h1>
-                <form action="<%=request.getContextPath()%>/member/memberInputPro" autocomplete="off" method="post">
+                <form action="<%=request.getContextPath()%>/member/memberInputPro" autocomplete="off" method="post" name="inputform">
                 <div id="member-input-profile">
-                    <img src="<%=request.getContextPath() %>/resource/image/profile.JPG" alt="프로필이미지" /> <br />
-                    <label for="user-profile">사진 변경</label>
-                    <input id="user-profile" type="file" />
+                    <img id="picture" src="<%=request.getContextPath() %>/resource/image/profile.jpg" alt="프로필이미지" /> <br />
+                    <label for="user-profile">사진 등록</label>
+                    <input type="hidden" name="profile" />
+                    <button style="display: none;" id="user-profile" type="button" onclick="pic_upload()"></button>
                 </div>
                 <div id="member-input-info">
                     <label for="user-id">아이디</label>

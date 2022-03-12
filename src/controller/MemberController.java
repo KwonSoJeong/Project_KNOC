@@ -1,9 +1,13 @@
 package controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
 
 import model.Knoc_Member;
 import service.Knoc_MemberDao;
@@ -12,13 +16,15 @@ import service.Knoc_MemberDao;
 public class MemberController extends MskimRequestMapping {
 	static String msg = "";
 	static String url = "";
-
+	
+	// 회원가입 view
 	@RequestMapping("memberInput")
 	public String memberInput(HttpServletRequest request, HttpServletResponse response) {
 
 		return "/view/member/memberInput.jsp";
 	}
-
+	
+	// 회원가입 process
 	@RequestMapping("memberInputPro")
 	public String memberInputPro(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -30,12 +36,19 @@ public class MemberController extends MskimRequestMapping {
 		Knoc_MemberDao md = new Knoc_MemberDao();
 		Knoc_Member m = new Knoc_Member();
 		Knoc_Member chk = new Knoc_Member();
+		
+		String profile = request.getParameter("profile");
+		
+		if (request.getParameter("profile") == null) {
+			profile = "";
+		}
+		
 		chk = md.selectOne(request.getParameter("id"));
 		if (chk == null) {
 			m.setId(request.getParameter("id"));
 			m.setEmail(request.getParameter("email"));
 			m.setName(request.getParameter("name"));
-			m.setProfile("");
+			m.setProfile(profile);
 			m.setPwd(request.getParameter("pwd"));
 			m.setTel(request.getParameter("tel"));
 			int num = md.insertMember(m);
@@ -55,7 +68,43 @@ public class MemberController extends MskimRequestMapping {
 		request.setAttribute("url", url);
 		return "/view/alert.jsp";
 	}
-
+	
+	// 회원가입, 수정 시 프로필 사진 등록 view
+	@RequestMapping("pictureForm")
+	public String pictureForm(HttpServletRequest request, HttpServletResponse response) {
+		
+		return "/single/pictureForm.jsp";
+	}
+	
+	// 프로필 사진 등록 process
+	@RequestMapping("picturePro")
+	public String picturePro(HttpServletRequest request, HttpServletResponse response) {
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String path = request.getServletContext().getRealPath("/")+"profile/";
+		
+		MultipartRequest multi = null;
+		
+		try {
+			multi = new MultipartRequest(request, path, 10*1024*1024, "UTF-8");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String filename = multi.getFilesystemName("profile");
+		
+		request.setAttribute("filename", filename);
+		
+		return "/single/picturePro.jsp";
+	}
+	
 	@RequestMapping("login")
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 
@@ -97,5 +146,5 @@ public class MemberController extends MskimRequestMapping {
 		request.setAttribute("url", url);
 		return "/view/alert.jsp";
 	}
-
+	
 }
