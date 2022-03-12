@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect(request.getContextPath()+"/classes/main"); %>
+<script>
+const img = opener.document.querySelector('#picture')
+img.src="<%=request.getContextPath()%>/profile/${filename}"
+opener.document.inputform.profile.value="${filename}"
+self.close()
+</script>
 </body>
 </html>

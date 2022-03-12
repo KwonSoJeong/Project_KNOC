@@ -19,4 +19,60 @@
 	</jsp-property-group>
   </jsp-config>
   
+  
+  <servlet>
+    <servlet-name>classesController</servlet-name>
+    <servlet-class>controller.ClassesController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>classesController</servlet-name>
+    <url-pattern>/classes/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>helpController</servlet-name>
+    <servlet-class>controller.HelpController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>helpController</servlet-name>
+    <url-pattern>/help/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>memberController</servlet-name>
+    <servlet-class>controller.MemberController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>memberController</servlet-name>
+    <url-pattern>/member/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>mentorController</servlet-name>
+    <servlet-class>controller.MentorController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>mentorController</servlet-name>
+    <url-pattern>/mentor/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>studyController</servlet-name>
+    <servlet-class>controller.StudyController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>studyController</servlet-name>
+    <url-pattern>/study/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

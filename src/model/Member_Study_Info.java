@@ -1,52 +1,31 @@
 package model;
 
 public class Member_Study_Info {
-	private String memberId, study_Id, mentoring_Id, class_Id;
+	private String id, member_study_id;
 	private int type;
 	
-	public Member_Study_Info(String memberId, String study_Id, String mentoring_Id, String class_Id, int type) {
-		super();
-		this.memberId = memberId;
-		this.study_Id = study_Id;
-		this.mentoring_Id = mentoring_Id;
-		this.class_Id = class_Id;
+	public Member_Study_Info() {}
+	
+	public Member_Study_Info(String id, String member_study_id, int type) {
+		this.id = id;
+		this.member_study_id = member_study_id;
 		this.type = type;
 	}
 
-	public Member_Study_Info() {
-		super();
+	public String getId() {
+		return id;
 	}
 
-	public String getMemberId() {
-		return memberId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public String getMember_study_id() {
+		return member_study_id;
 	}
 
-	public String getStudy_Id() {
-		return study_Id;
-	}
-
-	public void setStudy_Id(String study_Id) {
-		this.study_Id = study_Id;
-	}
-
-	public String getMentoring_Id() {
-		return mentoring_Id;
-	}
-
-	public void setMentoring_Id(String mentoring_Id) {
-		this.mentoring_Id = mentoring_Id;
-	}
-
-	public String getClass_Id() {
-		return class_Id;
-	}
-
-	public void setClass_Id(String class_Id) {
-		this.class_Id = class_Id;
+	public void setMember_study_id(String member_study_id) {
+		this.member_study_id = member_study_id;
 	}
 
 	public int getType() {
@@ -59,12 +38,7 @@ public class Member_Study_Info {
 
 	@Override
 	public String toString() {
-		return "Member_Study_Info [memberId=" + memberId + ", study_Id=" + study_Id + ", mentoring_Id=" + mentoring_Id
-				+ ", class_Id=" + class_Id + ", type=" + type + "]";
+		return "Member_Study_Info [id=" + id + ", member_study_id=" + member_study_id + ", type=" + type + "]";
 	}
 	
-	
-	
-	
-
 }

@@ -21,7 +21,7 @@
 	<div class="header">
 		<nav class="hnav navbar-expand-lg navbar-light">
 			<!-- logo -->
-			<a class="navbar-brand1" href="<%=request.getContextPath() %>/view/main.jsp">
+			<a class="navbar-brand1" href="<%=request.getContextPath() %>/classes/main">
 				<img src="<%=request.getContextPath() %>/resource/image/logo.png">
 			</a>
 			<!-- 좌측헤더 -->
@@ -73,10 +73,10 @@
 			<ul id="navbar-nav1" class="navbar-nav justify-content-end">			
 				<c:if test="${memid==null}">
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/login.jsp">로그인</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/login">로그인</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/memberInput.jsp">회원가입</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/memberInput">회원가입</a>
 					</li>
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="#">고객센터</a>
