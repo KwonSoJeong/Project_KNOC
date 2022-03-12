@@ -30,7 +30,7 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="/articles/community/save" method="post" id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+						<form action="<%=request.getContextPath()%>/study/studyWritePro" method="post" id="article-form" class="article-form" role="form" onsubmit="return postForm()">
 							<fieldset class="form">
 								<input type="hidden" name="_csrf" value="ffedcba6-5eb9-48c8-8889-5f7ed435b5ba" />
 

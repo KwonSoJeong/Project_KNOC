@@ -3,4 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="study">
 
+<select id="nextNum" resultType="int">
+select boardseq.nextval from dual
+</select>
+
+<insert id="insertStudy" parameterType="study">
+insert into study values (#{study_Id},#{title},#{leader_Id},#{content},sysdate,1)
+</insert>
+
+<select id="studyCount" resultType="int" parameterType="string">
+select count(*) from study where process = #{process}
+</select>
+
+<select id="studyList" resultType="study" parameterType="map">
+select * from (select rownum rnum, a.* from (
+select * from study where process = #{process}) a) 
+where rnum between #{start} and #{end}
+</select>
+
+<select id="studyAllList" resultType="study" parameterType="map">
+select * from (select rownum rnum, a.* from (
+select * from study) a) 
+where rnum between #{start} and #{end}
+</select>
+ 
 </mapper>

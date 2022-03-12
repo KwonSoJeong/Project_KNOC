@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 				<div class="nav" role="navigation">
 
 					<div style="margin-top: 50px">
-						<span style="font-size: 24px">스터디</span> <a class="create btn btn-success btn-wide pull-right" href="/Project_KNOC/view/study/studyWrite.jsp" style="background-color: #37d3c0; border-color: #37d3c0;"><i class="fa fa-pencil"></i> 새 글 쓰기 (👉클릭👈)</a>
+						<span style="font-size: 24px">스터디</span> <a class="create btn btn-success btn-wide pull-right" href="<%=request.getContextPath()%>/study/studyWrite" style="background-color: #37d3c0; border-color: #37d3c0;"><i class="fa fa-pencil"></i> 새 글 쓰기 (👉클릭👈)</a>
 						<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
 					</div>
 
@@ -33,9 +34,9 @@
 							</div>
 
 							<ul class="list-sort pull-left">
-								<li><a href="/articles/gathering?query=&sort=id&order=desc" data-sort="id" data-order="desc" class="category-sort-link active">전체</a></li>
-								<li><a href="/articles/gathering?query=&sort=voteCount&order=desc" data-sort="voteCount" data-order="desc" class="category-sort-link">모집중</a></li>
-								<li><a href="/articles/gathering?query=&sort=noteCount&order=desc" data-sort="noteCount" data-order="desc" class="category-sort-link">모집완료</a></li>
+								<li><a href="<%=request.getContextPath()%>/study/studyList?process=3" data-sort="id" data-order="desc" class="category-sort-link active">전체</a></li>
+								<li><a href="<%=request.getContextPath()%>/study/studyList?process=1" data-sort="voteCount" data-order="desc" class="category-sort-link">모집중</a></li>
+								<li><a href="<%=request.getContextPath()%>/study/studyList?process=2" data-sort="noteCount" data-order="desc" class="category-sort-link">모집완료</a></li>
 							</ul>
 							<input type="hidden" name="sort" id="category-sort-input" value="id" /> <input type="hidden" name="order" id="category-order-input" value="desc" />
 						</div>
@@ -46,14 +47,15 @@
 					<div class="panel panel-default">
 						<!-- Table -->
 						<ul class="list-group">
+						<c:forEach var="s" items="${list }">
 							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
 								<div class="list-title-wrapper clearfix">
 									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
+										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i><c:if test="${s.process==1}">모집중</c:if><c:if test="${s.process==2}">모집완료</c:if></a>
 									</div>
 
 									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/Project_KNOC/view/study/studyInfo.jsp"> 모델2 스터디 구합니다 (👉클릭👈) </a>
+										<a href="/Project_KNOC/view/study/studyInfo.jsp"> ${s.title} </a>
 									</h5>
 								</div>
 
@@ -61,303 +63,17 @@
 									<div class="avatar clearfix avatar-list">
 										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
 										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
+											<a class="nickname" href="/user/info/45597" title="KNOC">${s.leader_Id}</a>
 											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
+												<span class="timeago" title="2022-03-02T14:33:59">${s.regDate}</span>
 											</div>
 										</div>
 									</div>
 								</div>
 							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다1 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다2 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다3 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다4 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다5 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다6 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다7 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다8 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다9 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다10 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 모집중</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1169448"> 모델2 스터디 구합니다11 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">KNOC</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">2022-03-02 14:33:59</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-
-							<li class="list-group-item list-group-item-question list-group-has-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<a href="/articles/tagged/%EB%B0%B1%EC%97%94%EB%93%9C" class="list-group-item-text item-tag label label-gray">모집완료</a>
-									</div>
-
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="/article/1173202"> 모델1 스터디 구합니다 </a>
-									</h5>
-								</div>
-
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/121873" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/121873" title="김코딩">김코딩</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-08T07:55:01">2021-12-13 07:55:01</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
+							
+							</c:forEach>
+							
 						</ul>
 					</div>
 					<div class="text-center">
