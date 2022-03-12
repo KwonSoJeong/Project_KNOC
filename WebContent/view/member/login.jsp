@@ -12,7 +12,7 @@
         <div class="container">
             <div id="member-login" class="center-align">
                 <h1 id="member-login-h1">로그인</h1>
-                <form action="" autocomplete="off" method="post">
+                <form action="<%=request.getContextPath()%>/member/loginPro" autocomplete="off" method="post">
                     <input type="text" name="id" placeholder="아이디를 입력하세요." /> <br /> 
                     <input type="password" name="pwd" placeholder="비밀번호를 입력하세요." /> <br />
                     <button type="submit">로그인</button>
