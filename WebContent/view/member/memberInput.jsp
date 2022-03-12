@@ -11,9 +11,9 @@
         <div class="container">
             <div id="member-input" class="center-align">
             <h1 id="member-input-h1">회원가입</h1>
-                <form action="#" autocomplete="off" method="post">
+                <form action="<%=request.getContextPath()%>/member/memberInputPro" autocomplete="off" method="post">
                 <div id="member-input-profile">
-                    <img src="../../resource/image/profile.JPG" alt="프로필이미지" /> <br />
+                    <img src="<%=request.getContextPath() %>/resource/image/profile.JPG" alt="프로필이미지" /> <br />
                     <label for="user-profile">사진 변경</label>
                     <input id="user-profile" type="file" />
                 </div>

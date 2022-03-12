@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect(request.getContextPath()+"/view/main.jsp"); %>
+<%response.sendRedirect(request.getContextPath()+"/classes/main"); %>
 </body>
 </html>
