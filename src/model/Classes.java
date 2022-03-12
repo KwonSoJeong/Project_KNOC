@@ -12,11 +12,12 @@ public class Classes {
 	private int favorite;
 	private Date regDate;
 	private int price;
+	private String thumbnail;
 	
 	public Classes() {}
 
 	public Classes(String class_id, String lec_id, String title, String intro, String category_id, int type,
-			int favorite, Date regDate, int price) {
+			int favorite, Date regDate, int price, String thumbnail) {
 		this.class_id = class_id;
 		this.lec_id = lec_id;
 		this.title = title;
@@ -26,6 +27,7 @@ public class Classes {
 		this.favorite = favorite;
 		this.regDate = regDate;
 		this.price = price;
+		this.thumbnail = thumbnail;
 	}
 
 	public String getClass_id() {
@@ -84,11 +86,11 @@ public class Classes {
 		this.favorite = favorite;
 	}
 
-	public Date getRegdate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegdate(Date regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 
@@ -100,11 +102,19 @@ public class Classes {
 		this.price = price;
 	}
 
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
 	@Override
 	public String toString() {
 		return "Classes [class_id=" + class_id + ", lec_id=" + lec_id + ", title=" + title + ", intro=" + intro
 				+ ", category_id=" + category_id + ", type=" + type + ", favorite=" + favorite + ", regDate=" + regDate
-				+ ", price=" + price + "]";
+				+ ", price=" + price + ", thumbnail=" + thumbnail + "]";
 	}
 	
 }
