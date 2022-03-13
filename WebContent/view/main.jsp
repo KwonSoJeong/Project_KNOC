@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡMAINㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="../js/click.js"></script>
 <link href="../resource/style/main.css" rel='stylesheet' type='text/css'/>
-
 </head>
 <body style="padding-top: 70px;">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -85,7 +85,7 @@
 					<div class="mnc-heart"></div>
 				</div>
 				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[신규혜택] 이 부분은 jstl 반복문으로 4번 불러올 예정인 부분...</div>
+				<div class="mnc-title">[신규혜택]...</div>
 				<div class="mnc-heartcnt">♥ 59756</div>
 				<div class="mnc-bor-bot"></div>
 				<div class="mnc-price">월 10,700원</div>
@@ -147,7 +147,7 @@
 					<div class="mnc-heart"></div>
 				</div>
 				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[신규혜택] 이 부분은 jstl 반복문으로 4번 불러올 예정인 부분...</div>
+				<div class="mnc-title">[신규혜택]...</div>
 				<div class="mnc-heartcnt">♥ 59756</div>
 				<div class="mnc-bor-bot"></div>
 				<div class="mnc-price">월 10,700원</div>
