@@ -46,7 +46,6 @@ input {
 <h1>프로필 사진 선택</h1>
 <div id="profile-input">
 <form action="<%=request.getContextPath()%>/member/picturePro" method="post" enctype="multipart/form-data">
-    <!--<label for="user-profile">프로필 사진 선택</label>-->
     <input id="user-profile" type="file" name="profile"> <br />
     <button type="submit">저장</button>
 </form>

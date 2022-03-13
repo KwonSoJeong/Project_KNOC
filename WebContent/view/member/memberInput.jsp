@@ -22,21 +22,20 @@ function pic_upload() {
                 <form action="<%=request.getContextPath()%>/member/memberInputPro" autocomplete="off" method="post" name="inputform">
                 <div id="member-input-profile">
                     <img id="picture" src="<%=request.getContextPath() %>/resource/image/profile.jpg" alt="프로필이미지" /> <br />
-                    <label for="user-profile">사진 등록</label>
                     <input type="hidden" name="profile" />
-                    <button style="display: none;" id="user-profile" type="button" onclick="pic_upload()"></button>
+                    <button type="button" onclick="pic_upload()">사진 등록</button>
                 </div>
                 <div id="member-input-info">
                     <label for="user-id">아이디</label>
-                    <input id="user-id" type="text" name="id" /> <br />
+                    <input id="user-id" type="text" name="id" required="required"/> <br />
                     <label for="user-pwd">비밀번호</label>
-                    <input id="user-pwd" type="password" name="pwd" /> <br />
+                    <input id="user-pwd" type="password" name="pwd" required="required"/> <br />
                     <label for="user-name">이름</label>
-                    <input id="user-name" type="text" name="name" /> <br />
+                    <input id="user-name" type="text" name="name" required="required"/> <br />
                     <label for="user-email">이메일</label>
-                    <input id="user-email" type="email" name="email" /> <br />
+                    <input id="user-email" type="email" name="email" required="required"/> <br />
                     <label for="user-tel">전화번호</label>
-                    <input id="user-tel" type="tel" name="tel" /> 
+                    <input id="user-tel" type="tel" name="tel" required="required"/> 
                 </div>
                 <div id="member-input-submit">
                     <button type="submit">회원가입</button>
