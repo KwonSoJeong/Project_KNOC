@@ -42,7 +42,7 @@
 						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
+						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
 					</li>	
 				</c:if>
 		
@@ -62,7 +62,7 @@
 						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
+						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/study/creator" id="fsfc" class="nav-link">지식공유참여</a>
