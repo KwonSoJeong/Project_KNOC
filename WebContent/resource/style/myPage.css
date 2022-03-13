@@ -1,0 +1,89 @@
+/* ------default------ */
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: "Noto Sans KR";
+}
+
+input:focus {
+	outline:none;
+}
+
+button{
+	padding: 0;
+}
+
+h1{
+	font-size: 24px;
+	font-weight: normal;
+	padding-left: 3px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #B8E6E1;
+}
+
+/* ------myPage------ */
+.mp-wrapper {
+	width: 1180px;
+    margin: 6.7vh auto 0;
+    min-height: 50vh;
+}
+
+.mp-fsfc {
+    font-size: 24px;
+    color: #3e3a3a;
+}
+
+.mp-bor-bot{
+	border-bottom: 2px solid #B8E6E1;
+	width: 1180px;
+	margin: 5px auto;
+}
+
+.mp-form {
+    display: flex;
+    margin: 12px auto 0;
+    justify-content: flex-end;
+}
+
+.mp-form-content {
+    width: 200px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.mp-form-control {
+	border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+}
+
+#btn{
+    width: 100px;
+    height: 35px;
+    background-color: #B8E6E1;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 0.25rem;
+}
+
+.mp-lcontainer{
+	display: flex;
+    justify-content: space-between;
+}
+
+
+.mp-thumbnail{
+    background-color: #b5faff;
+    width: 281px;
+    height: 346px;
+    border-radius: 95px;
+    box-shadow: rgb(0 0 0 / 12%) 15px 20px 11px -2px !important;
+}
+
+.mp{
+	margin: 50px;
+}

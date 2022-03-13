@@ -6,15 +6,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/mentorlist.css">
 </head>
-<body>
+<body style="padding-top: 70px;">
+	<div class="mtl-wrapper">
+		<div class="mtl-fsfc">멘토링</div>
+		<div class="mtl-bor-bot"></div>
 
-	<div id="border-bot">
-		<h2 id ="font">멘토링</h2>
+		<form class="mtl-form" action="#">
+			<input class="mtl-form-control mtl-form-content" type="text" placeholder="검색하기">
+			<button id="bung" type="submit">검색</button>
+		</form>
 	</div>
-	<form class="mtl-form" action="#">
-		<input class="form-control" type="text" placeholder="검색하기">
-		<button id="bung" type="submit">검색</button>
-	</form>
+	
 	<div class="center-col">
 	<div class="center">
 		<div class="item-wrap">

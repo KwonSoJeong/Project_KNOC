@@ -23,26 +23,27 @@
 				<div class="panel panel-default clearfix">
 					<div class="panel-heading clearfix">
 						<div class="avatar clearfix avatar-medium pull-left">
-							<a href="/user/info/138252" class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></a>
+							<a href="/user/info/138252" class="avatar-photo">
+							
+							<c:choose>
+							<c:when test="${profile!=null}"><img src="<%=request.getContextPath() %>/profile/${profile}" /></c:when>
+							<c:otherwise><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></c:otherwise>
+							</c:choose>
+							
+							</a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/138252" title="KNOC">KNOC</a>
+								<a class="nickname" href="/user/info/138252" title="KNOC">${id}</a>
 							</div>
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="/articles/community/save" method="post" id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+						<form action="<%=request.getContextPath()%>/study/studyWritePro" method="post" id="article-form" class="article-form" role="form" onsubmit="return postForm()">
 							<fieldset class="form">
 								<input type="hidden" name="_csrf" value="ffedcba6-5eb9-48c8-8889-5f7ed435b5ba" />
 
 								<div class="form-group has-feedback">
 									<div>
 										<input type="text" name="title" required="" value="" placeholder="제목을 입력해 주세요." class="form-control" id="title" />
-									</div>
-								</div>
-
-								<div class="form-group has-feedback">
-									<div>
-										<input type="text" name="tagString" value="" placeholder="Tags," class="form-control" id="tagString" />
 									</div>
 								</div>
 

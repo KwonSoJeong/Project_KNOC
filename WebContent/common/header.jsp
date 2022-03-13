@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡHEADERㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!DOCTYPE html>
 <html>
 <title>KNOC</title>
@@ -17,7 +18,6 @@
 
 <body>
 <div id="wrapper">
-	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ헤더ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<div class="header">
 		<nav class="hnav navbar-expand-lg navbar-light">
 			<!-- logo -->
@@ -28,7 +28,7 @@
 			<ul class="navbar-nav drop" style="flex-direction: row;" >			
 				<c:if test="${memid==null}">			
 					<li id="num1" class="nav-it">
-						<a href="#" id="fsfc" class="nav-link">클래스 ▼</a>
+						<a href="<%=request.getContextPath() %>/view/classes/classList.jsp" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
 							<li><a href="#">운동</a></li>
 							<li><a href="#">크리에이티브</a></li>
@@ -48,7 +48,7 @@
 		
 				<c:if test="${memid!=null}">
 					<li id="num1" class="nav-it">
-						<a href="/Project_KNOC/view/classes/classlist.html" id="fsfc" class="nav-link">클래스 ▼</a>
+						<a href="<%=request.getContextPath() %>/view/classes/classList.jsp" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
 							<li><a href="#">운동</a></li>
 							<li><a href="#">크리에이티브</a></li>
@@ -59,13 +59,17 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/mentor/mentorㅣist" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
+						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/study/creator" id="fsfc" class="nav-link">지식공유참여</a>
+						<ul id="subnav" class="submenu">
+							<li><a href="#">멘토 등록하기</a></li>
+							<li><a href="#">클래스 개설하기</a></li>
+						</ul>
 					</li>
 				</c:if>	
 			</ul>				
@@ -97,3 +101,4 @@
 			</ul>			
 		</nav>
 	</div>
+<!-- ㅡㅡㅡㅡㅡㅡㅡㅡEDN HEADERㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
