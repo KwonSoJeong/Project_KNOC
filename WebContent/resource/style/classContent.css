@@ -1,0 +1,43 @@
+/* ------default------ */
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: "Noto Sans KR";
+}
+
+input:focus {
+	outline:none;
+}
+
+button{
+	padding: 0;
+}
+
+h1{
+	font-size: 24px;
+	font-weight: normal;
+	padding-left: 3px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #B8E6E1;
+}
+
+/* ------myPage------ */
+.cc-wrapper {
+	width: 1180px;
+    margin: 6.7vh auto 0;
+    min-height: 50vh;
+}
+
+.cc-fsfc {
+    font-size: 24px;
+    color: #3e3a3a;
+}
+
+.cc-bor-bot{
+	border-bottom: 2px solid #B8E6E1;
+	width: 1180px;
+	margin: 5px auto;
+}
