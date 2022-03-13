@@ -109,7 +109,7 @@ body {
 	display: none;
 }
 
-#member-input-profile label {
+#member-input-profile button {
 	display: inline-block;
 	margin-top: 40px;
 	width: 150px;
