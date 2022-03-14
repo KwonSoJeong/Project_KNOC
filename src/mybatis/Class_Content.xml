@@ -2,5 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="class_content">
-    
+<select id="newContentNum" resultType="int">
+select contentseq.nextval from dual
+</select>
+
+<insert id="contentUpload" parameterType="class_content">
+insert into class_content values(#{content_Id}, #{class_Id}, #{no}, #{title}, #{file1})
+</insert>
 </mapper>

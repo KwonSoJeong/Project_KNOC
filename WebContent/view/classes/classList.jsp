@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,6 +89,7 @@
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>	
 			</div>
+			<!-- classList 테스트용 코드입니다! <c:forEach var = "classes" items="${classList}">${classes}</c:forEach>--> 
 		</div>
 	</div>
 </body>
