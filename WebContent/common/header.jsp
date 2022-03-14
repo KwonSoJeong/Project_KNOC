@@ -59,22 +59,22 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/mentor/mentorㅣist" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
+						<a href="<%=request.getContextPath() %>/view/study/studyList.jsp" id="fsfc" class="nav-link">스터디</a>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/study/creator" id="fsfc" class="nav-link">지식공유참여</a>
+						<a href="" id="fsfc" class="nav-link">지식공유참여</a>
 						<ul id="subnav" class="submenu">
-							<li><a href="#">멘토 등록하기</a></li>
-							<li><a href="#">클래스 개설하기</a></li>
+							<li><a href="<%=request.getContextPath() %>/view/mentor/mentorRegister.jsp">멘토 등록하기</a></li>
+							<li><a href="<%=request.getContextPath() %>/view/classes/classUpload.jsp">클래스 개설하기</a></li>
 						</ul>
 					</li>
 				</c:if>	
 			</ul>				
 			<!-- 우측헤더 -->	
-			<ul id="navbar-nav1" class="navbar-nav justify-content-end">			
+			<ul id="navbar-nav2" class="navbar-nav justify-content-end">			
 				<c:if test="${memid==null}">
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/login">로그인</a>
@@ -92,7 +92,7 @@
 						<a id="fsfc" class="nav-link"	href="<%=request.getContextPath() %>/member/logout">로그아웃</a>
 					</li>	
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/myPage">마이페이지</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/myPage.jsp">마이페이지</a>
 					</li>
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>

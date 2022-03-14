@@ -10,4 +10,8 @@ $(document).ready(function(){
 	        $(".ya1").hide();
 	        $(this).hide();
 		});
+		
+	$(".cc-fsfc1").click(function(){
+	        $(".cc-index").fadeToggle(100);
+		});
 });
