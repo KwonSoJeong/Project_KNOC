@@ -23,7 +23,7 @@ box-sizing: border-box;
 }
 
 #upload-col{
-font-size: 24px;
+font-size: 24px; 
 /*border-bottom : solid 2px #B8E6E1;
 margin-left: 400px;
 margin-right: 400px;*/
