@@ -2,5 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="classes">
+<select id="classList" resultType="classes">
+select * from classes
+</select>
 
+<select id="newClassNum" resultType="int">
+select classseq.nextval from dual
+</select>
+
+<insert id="classUpload" parameterType="classes">
+insert into classes values (#{class_id}, #{lec_id}, #{title}, #{intro}, #{category_id}, #{type}, 0, sysdate, #{price}, #{thumbnail})
+</insert>
+
+<select id="classOne" parameterType="string">
+select * from classes where class_id = #{class_id}
+</select>
 </mapper>
