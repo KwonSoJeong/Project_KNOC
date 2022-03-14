@@ -14,7 +14,7 @@
 	<div class="layout-container">
 		<div class="wrapper">
 			<main id="main">
-			<!-- 배너
+				<!-- 배너
 				<section class="community-header">
 					<div class="community-header__content">
 						<h2 class="community-header__title">함께 성장할 스터디를 모집해보세요</h2>
@@ -22,7 +22,7 @@
 					</div>
 				</section>
 			-->
-				 
+
 				<div style="margin-top: 50px">
 					<span style="font-size: 24px">QnA</span>
 					<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
@@ -32,7 +32,7 @@
 					<div class="community-body__content">
 
 						<div class="search-filter">
-						<!-- 탭
+							<!-- 탭
 							<ul class="status">
 								<li class="e-status active" data-status="">
 									<button class="ac-button is-md is-text tab-button ">전체</button>
@@ -45,8 +45,8 @@
 								</li>
 							</ul>
 						-->
-						
-						<!-- 검색창
+
+							<!-- 검색창
 							<form class="search e-search">
 								<div class="search-item">
 									<div class="ac-input-with-item search-by-text ">
@@ -73,24 +73,26 @@
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
-													<span class="question__status-tag question__status-tag--unrecruited">모집중</span>
+													<span class="question__status-tag question__status-tag--recruited">QnA 글 ID</span>
 													<h3 class="title__text">
 														for문없이 접근 방법 <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
-												<p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p>
+												<!-- <p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p> -->
 												<div class="question__tags"></div>
-												<div class="question__info-footer">김동규</div>
+												<div class="question__info-footer">
+													<i class="fa fa-user"> 작성자</i> <i class="fa fa-lock">비밀글</i> <i class="fa fa-pencil">등록일</i>
+												</div>
 											</div>
 											<div class="question__additional-info">
 												<div class="question__comment">
-													<span class="comment__count">0</span> <span class="comment__description">댓글</span>
+													<span class="comment__count">0</span> <span class="comment__description">답변</span>
 												</div>
-												<button class="ac-button is-md is-text question__like e-like ">
+												<!-- <button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
-												</button>
+												</button> -->
 											</div>
 										</div>
 								</a></li>
@@ -99,23 +101,25 @@
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
-													<span class="question__status-tag question__status-tag--recruited">모집완료</span>
+													<span class="question__status-tag question__status-tag--recruited">QnA 글 ID</span>
 													<h3 class="title__text">
 														김영한님 JPA 강의 (Spring Data JPA, QueryDsl 등) 같이 공부하실 스터디원 모집합니다! <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
-												<p class="question__body">안녕하세요! &nbsp; 저희 스터디는 인프런의 김영한님 JPA 강의들을 바탕으로 공부하고 있는 온라인 스터디입니다. &nbsp; 현재 진도는 자바 ORM 표준 JPA 프로그래...</p>
-												<div class="question__info-footer">정현주</div>
+												<!-- <p class="question__body">안녕하세요! &nbsp; 저희 스터디는 인프런의 김영한님 JPA 강의들을 바탕으로 공부하고 있는 온라인 스터디입니다. &nbsp; 현재 진도는 자바 ORM 표준 JPA 프로그래...</p> -->
+												<div class="question__info-footer">
+													<i class="fa fa-user"> 작성자</i> <i class="fa fa-pencil">등록일</i>
+												</div>
 											</div>
 											<div class="question__additional-info">
 												<div class="question__comment">
-													<span class="comment__count">0</span> <span class="comment__description">댓글</span>
+													<span class="comment__count">0</span> <span class="comment__description">답변</span>
 												</div>
-												<button class="ac-button is-md is-text question__like e-like ">
+												<!-- <button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
-												</button>
+												</button> -->
 											</div>
 										</div>
 								</a></li>
@@ -124,24 +128,26 @@
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
-													<span class="question__status-tag question__status-tag--unrecruited">모집중</span>
+													<span class="question__status-tag question__status-tag--recruited">QnA 글 ID</span>
 													<h3 class="title__text">
 														코딩 테스트 준비 <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
-												<p class="question__body">코딩 테스트 준비를 위한 스터디 모집합니다!! &nbsp; 언어는 파이썬인데 스터디원들은 상관없을 것 같습니다. &nbsp; 진행 방식은 전 주에 정한 ...</p>
-												<div class="question__info-footer">한유진</div>
+												<!-- <p class="question__body">코딩 테스트 준비를 위한 스터디 모집합니다!! &nbsp; 언어는 파이썬인데 스터디원들은 상관없을 것 같습니다. &nbsp; 진행 방식은 전 주에 정한 ...</p> -->
+												<div class="question__info-footer">
+													<i class="fa fa-user"> 작성자</i> <i class="fa fa-lock">비밀글</i> <i class="fa fa-pencil">등록일</i>
+												</div>
 											</div>
 											<div class="question__additional-info">
 												<div class="question__comment">
-													<span class="comment__count">0</span> <span class="comment__description">댓글</span>
+													<span class="comment__count">0</span> <span class="comment__description">답변</span>
 												</div>
 
-												<button class="ac-button is-md is-text question__like e-like ">
+												<!-- <button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
-												</button>
+												</button> -->
 											</div>
 										</div>
 								</a></li>
