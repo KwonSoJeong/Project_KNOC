@@ -12,10 +12,11 @@ href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 <div id="class-col">
 	<h3 id="classInfo-h2">클래스 제목</h3>
 	</div>
+	
  	<div class="calss-canter">
 	<div class="item-wrap">
 	<div class="class-card">
-	<h4></h4>
+	<h4>디자인</h4>
 	<div class="col-3">
 	<img src="" width="400" height="300">
 	</div>
