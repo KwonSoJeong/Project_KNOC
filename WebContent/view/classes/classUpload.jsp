@@ -62,12 +62,12 @@ text-align: center;
 	
 	<div id="upload-div">
 	<div class="container" style="padding: 80px;">
-		<form name="f" action=" " enctype="multipart/form-data" method="post">
+		<form action=" " enctype="multipart/form-data" method="post">
 			<br><br>
 			
-			<label>카테고리 선택</label>
+			<label>카테고리</label>
 			<div id= "upload-option">
-			<select name="china">
+			<select name="caterory_id">
 			<option value="1">요리</option>
 			<option value="2">디저트</option>
 			<option value="3">금융</option>
@@ -80,18 +80,51 @@ text-align: center;
 			</div>
 			<br><br>
 			
-            <div>
-				<label>제목, 소개글 입력</label>
-				<textarea class="form-control" rows="10" cols="60" placeholder="소개글 작성"></textarea>
+			<div>
+			 <label>타입</label>
+			 <input type="checkbox" name="type" value="1">영상
+			 <input type="checkbox" name="type" value="2">글
 			</div>
 			<br><br>
+			
+			<div>
+			<label>썸네일</label>
+			<input type="file" class="form-control" name="thumbnail">
+			</div>
+			<br><br>
+			
+			<div>
+			<label>제목</label>
+			<input type="text" name="title" class="form-control">
+			</div>
+			<br><br>
+			
+            <div>
+			<label>소개글</label>
+			<textarea class="form-control" rows="10" cols="60" placeholder="소개글 작성" name="intro"></textarea>
+			</div>
+			<br><br>
+			
+			<div>
+			<label>가격</label>
+			<input type="text" name="price" class="form-control">
+			</div>
+			<br><br>
+			
            <div class="form-group">
 				<label>목차</label> 
-				<input type="file" class="form-control">
+				1차시제목<input type="text" name="title1" class="form-control">
+				1차시파일<input type="file" name="file1" class="form-control">
+				<br><br>
+				2차시제목<input type="text" name="title2" class="form-control">
+				2차시파일<input type="file" name="file2" class="form-control">
+				<br><br>
+				3차시제목<input type="text" name="title3" class="form-control">
+				3차시파일<input type="file" name="file3" class="form-control">
 			</div>
 			
 			<div id="center" style="padding: 25px;">
-				<a href=""><button type="submit">차시 추가</button></a>
+			<button type="submit">등록하기</button>
 			</div>
 		</form>
 	</div>
