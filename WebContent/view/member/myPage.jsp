@@ -26,9 +26,9 @@
 						<div class="mp-procomt">xxx님 <br> 안녕하세요!</div>
 					</div>
 					<div class="mp-just">
-						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/view/member/memberDelete.jsp">회원탈퇴</a>	
+						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/member/memberDelete">회원탈퇴</a>	
 						|
-						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/view/member/memberUpdate.jsp">프로필 수정하기</a>					
+						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/member/memberUpdate">프로필 수정하기</a>					
 					</div>
 				</div>
 				

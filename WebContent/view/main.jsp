@@ -62,7 +62,7 @@
 	<div class="mnc-container"> 
 		<div class="mnc-class">New Class</div>
 		<div class="mnc-lcontainer">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -77,7 +77,7 @@
 				
 			</div>
 			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -91,7 +91,7 @@
 				<div class="mnc-price">월 10,700원</div>
 			</div>
 			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -105,7 +105,7 @@
 				<div class="mnc-price">연 1원</div>
 			</div>
 					
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -125,7 +125,7 @@
 	<div class="mnc-container"> 
 		<div class="mnc-class">ONE PICK! Class</div>
 		<div class="mnc-lcontainer">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div >
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -139,7 +139,7 @@
 				<div class="mnc-price">월 40,200원</div>
 			</div>
 			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -153,7 +153,7 @@
 				<div class="mnc-price">월 10,700원</div>
 			</div>
 			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
@@ -167,7 +167,7 @@
 				<div class="mnc-price">연 1원</div>
 			</div>
 			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/view/classes/classInfo.jsp?='">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
