@@ -25,6 +25,33 @@ h1{
 }
 
 /* ------myPage------ */
+#cc-subnav:hover{
+	display: inline-block;
+}
+
+#cc-subnav {
+    padding: 21px 26px;
+    width: 210px;
+}
+
+#cc-subnav li{
+	list-style: none;
+	font-size: 14px;
+	font-weight: 530;
+	padding: 13px 0;
+	border-bottom: 1px solid #75727233;
+	text-align: left;
+}
+
+#cc-subnav a:hover {
+	color: #000;
+	text-decoration: none;	
+}
+
+#cc-subnav a{
+	color: #3e3a3a;
+}
+
 .cc-wrapper {
 	width: 1180px;
     margin: 6.7vh auto 0;
@@ -66,7 +93,7 @@ h1{
 
 .cc-index{
 	display: none;
-    z-index: 6;
+    z-index: 5;
     position: absolute;
     width: 250px;
     height: 80vh;
