@@ -58,8 +58,7 @@
 	</div>
 	</div>
 	
-	<!-- 주석 -->
-	<%-- <div class="fnete">
+	<div class="fnete">
 		<div class="mtl-card">
 		<img src="" alt="">
 		<h4>멘토링 상세정보</h4>
@@ -230,7 +229,7 @@
 		</div>
 		</div>
 	</div>
-	 --%>
+
 	
     <%-- <div class="container">
     <ul class="pagination justify-content-center">

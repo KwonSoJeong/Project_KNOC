@@ -15,7 +15,7 @@
 	<div class="item-wrap"> 
 	<div class="card">
 	<h3>멘토링 내용</h3>
-	<!-- 멘토링 내용 -->
+	<!-- 멘토링 내용 --> 
 	<p>${m.content}</p>
     </div>
 	</div>
@@ -32,7 +32,7 @@
 	<div class="card-chat">
 	<div class="chat">
 	<button type="submit">멘토링 신청</button>
-	</div>
+	</div> 
 	</div>
 	</div>
 	<div class="card-info">

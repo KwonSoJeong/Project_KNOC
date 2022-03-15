@@ -36,7 +36,7 @@
 	<img src="" width="100" height="120">
 	<br>클래스 공유자 이름: ${c.lec_id}</div>
 	<div class="class-info">
-	<div class="user-wrap">
+	<div class="user-wrap"> 
 	
 	<p>${c.intro}</p>
 	<div class="card-chat">

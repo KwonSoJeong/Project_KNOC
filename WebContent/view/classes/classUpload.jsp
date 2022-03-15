@@ -105,7 +105,7 @@ text-align: center;
 			</div>
 			<br><br>
 			
-			<div>
+			<div> 
 			<label>가격</label>
 			<input type="text" name="price" class="form-control">
 			</div>
