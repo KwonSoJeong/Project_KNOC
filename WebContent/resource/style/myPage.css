@@ -71,7 +71,7 @@ ul {
 
 
 .mp-thumbnail{
-    background-color: #f4fdfd;
+    background-color: #d5ffff;
     width: 375px;
     height: 330px;
     border: 2px #a2a2a2 solid;
@@ -157,10 +157,10 @@ ul {
 }
 
 .mp-clbox ul li a{
-	color: #6f6c6c;
+    color: #3c3c3c;
     text-decoration: none;
     font-weight: 600;
-    font-size: 17.5px;
+    font-size: 14.5px;
 }
 
 .mp-clbox ul li a:hover{
@@ -179,5 +179,5 @@ ul {
 }
 
 .cur:hover{
-	color: #fff;
+	color: #D3D3D3;
 }

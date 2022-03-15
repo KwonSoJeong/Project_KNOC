@@ -3,7 +3,7 @@
 <link href="../resource/style/footer.css" rel='stylesheet' type='text/css'/>
 <link href="../../resource/style/footer.css" rel='stylesheet' type='text/css'/>
 </div>
-	<div class="footer">
+	<div id="footer" class="footer">
 		<p>개인정보처리방침 &nbsp;&nbsp;이용약관</p>
 		<p>COPYRIGHT © 2022 KNOC ALL RIGHTS RESERVED.</p>
 	</div>
