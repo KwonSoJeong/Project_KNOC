@@ -22,23 +22,40 @@ public class ClassesController extends MskimRequestMapping {
 	// main화면 view
 	@RequestMapping("main")
 	public String memberInput(HttpServletRequest request, HttpServletResponse response) {
-
+		ClassesDao cd = new ClassesDao();
+		
+		List<Classes> newClassList = cd.sortedClassList("regdate");
+		List<Classes> favoriteClassList = cd.sortedClassList("favorite");
+		
+		request.setAttribute("newClassList", newClassList);
+		request.setAttribute("favoriteClassList", favoriteClassList);
 		return "/view/main.jsp";
 	}
 	
-	// 전체 클래스 리스트 view (카테고리 지정X)
+	// 클래스 리스트 view
 	@RequestMapping("classList")
 	public String classList(HttpServletRequest request, HttpServletResponse response) {
 		ClassesDao cd = new ClassesDao();
-		/*
-		if (request.getParameter("category_id") != null) {
-			todo : 카테고리 지정시 해당 카테고리에 맞는 리스트 반환하도록 메소드 수정
-		}
-		*/
+		
+		String category = request.getParameter("category_id");
+		String title = request.getParameter("title");
+		
+		// 카테고리를 전달하지 않고 view를 출력하면 전체 리스트 반환
 		List<Classes> classList = cd.classList();
+		
+		// 카테고리를 전달하고 view를 출력하면 해당 카테고리에 맞는 리스트 반환
+		if (category != null) {
+			classList = cd.classifiedList(category); 
+		}
+		
+		// 검색어를 입력하고 view를 출력하면 해당 단어가 제목에 포함된 리스트 반환
+		if (title.trim() != null) {
+			classList = cd.searchedList(title);
+		}
+		
 		request.setAttribute("classList", classList);
 		
-		return "/view/classes/classList.jsp";
+		return "/view/classes/classListTest.jsp";
 	}
 	
 	// 신규 클래스 등록 view
@@ -58,7 +75,6 @@ public class ClassesController extends MskimRequestMapping {
 			return "/view/alert.jsp";
 		}
 		
-		// 임시 페이지로 테스트 중
 		return "/view/classes/classUpload.jsp";
 	}
 	
@@ -106,21 +122,24 @@ public class ClassesController extends MskimRequestMapping {
 		
 		Class_ContentDao con_d = new Class_ContentDao();
 		
-		// 현재는 3차시까지 입력받도록 되어있음
-		for (int i = 1; i <= 3; i++) {
-			Class_Content newContent = new Class_Content();
-			
-			newContent.setClass_Id(newClass.getClass_id());
-			newContent.setContent_Id("content" + con_d.newContentNum());
-			newContent.setNo(i);
-			newContent.setTitle(multi.getParameter("title" + i));
-			newContent.setFile1(multi.getFilesystemName("file" + i));
-			
-			if (con_d.contentUpload(newContent) > 0) {
-				contentResult++;
+		Classes classone = cl_d.classOne(newClass.getClass_id());
+		
+		if (classone != null) {
+			// 현재는 3차시까지 입력받도록 되어있음
+			for (int i = 1; i <= 3; i++) {
+				Class_Content newContent = new Class_Content();
+
+				newContent.setClass_Id(newClass.getClass_id());
+				newContent.setContent_Id("content" + con_d.newContentNum());
+				newContent.setNo(i);
+				newContent.setTitle(multi.getParameter("title" + i));
+				newContent.setFile1(multi.getFilesystemName("file" + i));
+
+				if (con_d.contentUpload(newContent) > 0) {
+					contentResult++;
+				}
 			}
 		}
-		
 		String msg = "클래스 등록에 실패하였습니다.";
 		String url = request.getContextPath() + "/classes/classUpload";
 		
@@ -143,8 +162,30 @@ public class ClassesController extends MskimRequestMapping {
 		ClassesDao cd = new ClassesDao();
 		Classes classone = cd.classOne(classId);
 		
+		// parameter로 전달된 classId는 session에 저장, content view 출력 시 활용
+		HttpSession session = request.getSession();
+		session.setAttribute("classId", classId);
+		
 		request.setAttribute("class", classone);
-		return "/view/classes/classInfo?class_id=" + classId;
+		return "/view/classes/classInfo.jsp";
 	}
-
+	
+	// 클래스 수강 view
+	@RequestMapping("classContent")
+	public String classContent(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String classId = (String) session.getAttribute("classId");
+		String contentNo = request.getParameter("no");
+		
+		if (contentNo == null) {
+			contentNo = "1";
+		}
+		
+		Class_ContentDao cd = new Class_ContentDao();
+		Class_Content contentOne = cd.contentOne(classId, contentNo);
+		
+		request.setAttribute("content", contentOne);
+		
+		return "/view/classes/classContent.jsp";
+	}
 }
