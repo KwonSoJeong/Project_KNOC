@@ -36,21 +36,13 @@
 			
             <div class="form-group">
 				<label>멘토 소개글 입력</label>
-
 				<textarea class="form-control" rows="10" cols="40" placeholder="멘토 글 작성" name="intro"></textarea>
-
-				<textarea name="intro" class="form-control" rows="10" cols="40" placeholder="멘토 글 작성"></textarea>
-
 			</div>
 			<br>
 			
 			<div class="form-group">
 				<label>멘토링 내용 입력</label>
-
 				<textarea class="form-control" rows="10" cols="60" placeholder="멘토링 내용에 대해 자세히 적어주세요"  name="content"></textarea>
-
-				<textarea name="content" class="form-control" rows="10" cols="60" placeholder="멘토링 내용에 대해 자세히 적어주세요"></textarea>
-
 			</div>
 			
 			<div id="center" style="padding: 10px;">
