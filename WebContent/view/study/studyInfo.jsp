@@ -9,15 +9,22 @@
 <link rel="stylesheet" href="/Project_KNOC/resource/style/studyInfo.css" />
 </head>
 <body style="padding-top: 70px;">
-	<div class="layout-container">
+		<div class="layout-container" style="padding-top: 34px;">
+	
+		<div class="class_header"  >
+
+			<div class="bottom-line">
+				<h2 id="font">스터디</h2> 
+			</div>
+		</div>
 		<div class="wrapper">
 			<div id="article" class="content" role="main">
 				<div class="nav" role="navigation">
 
-					<div style="margin-top: 50px">
+					<!-- <div style="margin-top: 50px">
 						<span style="font-size: 24px">스터디</span>
 						<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
-					</div>
+					</div> -->
 
 				</div>
 

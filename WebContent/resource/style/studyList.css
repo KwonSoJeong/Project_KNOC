@@ -8808,8 +8808,22 @@ pre code {
   margin: 0 auto;
 }
 .wrapper {
-	display: flex;
-	justify-content: center;
+	/* display: flex;
+	justify-content: center; */
+	width: 80%;
+	margin: auto;
+}
+.class_header {
+	margin-bottom: 43px;
+}
+.bottom-line {
+	border-bottom: solid 2px #B8E6E1;
+}
+.class_header h2 {
+	font-size: 24px;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+	line-height: 1.4;
 }
 .bootstrap-tagsinput {
   width: 100%;
@@ -9036,7 +9050,7 @@ blockquote {
   margin-top: 0;
 }
 .content {
-  width: 805px;
+  /* width: 805px; */
   min-height: 800px;
 }
 .content .nav {

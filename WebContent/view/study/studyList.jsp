@@ -11,15 +11,24 @@
 <link href="/Project_KNOC/resource/style/main.css" rel='stylesheet' type='text/css' />
 </head>
 <body style="padding-top: 70px;">
-	<div class="layout-container">
+	<div class="layout-container" style="padding-top: 34px;">
+	
+		<div class="class_header"  >
+			<a class="create btn btn-success btn-wide pull-right" href="<%=request.getContextPath()%>/study/studyWrite" style="background-color: #37d3c0; border-color: #37d3c0;"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
+			<div class="bottom-line">
+				<h2 id="font">스터디</h2> 
+			</div>
+		</div>
 		<div class="wrapper">
 			<div id="list-article" class="content scaffold-list gathering-list" role="main">
+			
+
 				<div class="nav" role="navigation">
 
-					<div style="margin-top: 50px">
+					<%-- <div style="margin-top: 56px">
 						<span style="font-size: 24px">스터디</span> <a class="create btn btn-success btn-wide pull-right" href="<%=request.getContextPath()%>/study/studyWrite" style="background-color: #37d3c0; border-color: #37d3c0;"><i class="fa fa-pencil"></i> 새 글 쓰기 (👉클릭👈)</a>
 						<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
-					</div>
+					</div> --%>
 
 					<form id="category-filter-form" name="category-filter-form" method="get" action="<%=request.getContextPath() %>/study/studyList">
 						<div class="category-filter-wrapper">

@@ -8,15 +8,22 @@
 <link rel="stylesheet" href="/Project_KNOC/resource/style/studyWrite.css" />
 </head>
 <body style="padding-top: 70px;">
-	<div class="layout-container">
+		<div class="layout-container" style="padding-top: 34px;">
+	
+		<div class="class_header"  >
+			
+			<div class="bottom-line">
+				<h2 id="font">새 글 쓰기</h2> 
+			</div>
+		</div>
 		<div class="wrapper">
 			<div id="article-create" class="content" role="main">
 				<div class="content-header">
 
-					<div style="margin-top: 50px">
+					<!-- <div style="margin-top: 50px">
 						<span style="font-size: 24px">새 글 쓰기</span>
 						<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
-					</div>
+					</div> -->
 
 				</div>
 
@@ -54,7 +61,7 @@
 
 								<div class="nav" role="navigation">
 									<fieldset class="buttons">
-										<a href="/Project_KNOC/view/study/studyList.jsp" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소 (👉클릭👈)</a> <input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0;" action="create" value="등록" id="create" />
+										<a href="/Project_KNOC/view/study/studyList.jsp" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> <input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0;" action="create" value="등록" id="create" />
 									</fieldset>
 								</div>
 							</fieldset>
