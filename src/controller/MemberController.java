@@ -192,18 +192,21 @@ public class MemberController extends MskimRequestMapping {
 		
 		Knoc_MemberDao md = new Knoc_MemberDao();
 		Knoc_Member mem = md.selectOne(id);
-		
+
 		if (mem.getPwd().equals(pwd)) {
-			
+
 			mem.setName(request.getParameter("name"));
 			mem.setEmail(request.getParameter("email"));
 			mem.setTel(request.getParameter("tel"));
 			mem.setProfile(request.getParameter("profile"));
-			
+
 			int num = md.updateMember(mem);
-			
-			msg = "회원정보가 수정되었습니다.";
-			
+
+			if (num > 0) {
+				msg = "회원정보가 수정되었습니다.";
+			} else {
+				msg = "회원정보 수정에 실패하였습니다.";
+			}
 		}
 		
 		request.setAttribute("msg", msg);
@@ -251,9 +254,14 @@ public class MemberController extends MskimRequestMapping {
 		if (mem.getPwd().equals(pwd)) {
 			mem.setPwd(newPwd);
 			int num = md.updatePwd(mem);
-
+			
+			if (num > 0) {
 			msg = "비밀번호가 수정되었습니다.";
 			url = request.getContextPath() + "/member/memberUpdate";
+			
+			} else {
+				msg= "비밀번호 수정에 실패하였습니다.";
+			}
 		}
 		
 		request.setAttribute("msg", msg);
@@ -300,14 +308,20 @@ public class MemberController extends MskimRequestMapping {
 		
 		String msg = "비밀번호가 일치하지 않습니다.";
 		String url = request.getContextPath() + "/member/memberDelete";
-		
+
 		if (mem.getPwd().equals(pwd)) {
 			int num = md.deleteMember(mem);
 
-			msg = "탈퇴가 완료되었습니다.";
-			url = request.getContextPath() + "/classes/main";
+			if (num > 0) {
+				session.invalidate();
+
+				msg = "탈퇴가 완료되었습니다.";
+				url = request.getContextPath() + "/classes/main";
+			} else {
+				msg = "탈퇴에 실패하였습니다.";
+			}
 		}
-		
+
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
