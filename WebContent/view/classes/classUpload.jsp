@@ -16,6 +16,14 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	
 </head>
+<script>
+function thumbnail_upload() {
+    let loca_left = window.screen.width/2 - 175
+    let loca_top = window.screen.height/2 - 150
+    const option = "width=350, height=300, left=" + loca_left + ", top=" + loca_top
+    open("<%=request.getContextPath()%>/classes/thumbnailForm", "", option)
+}
+</script>
 <style>
 *{
 box-sizing: border-box;
@@ -53,6 +61,12 @@ margin-left: 30px;
 margin: 0 auto;
 text-align: center;
 }
+
+#blank_thumbnail {
+width: 200px;
+height: 130px;
+background-color: gray;
+}
 </style>
 
 
@@ -62,8 +76,8 @@ text-align: center;
 	
 	<div id="upload-div">
 	<div class="container" style="padding: 80px;">
-		<form action=" " enctype="multipart/form-data" method="post">
-			<br><br>
+		<form action="<%=request.getContextPath()%>/classes/classUploadPro" enctype="multipart/form-data" method="post" name="inputform">
+			<br>
 			
 			<label>카테고리</label>
 			<div id= "upload-option">
@@ -82,14 +96,18 @@ text-align: center;
 			
 			<div>
 			 <label>타입</label>
-			 <input type="checkbox" name="type" value="1">영상
-			 <input type="checkbox" name="type" value="2">글
+			 <input type="radio" name="type" value="1">영상
+			 <input type="radio" name="type" value="2">글
 			</div>
 			<br><br>
 			
 			<div>
 			<label>썸네일</label>
-			<input type="file" class="form-control" name="thumbnail">
+			<div id="blank_thumbnail">
+			<img id="picture" src="" alt="썸네일 이미지" style="width:100%; height:100%;"/>
+			</div>
+			<input type="hidden" class="form-control" name="thumbnail">
+			<button type="button" onclick="thumbnail_upload()">썸네일 등록</button>
 			</div>
 			<br><br>
 			
