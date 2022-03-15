@@ -21,7 +21,7 @@
 	</div>
 	<p>
 	<br>
-	<br>가격: ${c.price}원
+	<br>가격: ${classone.price}원
 	</p>
     </div>
 	</div>
@@ -34,14 +34,14 @@
 	<div class="row">
 	<div class="col-3">
 	<img src="" width="100" height="120">
-	<br>클래스 공유자 이름: ${c.lec_id}</div>
+	<br>클래스 공유자 이름: ${classone.lec_id}</div>
 	<div class="class-info">
 	<div class="user-wrap">
 	
-	<p>${c.intro}</p>
+	<p>${classone.intro}</p>
 	<div class="card-chat">
 	<div class="chat"> 
-	<button type="submit">수강신청</button>
+	<button type="button" onclick="location.href='<%=request.getContextPath()%>/classes/classRegister'">수강신청</button>
 	</div>
 	</div>
 	</div>
