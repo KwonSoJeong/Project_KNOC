@@ -13,8 +13,10 @@ import com.oreilly.servlet.MultipartRequest;
 import model.Class_Content;
 import model.Classes;
 import model.Knoc_Member;
+import model.Member_Study_Info;
 import service.Class_ContentDao;
 import service.ClassesDao;
+import service.Member_Study_InfoDao;
 
 //@WebServlet("/classes/*")
 public class ClassesController extends MskimRequestMapping {
@@ -38,7 +40,7 @@ public class ClassesController extends MskimRequestMapping {
 		ClassesDao cd = new ClassesDao();
 		
 		String category = request.getParameter("category_id");
-		String title = request.getParameter("title");
+		String title = request.getParameter("search_keyword");
 		
 		// 카테고리를 전달하지 않고 view를 출력하면 전체 리스트 반환
 		List<Classes> classList = cd.classList();
@@ -55,7 +57,7 @@ public class ClassesController extends MskimRequestMapping {
 		
 		request.setAttribute("classList", classList);
 		
-		return "/view/classes/classListTest.jsp";
+		return "/view/classes/classList.jsp";
 	}
 	
 	// 신규 클래스 등록 view
@@ -147,6 +149,11 @@ public class ClassesController extends MskimRequestMapping {
 		if (classResult > 0 && contentResult == 3) {
 			msg = "클래스가 정상적으로 등록되었습니다.";
 			url = request.getContextPath() + "/classes/classInfo?class_id=" + newClass.getClass_id();
+			
+			Member_Study_InfoDao msd = new Member_Study_InfoDao();
+			Member_Study_Info msi = new Member_Study_Info(newClass.getLec_id(), newClass.getClass_id(), 1);
+			
+			msd.insertInfo(msi);
 		}
 		
 		request.setAttribute("msg", msg);
@@ -202,16 +209,62 @@ public class ClassesController extends MskimRequestMapping {
 		HttpSession session = request.getSession();
 		session.setAttribute("classId", classId);
 		
-		request.setAttribute("class", classone);
+		request.setAttribute("classone", classone);
 		return "/view/classes/classInfo.jsp";
+	}
+	
+	// 클래스 수강신청 클릭 시 process
+	@RequestMapping("classRegister")
+	public String classRegister(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+
+		String id = (String) session.getAttribute("memid");
+		String class_id = (String) session.getAttribute("classId");
+		// 수강신청을 눌렀을 때 로그인이 안되어있으면 로그인 화면으로 이동
+		String msg = "로그인 후 이용 가능합니다.";
+		String url = request.getContextPath() + "/member/login";
+		
+		Member_Study_InfoDao msd = new Member_Study_InfoDao();
+		Member_Study_Info msi = msd.infoOne(id);
+		
+		if (id != null) {
+			// 수강신청을 눌렀을 때 수강신청이 되어있는 상태라면 바로 컨텐츠 화면 return
+			if (msi != null) {
+				return "/view/classes/classContent.jsp";
+			} else {
+				// 수강신청을 눌렀을 때 수강신청이 안 되어 있으면 db 추가하고 수강신청 완료 메세지 출력 후 컨텐츠 화면으로 이동
+				msg = "수강신청이 완료되었습니다.";
+				url = request.getContextPath() + "/classes/classContent";
+				
+				Member_Study_Info newInfo = new Member_Study_Info(id, class_id, 2);
+				msd.insertInfo(newInfo);
+			}
+
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+
+		return "/view/alert.jsp";
+		
 	}
 	
 	// 클래스 수강 view
 	@RequestMapping("classContent")
 	public String classContent(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memid");
 		String classId = (String) session.getAttribute("classId");
 		String contentNo = request.getParameter("no");
+		
+		if (id == null) {
+			String msg = "로그인 정보가 없습니다.";
+			String url = request.getContextPath() + "/member/login";
+			
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			
+			return "/view/alert.jsp";
+		}
 		
 		if (contentNo == null) {
 			contentNo = "1";
