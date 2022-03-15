@@ -45,46 +45,47 @@
 			
 			
 			<div class="class_List">
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>	
 					
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>	
 				
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>					
 				
-				<div>
-					<div class="cc-cc"><img src="#"></div>
-					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-				</div>					<div>
-				
-				<div class="cc-cc"><img src="#"></div>
-					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-				</div>					
-				
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>					
 				
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>					
 				
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>					
 				
-				<div>
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
+					<div class="cc-cc"><img src="#"></div>
+					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
+				</div>					
+				
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
+					<div class="cc-cc"><img src="#"></div>
+					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
+				</div>					
+				
+				<div onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 					<div class="cc-cc"><img src="#"></div>
 					<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
 				</div>	

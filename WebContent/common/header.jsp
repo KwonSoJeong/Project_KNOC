@@ -28,7 +28,7 @@
 			<ul class="navbar-nav drop" style="flex-direction: row;" >			
 				<c:if test="${memid==null}">			
 					<li id="num1" class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/classes/classList.jsp" id="fsfc" class="nav-link">클래스 ▼</a>
+						<a href="<%=request.getContextPath() %>/classes/classList" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
 							<li><a href="#">운동</a></li>
 							<li><a href="#">크리에이티브</a></li>
@@ -48,7 +48,7 @@
 		
 				<c:if test="${memid!=null}">
 					<li id="num1" class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/classes/classList.jsp" id="fsfc" class="nav-link">클래스 ▼</a>
+						<a href="<%=request.getContextPath() %>/classes/classList" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
 							<li><a href="#">운동</a></li>
 							<li><a href="#">크리에이티브</a></li>
@@ -67,8 +67,10 @@
 					<li class="nav-it">
 						<a href="" id="fsfc" class="nav-link">지식공유참여</a>
 						<ul id="subnav" class="submenu">
-							<li><a href="<%=request.getContextPath() %>/mentor/mentorRegister">멘토 등록하기</a></li>
-							<li><a href="<%=request.getContextPath() %>/view/classes/classUpload.jsp">클래스 개설하기</a></li>
+
+							<li><a href="<%=request.getContextPath() %>/view/mentor/mentorRegister.jsp">멘토 등록하기</a></li>
+							<li><a href="<%=request.getContextPath() %>/classes/classUpload">클래스 개설하기</a></li>
+
 						</ul>
 					</li>
 				</c:if>	
@@ -83,19 +85,19 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/memberInput">회원가입</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="#">고객센터</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/help/qnaList.jsp">고객센터</a>
 					</li>
 				</c:if>
 		
 				<c:if test="${memid!=null}">				
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link"	href="<%=request.getContextPath() %>/member/logout">로그아웃</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/logout">로그아웃</a>
 					</li>	
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/myPage.jsp">마이페이지</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/help/qnaList.jsp">고객센터</a>
 					</li>				
 				</c:if>	
 			</ul>			

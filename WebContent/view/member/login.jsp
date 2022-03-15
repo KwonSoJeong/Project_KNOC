@@ -17,7 +17,7 @@
                     <input type="password" name="pwd" placeholder="비밀번호를 입력하세요." /> <br />
                     <button type="submit">로그인</button>
                 </form>
-                <a href="./memberInput.html"><span>회원가입</span></a>
+                <a href="<%=request.getContextPath()%>/member/memberInput"><span>회원가입</span></a>
             </div>
         </div>
     </main>
