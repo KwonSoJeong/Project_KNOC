@@ -106,9 +106,9 @@ public class ClassesDao {
 	// 검색어를 입력하여 해당 검색어를 제목에 포함하는 클래스만 리스트로 반환
 	public List<Classes> searchedList(String value) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-		
+		String keyword = value.trim();
 		try {
-			return sqlSession.selectList(ns + "searchedList", value);
+			return sqlSession.selectList(ns + "searchedList", keyword);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -121,8 +121,9 @@ public class ClassesDao {
 	/* DAO 테스트 코드
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-		
-		List<Classes> list = sqlSession.selectList(ns + "searchedList", "33");
+		String value = "  하하   ";
+		String keyword = value.trim();
+		List<Classes> list = sqlSession.selectList(ns + "searchedList", keyword);
 		
 		for (Classes c : list) {
 			System.out.println(c);

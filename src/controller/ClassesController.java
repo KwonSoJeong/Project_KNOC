@@ -51,7 +51,7 @@ public class ClassesController extends MskimRequestMapping {
 		}
 		
 		// 검색어를 입력하고 view를 출력하면 해당 단어가 제목에 포함된 리스트 반환
-		if (title.trim() != null) {
+		if (title != null) {
 			classList = cd.searchedList(title);
 		}
 		
