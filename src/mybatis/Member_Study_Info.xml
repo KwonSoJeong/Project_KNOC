@@ -2,5 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member_study_info">
+<insert id="insertInfo" parameterType="Member_Study_Info">
+insert into member_study_info values (#{id}, #{member_study_id}, #{type})
+</insert>
 
+<select id="infoOne" resultType="Member_Study_Info">
+select * from member_study_info where id = #{value}
+</select>
 </mapper>
