@@ -48,8 +48,8 @@
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ검색창ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<div id="box-def" class="searchc1">
 		<div id="box-def" class="searchcr">
-			<form action="#" id="box-def" >
-				<input id="search"  type="text" value="" placeholder="관심 있는 클래스를 입력해보세요.">
+			<form action="<%=request.getContextPath() %>/classes/classList" id="box-def" >
+				<input id="search"  type="text" value="" placeholder="관심 있는 클래스를 입력해보세요." name="search_keyword">
 				<button class="searchbtn" type="submit" >
 					<img src="<%=request.getContextPath()%>/resource/image/search1.png">
 				</button>
@@ -66,7 +66,7 @@
 			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 				<div>
 					<div class="mnc-thumbnail">
-						<img src="#">
+						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
 					<div class="mnc-heart"></div>
 				</div>
