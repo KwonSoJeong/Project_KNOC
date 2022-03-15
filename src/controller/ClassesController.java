@@ -154,7 +154,43 @@ public class ClassesController extends MskimRequestMapping {
 
 		return "/view/alert.jsp";
 	}
-	
+
+	// 클래스 썸네일 등록 view
+	@RequestMapping("thumbnailForm")
+	public String thumbnailForm(HttpServletRequest request, HttpServletResponse response) {
+
+		return "/single/thumbnailForm.jsp";
+	}
+
+	// 클래스 썸네일 등록 process
+	@RequestMapping("thumbnailPro")
+	public String thumbnailPro(HttpServletRequest request, HttpServletResponse response) {
+
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String path = request.getServletContext().getRealPath("/") + "thumbnail/";
+
+		MultipartRequest multi = null;
+
+		try {
+			multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "UTF-8");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String filename = multi.getFilesystemName("thumbnail");
+
+		request.setAttribute("filename", filename);
+
+		return "/single/thumbnailPro.jsp";
+	}
+
 	// 클래스 상세 view 
 	@RequestMapping("classInfo")
 	public String classInfo(HttpServletRequest request, HttpServletResponse response) {

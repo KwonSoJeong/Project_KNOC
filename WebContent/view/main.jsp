@@ -62,21 +62,23 @@
 	<div class="mnc-container"> 
 		<div class="mnc-class">New Class</div>
 		<div class="mnc-lcontainer">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
+		<c:forEach var="c" items="${newClassList }">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 				<div>
 					<div class="mnc-thumbnail">
 						<img src="#">
 					</div>
 					<div class="mnc-heart"></div>
 				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
+				<div class="mnc-creator">${c.lec_id }</div>
+				<div class="mnc-title">${c.title }</div>
+				<div class="mnc-heartcnt">♥ ${c.favorite }</div>
 				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 40,200원</div>
+				<div class="mnc-price">${c.price }원</div>
 				
 			</div>
-			
+			</c:forEach>
+			<!--  
 			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
@@ -118,6 +120,7 @@
 				<div class="mnc-bor-bot"></div>
 				<div class="mnc-price">월 40,200원</div>
 			</div>
+			-->
 		</div>
 	</div>
 
@@ -125,20 +128,22 @@
 	<div class="mnc-container"> 
 		<div class="mnc-class">ONE PICK! Class</div>
 		<div class="mnc-lcontainer">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
+		<c:forEach var="c" items="${favoriteClassList}">
+			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 				<div >
 					<div class="mnc-thumbnail">
 						<img src="#">
 					</div>
 					<div class="mnc-heart"></div>
 				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
+				<div class="mnc-creator">${c.lec_id }</div>
+				<div class="mnc-title">${c.title }</div>
+				<div class="mnc-heartcnt">♥ ${c.favorite }</div>
 				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 40,200원</div>
+				<div class="mnc-price">${c.price }원</div>
 			</div>
-			
+			</c:forEach>
+			<!-- 
 			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
 				<div>
 					<div class="mnc-thumbnail">
@@ -180,6 +185,7 @@
 				<div class="mnc-bor-bot"></div>
 				<div class="mnc-price">월 40,200원</div>
 			</div>
+			-->
 		</div>
 	</div>	
 	
