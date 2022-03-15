@@ -17,7 +17,7 @@
 	
 </head>
 <body style="padding-top: 70px;">
-	<div class="mtl-wrapper">
+	<div class="mtl-wrapper"> 
 		<div class="mtl-fsfc">멘토링</div>
 		<div class="mtl-bor-bot"></div>
 
@@ -58,8 +58,8 @@
 	</div>
 	</div>
 	
-	
-	<div class="fnete">
+	<!-- 주석 -->
+	<%-- <div class="fnete">
 		<div class="mtl-card">
 		<img src="" alt="">
 		<h4>멘토링 상세정보</h4>
@@ -230,7 +230,7 @@
 		</div>
 		</div>
 	</div>
-	
+	 --%>
 	
     <%-- <div class="container">
     <ul class="pagination justify-content-center">

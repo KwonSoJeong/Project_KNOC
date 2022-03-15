@@ -40,7 +40,7 @@
 	
 	<p>${c.intro}</p>
 	<div class="card-chat">
-	<div class="chat">
+	<div class="chat"> 
 	<button type="submit">수강신청</button>
 	</div>
 	</div>

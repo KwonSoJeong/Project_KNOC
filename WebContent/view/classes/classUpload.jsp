@@ -87,7 +87,7 @@ text-align: center;
 			</div>
 			<br><br>
 			
-			<div>
+			<div> ㄴ
 			<label>썸네일</label>
 			<input type="file" class="form-control" name="thumbnail">
 			</div>

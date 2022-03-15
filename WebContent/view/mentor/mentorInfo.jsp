@@ -12,7 +12,7 @@
 		<h2 id="font">멘토링</h2>
 	</div>
 	<div class="center">
-	<div class="item-wrap">
+	<div class="item-wrap"> 
 	<div class="card">
 	<h3>멘토링 내용</h3>
 	<!-- 멘토링 내용 -->
@@ -37,8 +37,8 @@
 	</div>
 	<div class="card-info">
 	<div class="user-wrap">
-	<!-- 멘토링 내용 -->
-	<p>${m.content}</p>
+	<!-- 멘토링 소개글 -->
+	<p>${m.intro}</p>
 	</div>
 	</div>
 	</div>
