@@ -14,7 +14,19 @@ select classseq.nextval from dual
 insert into classes values (#{class_id}, #{lec_id}, #{title}, #{intro}, #{category_id}, #{type}, 0, sysdate, #{price}, #{thumbnail})
 </insert>
 
-<select id="classOne" parameterType="string">
+<select id="classOne" parameterType="string" resultType="classes">
 select * from classes where class_id = #{class_id}
+</select>
+
+<select id="sortedClassList" parameterType="string" resultType="classes">
+select * from (select rownum, a.* from (select * from classes order by ${value} desc) a) where rownum between 1 and 4
+</select>
+
+<select id="classifiedList" parameterType="string" resultType="classes">
+select * from classes where category_id like '${value}'
+</select>
+
+<select id="searchedList" parameterType="string" resultType="classes">
+select * from classes where title like '%${value}%'
 </select>
 </mapper>

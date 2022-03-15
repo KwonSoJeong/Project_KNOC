@@ -9,4 +9,8 @@ select contentseq.nextval from dual
 <insert id="contentUpload" parameterType="class_content">
 insert into class_content values(#{content_Id}, #{class_Id}, #{no}, #{title}, #{file1})
 </insert>
+
+<select id="contentOne" parameterType="map" resultType="class_content">
+select * from class_content where class_id = #{classId} and no = #{contentNo} 
+</select>
 </mapper>
