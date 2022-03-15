@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,56 +91,70 @@ text-decoration: none ;
 		<input class="form-control" type="text" placeholder="검색하기">
 		<button id="bung" type="submit">검색</button>
 	</form>
-	
+	<!-- 하영님! 간밤에 mentorList 화면 부를 때 오류가 나서 아래 내용 수정했습니다!
+	 controller에서 멘토링 정보를 리스트로 불러오니까, 
+	 멘토링 새로 등록하지 않으면 forEach 태그 내부의 내용은 우선 화면에 출력되지는 않을 겁니다! 
+	 css 작업 다 마치신 뒤에 forEach 태그 이하의 내용은 지워주시면 되실 것 같습니다!
+	 확인 하신 후에 이 주석은 지워주시면 감사하겠습니다! -->
 	<div class="dot-wrapper">
+	<c:forEach var="m" items="${mt}">
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentor_Id}
 	<p>${m.intro}</p>
+	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
+	</div>
+	</c:forEach>
+
+	
+	<div class="mentor-dot">
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: 
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름:
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름:
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름:
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름:
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름:
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${mt.mentoring}
-	<p>${mt.intro}</p>
+	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: 
+	<p>소개글</p>
 	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
 	</div>
 	
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: ${m.mentoring}
-	<p>${m.intro}</p>
-	<a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
-	</div>
-   </div>
+    <img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: 
+    <p>소개글</p>
+    <a href="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp">내용보기</a>
+    </div>
+	
+    </div>
    
    	<!-- <div class="container">
 		<ul class="pagination justify-content-center">
