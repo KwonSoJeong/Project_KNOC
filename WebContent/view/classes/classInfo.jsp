@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>클래스 제목</title>
-<link rel="stylesheet"
-href="<%=request.getContextPath()%>/resource/style/classInfo.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 </head>
 <body>
 <div id="class-col">
@@ -18,11 +17,11 @@ href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 	<div class="class-card">
 	<h4>디자인</h4>
 	<div class="col-3">
-	<img src="" width="400" height="300">
+	<img src="" width="520" height="300">
 	</div>
 	<p>
 	<br>
-	<br>가격: 59,000원
+	<br>가격: ${c.price}원
 	</p>
     </div>
 	</div>
@@ -35,15 +34,14 @@ href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 	<div class="row">
 	<div class="col-3">
 	<img src="" width="100" height="120">
-	<br>멘토 이름: 000
-	</div>
+	<br>클래스 공유자 이름: ${c.lec_id}</div>
 	<div class="class-info">
 	<div class="user-wrap">
-	<p>웹사이트 디자인 강의 멘토링 하고 있습니다
-	-----------------------------------</p>
+	
+	<p>${c.intro}</p>
 	<div class="card-chat">
-	<div class="chat">
-	<a href="#"><button>수강신청</button></a>
+	<div class="chat"> 
+	<button type="submit">수강신청</button>
 	</div>
 	</div>
 	</div>

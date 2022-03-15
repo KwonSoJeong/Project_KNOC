@@ -39,7 +39,7 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/mentor/mentorList" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
@@ -59,7 +59,7 @@
 						</ul>
 					</li>
 					<li class="nav-it">
-						<a href="<%=request.getContextPath() %>/view/mentor/mentorlist.jsp" id="fsfc" class="nav-link">멘토링</a>
+						<a href="<%=request.getContextPath() %>/mentor/mentorList" id="fsfc" class="nav-link">멘토링</a>
 					</li>
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
@@ -67,8 +67,10 @@
 					<li class="nav-it">
 						<a href="" id="fsfc" class="nav-link">지식공유참여</a>
 						<ul id="subnav" class="submenu">
+
 							<li><a href="<%=request.getContextPath() %>/view/mentor/mentorRegister.jsp">멘토 등록하기</a></li>
 							<li><a href="<%=request.getContextPath() %>/classes/classUpload">클래스 개설하기</a></li>
+
 						</ul>
 					</li>
 				</c:if>	
