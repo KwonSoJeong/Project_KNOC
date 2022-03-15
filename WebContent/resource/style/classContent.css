@@ -31,9 +31,23 @@ h1{
     min-height: 50vh;
 }
 
+.cc-just{
+	display: flex;
+	justify-content: space-between;
+    align-items: baseline;
+}
+
 .cc-fsfc {
     font-size: 24px;
     color: #3e3a3a;
+}
+
+.cc-fsfc1 {
+    font-size: 26px;
+    color: #3e3a3a;
+    font-weight: 600;
+    padding-right: 8px;
+    cursor: pointer;
 }
 
 .cc-bor-bot{
@@ -41,3 +55,32 @@ h1{
 	width: 1180px;
 	margin: 5px auto;
 }
+
+.cc-content{
+	width: 1180px;
+	height : 120vh;
+    margin: 30px auto 0;
+    background: #c5c5c5;
+    text-align: center;
+}
+
+.cc-index{
+	display: none;
+    z-index: 6;
+    position: absolute;
+    width: 250px;
+    height: 80vh;
+    border: 7px solid #7c7c7c;
+    background: #ffffff;
+    text-align: center;
+    top: 44px;
+    border-radius: 0 0 20px 20px;
+    padding: 13px;
+    color: #1e1e1e;
+    font-weight: bold;
+}
+
+.cc-justend{    
+	display: flex;
+    justify-content: flex-end;
+    }

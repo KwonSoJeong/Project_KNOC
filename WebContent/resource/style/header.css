@@ -34,6 +34,13 @@ h1{
     padding-left: 27vw;
 }
 
+
+#navbar-nav2{
+    padding-right: 5vw;
+    padding-left: 18vw;
+}
+
+
 #subnav:hover{
 	display: inline-block;
 }
