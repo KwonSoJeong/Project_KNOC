@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>스터디</title>
+<title>QnA</title>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="/Project_KNOC/resource/style/qnaList.css" />
 <link rel="stylesheet" href="/Project_KNOC/resource/style/swiper-bundle.min.css" />
@@ -11,8 +11,18 @@
 </head>
 <body style="padding-top: 70px;">
 
-	<div class="layout-container">
+	<div class="layout-container" >
+		<div class="class_header" style="padding-top: 56px;" >
+			<div class="bottom-line">
+				<h2 id="font">QnA</h2>
+			</div>
+		</div>
+		<!-- <div style="margin-top: 50px">
+			<span style="font-size: 24px">QnA</span>
+			<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
+		</div> -->
 		<div class="wrapper">
+
 			<main id="main">
 				<!-- 배너
 				<section class="community-header">
@@ -23,10 +33,7 @@
 				</section>
 			-->
 
-				<div style="margin-top: 50px">
-					<span style="font-size: 24px">QnA</span>
-					<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
-				</div>
+
 
 				<section class="community-body">
 					<div class="community-body__content">
