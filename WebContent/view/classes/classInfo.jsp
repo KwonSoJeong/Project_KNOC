@@ -19,18 +19,18 @@
 
 	<div class="class-wrapper">
 	<div class="class-font">
-	<label>클래스 제목:&nbsp;${c.title}</label>
-	<img src="<%=request.getContextPath() %>/thumbnail/${thumbnail}" width="200" height="210">
-	<p>가격:&nbsp;${c.price}원</p>
+	<label>클래스 제목:&nbsp;${classone.title}</label>
+	<img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="200" height="210">
+	<p>가격:&nbsp;${classone.price}원</p>
 	</div>
 	
 	<div class="class-font"> <label>클래스 공유자 프로필</label>
 	<img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">
 	<br>
-	<p>클래스 공유자 이름:&nbsp;${c.class_id}</p>
-	<form action="#">
-	<button id="class-bung2" type="submit" value="멘토링 신청">멘토링신청</button>
-	</form>
+	<p>클래스 공유자 이름:&nbsp;${classone.lec_id}</p>
+	
+	<!-- <button id="class-bung2" type="submit" value="멘토링 신청">멘토링신청</button>  -->
+	<button id="class-bung2" type="button" onclick="location.href='<%=request.getContextPath()%>/classes/classRegister'">수강신청</button>
 	</div>
 	</div>
 
