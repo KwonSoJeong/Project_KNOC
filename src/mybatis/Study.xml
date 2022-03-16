@@ -74,5 +74,9 @@ select * from (select a.*, rownum rnum from (
 select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID(+) and process = #{process} and title like '%${keyword}%' order by regDate desc) a) 
 where rnum between #{start} and #{end}
 </select>
+
+<select id="infoChk" resultType="int" parameterType="map">
+select count(*) from MEMBER_STUDY_INFO where id = #{id} and MEMBER_STUDY_ID = #{member_study_id}
+</select>
  
 </mapper>
