@@ -124,8 +124,9 @@ public class HelpController extends MskimRequestMapping {
 		 * request.getContextPath()+"/qna/qnaWrite"; }
 		 */
 		
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
+		/*
+		 * request.setAttribute("msg", msg); request.setAttribute("url", url);
+		 */
 		return "/view/alert.jsp";
 	}
 	

@@ -28,8 +28,8 @@ public class StudyController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		if(request.getSession().getAttribute("memid")==null) {
-			msg = "로그인을 해야 이용 가능합니다.";
-			url = request.getContextPath()+"/study/studyList";
+			msg = "로그인이 필요한 서비스 입니다.";
+			url = request.getContextPath()+"/member/login";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
 			return "/view/alert.jsp";
@@ -227,4 +227,52 @@ public class StudyController extends MskimRequestMapping {
 
 		return "/view/alert.jsp";
 	}
+	
+	//``
+		@RequestMapping("studyEntry")
+		public String studyEntry(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(request.getSession().getAttribute("memid")==null) { //로그인체크
+				msg = "로그인이 필요한 서비스 입니다.";
+				url = request.getContextPath()+"/member/login";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+			
+			//중복신청체크
+			StudyDao sd = new StudyDao();
+			String id = (String) request.getSession().getAttribute("memid");
+			String member_study_id = request.getParameter("studyId");
+			if(sd.infoChk(id,member_study_id)!=0) {
+				msg = "이미 참가신청한 스터디 입니다.";
+				url = request.getContextPath()+"/study/studyInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+			
+			
+			Member_Study_Info msi = new Member_Study_Info();
+			Member_Study_InfoDao msid = new Member_Study_InfoDao();
+			
+			msi.setId(id);
+			msi.setMember_study_id(member_study_id);
+			msi.setType(2);
+			
+			msid.insertInfo(msi);
+			
+			msg = "신청이 완료되었습니다.";
+			url = request.getContextPath()+"/study/studyInfo";
+			
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
 }

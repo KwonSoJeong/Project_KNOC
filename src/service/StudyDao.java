@@ -207,6 +207,21 @@ public class StudyDao {
 		return null;
 	}
 	
+	public int infoChk(String id, String member_study_id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("id", id);
+			map.put("member_study_id", member_study_id);
+			return sqlSession.selectOne(ns + "infoChk",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
+	
 	
 	
 	
