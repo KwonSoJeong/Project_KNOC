@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.Knoc_Member;
 import service.Knoc_MemberDao;
@@ -86,7 +87,7 @@ public class MemberController extends MskimRequestMapping {
 		MultipartRequest multi = null;
 		
 		try {
-			multi = new MultipartRequest(request, path, 10*1024*1024, "UTF-8");
+			multi = new MultipartRequest(request, path, 10*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
