@@ -38,24 +38,40 @@ public class ClassesController extends MskimRequestMapping {
 	// 클래스 리스트 view
 	@RequestMapping("classList")
 	public String classList(HttpServletRequest request, HttpServletResponse response) {
+		// HttpSession session = request.getSession();
 		ClassesDao cd = new ClassesDao();
+		String pageNum = request.getParameter("pageNum");
+		
+		// page 번호를 지정하지 않았을 시 1페이지부터 시작
+		int pageInt = 1;
+		// 한 페이지 당 최대 12개 요소까지 출력
+		int limit = 12;
+		
+		
+		if (pageNum != null) {
+			// session.setAttribute("pageNum", pageNum);
+			pageInt = Integer.parseInt(pageNum);
+		}
+		
 		
 		String category = request.getParameter("category_id");
 		String title = request.getParameter("search_keyword");
 		
 		// 카테고리를 전달하지 않고 view를 출력하면 전체 리스트 반환
-		List<Classes> classList = cd.classList();
+		List<Classes> classList = cd.classList(pageInt, limit);
 		
 		// 카테고리를 전달하고 view를 출력하면 해당 카테고리에 맞는 리스트 반환
 		if (category != null) {
-			classList = cd.classifiedList(category); 
+			classList = cd.classifiedList(category, pageInt, limit); 
 		}
 		
 		// 검색어를 입력하고 view를 출력하면 해당 단어가 제목에 포함된 리스트 반환
 		if (title != null) {
-			classList = cd.searchedList(title);
+			classList = cd.searchedList(title, pageInt, limit);
 		}
 		
+		request.setAttribute("pageInt", pageInt);
+		request.setAttribute("limit", limit);
 		request.setAttribute("classList", classList);
 		
 		return "/view/classes/classList.jsp";
@@ -277,5 +293,27 @@ public class ClassesController extends MskimRequestMapping {
 		request.setAttribute("content", contentOne);
 		
 		return "/view/classes/classContent.jsp";
+	}
+	
+	// 클래스 관심등록 아직 작성중, 관심등록 view 추가되면 마저 작성
+	@RequestMapping("classFavorite")
+	public String classFavorite(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memid");
+		
+		String classId = request.getParameter("class_id");
+		ClassesDao cd = new ClassesDao();
+		Classes classone = cd.classOne(classId);
+		
+		int num = cd.favoriteCntUp(classId);
+		
+		if (num > 0) {
+			Member_Study_InfoDao msd = new Member_Study_InfoDao();
+			Member_Study_Info newInfo = new Member_Study_Info(id, classId, 3);
+			msd.insertInfo(newInfo);
+		}
+		
+		request.setAttribute("classone", classone);
+		return "/view/classes/classInfo.jsp";
 	}
 }
