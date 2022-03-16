@@ -26,7 +26,7 @@ public class MentorController extends MskimRequestMapping {
 			
 			System.out.println(mt);
 			request.setAttribute("mt", mt);
-			return "/view/mentor/mentorList.jsp";
+			return "/view/mentor/mentorlist.jsp";
 		}
 
 	// 멘토링 등록 view
