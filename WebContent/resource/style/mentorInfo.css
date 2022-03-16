@@ -1,21 +1,23 @@
 @charset "UTF-8";
 
 .mentor-font{
-	width: 450px;
-	height: auto;
+	width: 35vw;
+	height: 40vh;
 	line-height:100px;
-	background-color: #c0c0c0;
+	background-color: rgb(211, 211, 211);
 	font-size:15px;
 	text-align:center;
 	display:inline-block;
-	margin-top: 3vh;
+	margin-top: 9vh;
 }
 
 .mentor-wrapper{
+display: flex;
 margin-top: 3vh;
 text-align: center;
-background-color: #ddd;
+background-color: #ecebed;
 height: 800px;
+justify-content: space-evenly;
 }
 
 #mentor-bot{ 
@@ -49,21 +51,29 @@ margin-right: 400px;
 	width : 100px;
 	height: 35px;
 	background-color: #B8E6E1;
-	font-size : 13px;
+	font-size : 15px;
 	border:none;
 	text-align:center;
-	transform: translate(0, 1px);
-	font-size: 15px;
+	transform: translate(0, 1px); 
 }
 
-button{
+#mentro-bung2{
+	width : 100px;
+	height: 60px;
+	background-color: #B8E6E1;
+	font-size : 15px;
+	border:none;
+	text-align:center;
+	margin: 0px auto;
+}
+
+/* button{
 width : 100px;
 height: 35px;
-background-color: #B8E6E1;
 font-size : 11px;
 border:none;
 text-align:center;
-}
+} */
 
 a{
 text-decoration: none ;

@@ -1,115 +1,83 @@
 @charset "UTF-8";
 
-*{
-box-sizing: border-box;
+.class-font{
+	width: 35vw;
+	height: 40vh;
+	line-height:100px;
+	background-color: rgb(211, 211, 211);
+	font-size:15px;
+	text-align:center;
+	display:inline-block;
+	margin-top: 9vh;
 }
 
-#class-col{
+.class-wrapper{
+display: flex;
+margin-top: 3vh;
+text-align: center;
+background-color: #ecebed;
+height: 800px;
+justify-content: space-evenly;
+}
+
+
+#class-bot{ 
+    margin-top: 80px;
+    margin-left: 240px;
+    margin-bottom: 12px;
+    width: 1286px;
+} 
+
+#class-h2{
+margin-top: 5vh;
 font-size: 24px;
-/*border-bottom : solid 2px #B8E6E1;
+border-bottom : solid 2px #B8E6E1; 
 margin-left: 400px;
-margin-right: 400px;*/
-margin-top: 13vh;
+margin-right: 400px; 
 }
 
-#classInfo-h2{
-border-bottom: solid 2px #B8E6E1;
-margin-top: 80px;
-margin-left: 240px;
-margin-bottom: 12px;
-width: 1450px;
+.class-form{
+	display: flex;
+    width: 80.5vw;
+    margin: 0px auto;
+    justify-content: flex-end;
 }
 
-.calss-canter{
-display: flex;
-position: absolute;
-left:31.0%;
-top:45%;
-width: auto;
-margin-top:-250px;
-margin-left:-300px;
-text-align: center;
+.class-control{
+	width : 200px;
+	height: 35px;
 }
 
-.class-fnete{
-display: flex;
-position: absolute;
-left:72%;
-top:45%;
-width: auto;
-margin-top:-250px;
-margin-left:-400px;
+#class-bung{
+	width : 100px;
+	height: 35px;
+	background-color: #B8E6E1;
+	font-size : 13px;
+	border:none;
+	text-align:center;
+	transform: translate(0, 1px);
+	font-size: 15px;
 }
 
-/* .item-wrap{
-position: relative;
-} */
-
-.class-card{
-padding:40px;
-color:black;
-width:30vw;
-height:45vh;
-font-size: 15px;
-text-align: left;
-border-radius: 8px;
-background: #eee;
-transition:0.3s;
-margin:30px;
-text-align: center;
-border: 1px solid #b9b9b9;
+#class-bung2{
+	width : 100px;
+	height: 60px;
+	background-color: #B8E6E1;
+	font-size : 15px;
+	border:none;
+	text-align:center;
+	margin: 0px auto;
 }
 
-.class-card h3{
-font-size: 25px;
-line-height: 28px;
-font-weight: bold;
-margin-top: 20px;
-margin-bottom: 20px;
-}
-
-.row p{
-font-size: 14px;
-line-height: 20px;
-margin-bottom: 20px;
-}
-
-.class-info{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-between;
-}
-.user-wrap{
-margin: 10px;
-}
-
-.chat, favorite{
-display: inline-block;
-}
-
-.chat{
-margin-right:10px;
-margin: 0 auto;
-}
-
-.card-chat{
-margin: 0 auto;
-}
-
-a{
-text-decoration: none ;
-
-}
-button{
-display: flex;
+/* button{
 width : 100px;
 height: 35px;
 background-color: #B8E6E1;
-/* 0: x축, 4px : y축 */ 
-font-size : 13px;
+font-size : 11px;
 border:none;
-
 text-align:center;
-font-size: 15px;
+} */
+
+a{
+text-decoration: none ;
 }

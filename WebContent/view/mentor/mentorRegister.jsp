@@ -30,10 +30,10 @@
 			<br><br>
 			
 			<div>
-			<label>이미지</label>
-			<input type="file" class="form-control" name="thumbnail"> 
+			<label>프로필 이미지</label>
+			<input type="file" class="form-control" name="profile"> 
 			</div>
-			</form><br><br>
+			<br><br>
 			
 			<div>
 			<label>멘토링 이름</label>
@@ -43,7 +43,7 @@
 			
             <div class="form-group">
 				<label>멘토 소개글 입력</label>
-				<textarea class="form-control" rows="10" cols="40" placeholder="멘토 글 작성" name="intro"></textarea>
+				<textarea class="form-control" rows="10" cols="40" placeholder="한 줄 소개글 작성" name="intro"></textarea>
 			</div> 
 			<br>
 			

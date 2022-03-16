@@ -8,7 +8,34 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 </head>
 <body>
-<div id="class-col">
+
+<div id="class-bot">
+		<h2 id ="class-h2">클래스 제목</h2>
+	</div>
+	<form class="class-form" action="#">
+		<input class="class-control" type="text" placeholder="검색하기">
+		<button id="class-bung" type="submit">검색</button>
+	</form>
+
+	<div class="class-wrapper">
+	<div class="class-font">
+	<label>클래스 제목:&nbsp;${c.title}</label>
+	<img src="<%=request.getContextPath() %>/thumbnail/${thumbnail}" width="200" height="210">
+	<p>가격:&nbsp;${c.price}원</p>
+	</div>
+	
+	<div class="class-font"> <label>클래스 공유자 프로필</label>
+	<img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">
+	<br>
+	<p>클래스 공유자 이름:&nbsp;${c.class_id}</p>
+	<form action="#">
+	<button id="class-bung2" type="submit" value="멘토링 신청">멘토링신청</button>
+	</form>
+	</div>
+	</div>
+
+
+<%-- <div id="class-col">
 	<h3 id="classInfo-h2">클래스 제목</h3>
 	</div>
 	
@@ -48,6 +75,6 @@
 	</div>
 	</div>
 	</div>
-	</div>
+	</div> --%>
 </body>
 </html>
