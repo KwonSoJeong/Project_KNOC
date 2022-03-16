@@ -11,8 +11,66 @@
 </head>
 <body style="padding-top: 70px;">
 
-	<div class="layout-container" >
-		<div class="class_header" style="padding-top: 56px;" >
+	<!-- 모달창  -->
+	<div class="modal fade" id="mo1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">문의하기</h5>
+					<!-- data-dismiss="modal" 입려하여야 버튼클릭시 창닫김 -->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<form action="" method="post" id="" class="" role="form" onsubmit="">
+					<!--body-->
+					<div class="modal-body">
+
+						<div class="row">
+							<div class="col-12">
+								<!-- 폼그룹은 태그안의 라벨봐 인풋창을 그룹으로 묶어줌 -->
+								<div class="form-group">
+									<label>제목</label>
+									<!-- 폼컨트롤은 보더를 보기좋게 만든다. -->
+									<input type="text" class="form-control">
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label>공개 여부</label>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> <label class="form-check-label" for="defaultCheck1"> 비밀글 </label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+									<label>내용</label>
+									<textarea placeholder="질문을 적어주세요!" style="height: 180px;" class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">닫기</button>
+						<button type="submit" class="btn" style="background-color: #37d3c0; color: white;">저장하기</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="layout-container">
+		<div class="class_header" style="padding-top: 56px;">
 			<div class="bottom-line">
 				<h2 id="font">QnA</h2>
 			</div>
@@ -70,7 +128,7 @@
 						<div class="question-list-container">
 							<div class="posts-container-header">
 								<!--sort 셀렉터(템플릿 이중 관리)-->
-								<button class="ac-button is-md is-solid is-gray posts-container-header__button features__new-question e-new-question ">
+								<button type="button" data-toggle="modal" data-target="#mo1" class="ac-button is-md is-solid is-gray posts-container-header__button features__new-question e-new-question ">
 									<span class="infd-icon"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
 									<path fill="#ffffff" fill-rule="evenodd" d="M11.508 1.451c.456-.455 1.195-.455 1.65 0l1.724 1.724c.456.456.456 1.194 0 1.65L13.02 6.687l-.008.008-7.219 6.89c-.132.126-.291.22-.466.273l-3.681 1.12c-.177.054-.369.006-.5-.124-.13-.131-.178-.323-.124-.5l1.115-3.666c.059-.192.166-.365.311-.504L9.651 3.31l1.857-1.858zM9.992 4.366l-6.854 6.542c-.02.02-.036.044-.044.072l-.843 2.769 2.785-.848c.025-.007.048-.02.067-.039l6.848-6.537-1.96-1.96zm2.675 1.26l1.508-1.508c.065-.065.065-.17 0-.236l-1.724-1.724c-.065-.065-.17-.065-.236 0l-1.508 1.509 1.96 1.96z" clip-rule="evenodd"></path></svg></span> <span class="posts-container-header__button-text">글쓰기</span>
 								</button>
