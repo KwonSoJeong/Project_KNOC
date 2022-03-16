@@ -329,4 +329,29 @@ public class MemberController extends MskimRequestMapping {
 		return "/view/alert.jsp";
 	}
 	
+	// mypage view, 참여하는 클래스, 스터디, 관심 클래스, 멘토링, 회원 정보 전달
+	@RequestMapping("myPage")
+	public String myPage(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+
+		String id = (String) session.getAttribute("memid");
+
+		if (id == null) {
+			String msg = "로그인 정보가 없습니다.";
+			String url = request.getContextPath() + "/member/login";
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+
+			return "/view/alert.jsp";
+
+		}
+		Knoc_MemberDao md = new Knoc_MemberDao();
+		Knoc_Member member = md.selectOne(id);
+
+		request.setAttribute("member", member);
+
+		return "/view/member/myPage.jsp";
+	}
+	
 }
