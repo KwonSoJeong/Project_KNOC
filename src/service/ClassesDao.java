@@ -13,12 +13,14 @@ public class ClassesDao {
 	private final static String ns = "classes.";
 	private static Map<String, Object> map = new HashMap<>();
 	
-	// 전체 classes 리스트 생성하여 반환
-	public List<Classes> classList() {
+	// 전체 classes 리스트 생성하여 한 페이지당 classes 객체를 12개씩 반환
+	public List<Classes> classList(int pageInt, int limit) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-		
+		map.clear();
+		map.put("start", (pageInt - 1) * limit + 1);
+		map.put("end", pageInt * limit);
 		try {
-			return sqlSession.selectList(ns + "classList");
+			return sqlSession.selectList(ns + "classList", map);
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
@@ -76,7 +78,7 @@ public class ClassesDao {
 	// 특정 컬럼 기준 내림차순으로 테이블을 정렬하여, 상위 4개 객체만 리스트로 반환
 	public List<Classes> sortedClassList(String columnName) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-
+		
 		try {
 			return sqlSession.selectList(ns + "sortedClassList", columnName);
 		} catch (Exception e) {
@@ -88,46 +90,67 @@ public class ClassesDao {
 		return null;
 	}
 	
-	// 특정 카테고리에 맞는 클래스만 리스트로 반환
-	public List<Classes> classifiedList(String value) {
+	// 특정 카테고리에 맞는 클래스만 한 페이지당 classes 객체를 12개씩 반환
+	public List<Classes> classifiedList(String value, int pageInt, int limit) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		map.clear();
+		map.put("value", value);
+		map.put("start", (pageInt - 1) * limit + 1);
+		map.put("end", pageInt * limit);
+		try {
+			return sqlSession.selectList(ns + "classifiedList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return null;
+	}
+	
+	// 검색어를 입력하여 해당 검색어를 제목에 포함하는 클래스만 한 페이지당 classes 객체를 12개씩 반환
+	public List<Classes> searchedList(String value, int pageInt, int limit) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		String keyword = value.trim();
+		
+		map.put("value", keyword);
+		map.put("start", (pageInt - 1) * limit + 1);
+		map.put("end", pageInt * limit);
+		try {
+			return sqlSession.selectList(ns + "searchedList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return null;
+	}
+
+	// 검색어를 입력하여 해당 검색어를 제목에 포함하는 클래스만 리스트로 반환
+	public int favoriteCntUp(String classId) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		
 		try {
-			return sqlSession.selectList(ns + "classifiedList", value);
+			return sqlSession.update(ns + "favoriteCntUp", classId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			MyBatisConnection.close(sqlSession);
 		}
 
-		return null;
+		return 0;
 	}
-	
-	// 검색어를 입력하여 해당 검색어를 제목에 포함하는 클래스만 리스트로 반환
-	public List<Classes> searchedList(String value) {
-		SqlSession sqlSession = MyBatisConnection.getConnection();
-		String keyword = value.trim();
-		try {
-			return sqlSession.selectList(ns + "searchedList", keyword);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			MyBatisConnection.close(sqlSession);
-		}
 
-		return null;
-	}
-	
 	/* DAO 테스트 코드
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		String value = "  하하   ";
 		String keyword = value.trim();
-		List<Classes> list = sqlSession.selectList(ns + "searchedList", keyword);
-		
-		for (Classes c : list) {
-			System.out.println(c);
-		}
+		int num = sqlSession.update(ns + "favoriteCntUp", "class24");
+		MyBatisConnection.close(sqlSession);
+		System.out.println(num);
 	}
 	*/
 }
