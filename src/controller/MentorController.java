@@ -105,6 +105,7 @@ public class MentorController extends MskimRequestMapping {
 		request.setAttribute("profile", profile);
 		request.setAttribute("m", m);
 		return "/view/mentor/mentorInfo.jsp";
+		
 	}
 	
 	
