@@ -8,40 +8,24 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/mentorInfo.css">
 </head>
 <body>
-	<div id="border-pin">
-		<h2 id="font">멘토링</h2>
+	<div id="mentor-bot">
+		<h2 id ="mentor-h2">멘토링</h2>
 	</div>
-	<div class="center">
-	<div class="item-wrap"> 
-	<div class="card">
-	<h3>멘토링 내용</h3>
-	<!-- 멘토링 내용 -->
-	<p>${m.content}</p>
-    </div>
-	</div>
-	</div>
+	<form class="mentor-form" action="#">
+		<input class="mentor-control" type="text" placeholder="검색하기">
+		<button id="mentro-bung" type="submit">검색</button>
+	</form>
 
-	<div class="fnete">
-	<div class="card">
-	<img src="" alt="">
-	<h3>멘토 프로필</h3>
-	<div class="row">
-	<div class="col-3">
-	<img src="" width="100" height="120" id="pic">
-	<br> 멘토 이름: ${m.mentoring_id}
-	<div class="card-chat">
-	<div class="chat">
-	<button type="submit">멘토링 신청</button>
+	<div class="mentor-wrapper">
+	<div class="mentor-font">
+	<label>멘토링 내용</label>
+	<p>내용: ${m.content}</p>
 	</div>
-	</div>
-	</div>
-	<div class="card-info">
-	<div class="user-wrap">
-	<!-- 멘토링 소개글 -->
-	<p>${m.intro}</p>
-	</div>
-	</div>
-	</div>
+	
+	<div class="mentor-font"> 
+	<img src="<%=request.getContextPath() %>/thumbnail/${c.thumbnail}" width="110" height="90" id="pic">멘토 이름: ${m.mentor_Id}
+	<p>멘토 소개글:${m.intro}</p>
+	<a href="#"><button type="submit">멘토링 신청</button></a>
 	</div>
 	</div>
 </body>

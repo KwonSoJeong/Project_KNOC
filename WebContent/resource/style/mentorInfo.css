@@ -1,112 +1,70 @@
 @charset "UTF-8";
 
-*{
-box-sizing: border-box;
+.mentor-font{
+	width: 450px;
+	height: auto;
+	line-height:100px;
+	background-color: #c0c0c0;
+	font-size:15px;
+	text-align:center;
+	display:inline-block;
+	margin-top: 3vh;
 }
 
-#font{
+.mentor-wrapper{
+margin-top: 3vh;
+text-align: center;
+background-color: #ddd;
+height: 800px;
+}
+
+#mentor-bot{ 
+    margin-top: 80px;
+    margin-left: 240px;
+    margin-bottom: 12px;
+    width: 1286px;
+} 
+
+#mentor-h2{
+margin-top: 5vh;
 font-size: 24px;
-/*border-bottom : solid 2px #B8E6E1;
+border-bottom : solid 2px #B8E6E1; 
 margin-left: 400px;
-margin-right: 400px;*/
-margin-top: 13vh;
+margin-right: 400px; 
 }
 
-#border-pin{
-border-bottom: solid 2px #B8E6E1;
-margin-top: 80px;
-margin-left: 240px;
-margin-bottom: 20px;
-width: 1486px;
+.mentor-form{
+	display: flex;
+    width: 80.5vw;
+    margin: 0px auto;
+    justify-content: flex-end;
 }
 
-.center{
-display: flex;
-position: absolute;
-left:31.0%;
-top:45%;
-width: auto;
-transform :translate(-50%, -50%);
-text-align: center;
+.mentor-control{
+	width : 200px;
+	height: 35px;
 }
 
-.fnete{
-display: flex;
-position: absolute;
-left:72%;
-top:45%;
-width: auto;
-transform :translate(-50%, -50%);
+#mentro-bung{
+	width : 100px;
+	height: 35px;
+	background-color: #B8E6E1;
+	font-size : 13px;
+	border:none;
+	text-align:center;
+	transform: translate(0, 1px);
+	font-size: 15px;
 }
 
-/*.item-wrap{
-position: relative;
-}*/
-
-.card{
-padding:40px;
-color:black;
-width:35vw;
-height:60vh;
-font-size: 15px;
-text-align: left;
-border-radius: 8px;
-background: #eee;
-transition:0.3s;
-margin:30px;
-text-align: center;
-border: 1px solid #b9b9b9;
-}
-
-.card h1{
-font-size: 25px;
-line-height: 28px;
-font-weight: bold;
-margin-top: 20px;
-margin-bottom: 20px;
-}
-
-.row p{
-font-size: 14px;
-line-height: 20px;
-margin-bottom: 20px;
-text-align: center;
-}
-
-.card-info{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-between;
-text-align: center;
-}
-
-.card-chat, favorite{
-display: inline-block;
-}
-
-.card-chat{
-margin-right:10px;
-/*transform :translate(-450%, 150%);*/
-margin: 0 auto;
-}
-
-.mentor-chat{
-margin: 0 auto;
+button{
+width : 100px;
+height: 35px;
+background-color: #B8E6E1;
+font-size : 11px;
+border:none;
+text-align:center;
 }
 
 a{
 text-decoration: none ;
-}
-
-button{
-display: flex;
-width : 100px;
-height: 35px;
-background-color: #B8E6E1;
-/* 0: x축, 4px : y축 */ 
-font-size : 13px;
-border:none;
-text-align:center;
-font-size: 15px;
 }
