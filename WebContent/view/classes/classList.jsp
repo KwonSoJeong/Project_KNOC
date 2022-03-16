@@ -11,8 +11,8 @@
 	<div class="cl-wrapper">
 		<div class="class_header">
 			<h2 id ="font">클래스</h2>
-			<form class="mtl-form" action="#">
-				<input class="form-control form-content" type="text" placeholder="검색하기">
+			<form class="mtl-form" action="<%=request.getContextPath()%>/classes/classList">
+				<input class="form-control form-content" type="text" placeholder="검색하기" name="search_keyword">
 				<button id="cl-btn" type="submit">검색</button>
 			</form>	
 		</div>
@@ -24,7 +24,7 @@
 		<div class="main_content">
 			<div class="categori quick_menu">
 				<ul id="cl-subnav" class="submenu">
-					<li><a href="#">운동</a></li>
+					<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=cooking">운동</a></li>
 					<li><a href="#">크리에이티브</a></li>
 					<li><a href="#">디자인</a></li>
 					<li><a href="#">개발/프로그래밍</a></li>
@@ -46,12 +46,15 @@
 <!-- 무한스크롤때문에 눈에보이는 12개는 무조건 구현해야함, 백앤드구현시 아래 스크립트 138행(addContent.innerHTML~~)도 구현요망 -->
 			<div class="class_List">
 			<section>	
+			    <c:forEach var="c" items="${classList}">
 				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
+					<a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id}">
+						<div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onerror="none" style="width: 100%; height: 100%;"></div>
+						<div class="cc-title">${c.title }</div>
 					</a>	
 				</div>	
+				</c:forEach> 
+				  
 				<div class="box">
 					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
 						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
@@ -135,7 +138,8 @@ window.onscroll = function(e) {
 	  var addContent = document.createElement("div");
       addContent.classList.add("box")
       addContent.innerHTML = '<a href="<%=request.getContextPath()%>/classes/classInfo?="><div class="cc-cc"><img src="${imgage}" onerror="none"></div><div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div></a>'
-      document.querySelector('section').appendChild(addContent);
+      
+    document.querySelector('section').appendChild(addContent);
     })  
   }
 }
