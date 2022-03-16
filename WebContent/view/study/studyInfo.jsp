@@ -50,7 +50,8 @@
 							<div class="content-tags">
 								<a href="/articles/tagged/MODEL2" class="list-group-item-text item-tag label label-info"> <i class="fa fa-comments"></i> 모집중
 								</a>
-							</div>
+								<button style="margin-left: 10px; display: inline; background-color: tomato; border-color: tomato; padding: 0.2em 0.6em 0.3em; font-size: 75%; font-weight: bold; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: 0.25em;">참가신청</button>
+							
 							<h2 class="panel-title">${s.title }</h2>
 
 							<hr />
