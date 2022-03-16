@@ -10,22 +10,24 @@ import model.Knoc_Member;
 import model.Mentoring;
 import service.Knoc_MemberDao;
 import service.MentoringDao;
+import service.StudyDao;
 
 //@WebServlet("/mentor/*")
 public class MentorController extends MskimRequestMapping {
 	static String msg = "";
 	static String url = "";
 
+	
 	// 멘토링 리스트 뷰
-	@RequestMapping("mentorList")
-	public String mentorList(HttpServletRequest request, HttpServletResponse response) {
-		MentoringDao mtd = new MentoringDao();
-		List<Mentoring> mt = mtd.selectList();
-		
-		System.out.println(mt);
-		request.setAttribute("mt", mt);
-		return "/view/mentor/mentorlist.jsp";
-	}
+		@RequestMapping("mentorList")
+		public String mentorList(HttpServletRequest request, HttpServletResponse response) {
+			MentoringDao mtd = new MentoringDao();
+			List<Mentoring> mt = mtd.selectList();
+			
+			System.out.println(mt);
+			request.setAttribute("mt", mt);
+			return "/view/mentor/mentorList.jsp";
+		}
 
 	// 멘토링 등록 view
 	@RequestMapping("mentorRegister")
@@ -42,7 +44,7 @@ public class MentorController extends MskimRequestMapping {
 
 		return "/view/mentor/mentorRegister.jsp";
 	}
-
+	// 멘토링 등록 process
 	@RequestMapping("mentorRegisterPro")
 	public String mentorRegisterPro(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -81,5 +83,31 @@ public class MentorController extends MskimRequestMapping {
 		request.setAttribute("url", url);
 		return "/view/alert.jsp";
 	}
+	
+	// 멘토링 상세정보 view
+	@RequestMapping("mentorInfo")
+	public String mentorInfo(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MentoringDao md = new MentoringDao();
+		Mentoring m = new Mentoring();
+		StudyDao sd = new StudyDao(); //작성자 프로필이미지를 불러오기 위함
+		
+		String id = request.getParameter("mentoring_Id");
+		m = md.selectOne(id);
+		
+		String profile = sd.callProfile(m.getMentor_Id());
+		
+		request.setAttribute("profile", profile);
+		request.setAttribute("m", m);
+		return "/view/mentor/mentorInfo.jsp";
+	}
+	
+	
+	
 
 }

@@ -53,25 +53,25 @@ select profile from knoc_member where id = #{id}
  
  <select id="callProfileAllListKeyword" resultType="string" parameterType="map">
 select * from (select a.*, rownum rnum from (
-select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID and title like '%${keyword}%' order by regDate desc) a) 
+select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID(+) and title like '%${keyword}%' order by regDate desc) a) 
 where rnum between #{start} and #{end}
 </select>
 
 <select id="callProfileAllList" resultType="string" parameterType="map">
 select * from (select a.*, rownum rnum from (
-select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID order by regDate desc) a) 
+select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID(+) order by regDate desc) a) 
 where rnum between #{start} and #{end}
 </select>
  
  <select id="callProfileList" resultType="string" parameterType="map">
 select * from (select a.*, rownum rnum from (
-select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID and process = #{process} order by regDate desc) a) 
+select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID(+) and process = #{process} order by regDate desc) a) 
 where rnum between #{start} and #{end}
 </select>
  
  <select id="callProfileListKeyword" resultType="string" parameterType="map">
 select * from (select a.*, rownum rnum from (
-select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID and process = #{process} and title like '%${keyword}%' order by regDate desc) a) 
+select m.PROFILE from study s,KNOC_MEMBER m where s.LEADER_ID = m.ID(+) and process = #{process} and title like '%${keyword}%' order by regDate desc) a) 
 where rnum between #{start} and #{end}
 </select>
  

@@ -16,7 +16,7 @@ select count(*) from study_comment where refnum = #{refNum}
 </select>
 
 <select id="callProfile" resultType="string" parameterType="int">
-select m.profile from study_comment s,KNOC_MEMBER m where s.COMMENT_ID = m.ID and s.refnum = #{refNum}
+select m.profile from study_comment s,KNOC_MEMBER m where s.COMMENT_ID = m.ID(+) and s.refnum = #{refNum} order by regdate asc
 </select>
 
 </mapper>
