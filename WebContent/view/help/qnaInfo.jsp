@@ -32,7 +32,10 @@
 							<!-- 제목, 작성자이름, 작성시각, 에디터 -->
 							<div class="community-post-info__header">
 								<div class="header__title">
-									<h1>고객센터 질문하고 답변하기</h1>
+									<div style="display: flex; align-items: center; margin-bottom: 10px;">
+										<div class="question__status-tag question__status-tag--recruited">답변완료</div>
+										<h1>고객센터 질문하고 답변하기</h1>
+									</div>
 								</div>
 								<div class="header__sub-title">
 									<h6 class="user-name">
@@ -255,11 +258,11 @@
 											</form>
 										</div>
 									</div>
-									
-									
-									
-									
-									
+
+
+
+
+
 								</div>
 							</div>
 						</div>
