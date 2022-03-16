@@ -3,4 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qna_comment">
 
+<select id="selectComment" resultType="qna_comment" parameterType="int">
+select * from qna_comment where refnum = #{refNum} order by regdate asc
+</select>
+
 </mapper>

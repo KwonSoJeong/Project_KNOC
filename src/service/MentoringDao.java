@@ -46,6 +46,18 @@ public class MentoringDao {
 		return null;
 	}
 	
+	public Mentoring selectOne(String id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.selectOne(ns + "selectOne",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return null;
+	}
+	
 	
 	
 	

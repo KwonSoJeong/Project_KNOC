@@ -15,4 +15,8 @@ insert into mentoring values (#{mentoring_Id}, #{mentor_Id}, #{content}, #{intro
 select * from mentoring
 </select>
 
+<select id="selectOne" resultType="mentoring" parameterType="string">
+select * from mentoring where mentoring_Id = #{mentoring_Id}
+</select>
+
 </mapper>

@@ -1,16 +1,15 @@
 package controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Knoc_Member;
+import model.Member_Study_Info;
 import model.Study;
 import model.Study_Comment;
-import service.Knoc_MemberDao;
+import service.Member_Study_InfoDao;
 import service.StudyDao;
 import service.Study_CommentDao;
 
@@ -63,6 +62,15 @@ public class StudyController extends MskimRequestMapping {
 		s.setContent(request.getParameter("text"));
 		int num = sd.insertStudy(s);
 		if(num>0) { //게시글 작성 성공
+			Member_Study_Info msi = new Member_Study_Info();
+			Member_Study_InfoDao msid = new Member_Study_InfoDao();
+			
+			msi.setId(s.getLeader_Id());
+			msi.setMember_study_id(s.getStudy_Id());
+			msi.setType(1);
+			
+			msid.insertInfo(msi);
+			
 			msg = "게시글이 등록되었습니다.";
 			url = request.getContextPath()+"/study/studyList";
 		}else{	//게시글 등록 실패
@@ -74,7 +82,7 @@ public class StudyController extends MskimRequestMapping {
 		return "/view/alert.jsp";
 	}
 	
-	//스터디 게시판 view @@@@@@@@@@@@@@@@@@@작성중
+	//스터디 게시판 view 
 	@RequestMapping("studyList")
 	public String studyList(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -127,9 +135,9 @@ public class StudyController extends MskimRequestMapping {
 		int maxPage = (studyCount/limit)+(studyCount%limit == 0?0:1);
 		if(endPage>maxPage) endPage = maxPage;
 		
-		for (String q : profileList) {
-			System.out.println(q);
-		}
+		/*
+		 * for (String q : profileList) { System.out.println(q); }
+		 */
 		
 		request.setAttribute("profileList", profileList);
 		request.setAttribute("pageInt", pageInt);
@@ -163,7 +171,6 @@ public class StudyController extends MskimRequestMapping {
 		StudyDao sd = new StudyDao();
 		Study_CommentDao scd = new Study_CommentDao();
 		Study s = new Study();
-		Study_Comment sc = new Study_Comment();
 		
 		//게시글과 답글 불러오기
 		s = sd.selectOne(studyId);
@@ -207,8 +214,14 @@ public class StudyController extends MskimRequestMapping {
 		sc.setRefNum(refNum);
 		
 		int num = scd.insert(sc);
-		msg = "답글이 등록되었습니다.";
-		url = request.getContextPath()+"/study/studyInfo";
+		if(num>0) {
+			msg = "답글이 등록되었습니다.";
+			url = request.getContextPath()+"/study/studyInfo";
+		}else {
+			msg = "답글 등록 실패";
+			url = request.getContextPath()+"/study/studyInfo";
+		}
+
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
