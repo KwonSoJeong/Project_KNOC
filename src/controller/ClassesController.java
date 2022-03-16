@@ -242,12 +242,13 @@ public class ClassesController extends MskimRequestMapping {
 		String url = request.getContextPath() + "/member/login";
 		
 		Member_Study_InfoDao msd = new Member_Study_InfoDao();
-		Member_Study_Info msi = msd.infoOne(id);
+		Member_Study_Info msi = msd.infoOne(id, class_id);
 		
 		if (id != null) {
-			// 수강신청을 눌렀을 때 수강신청이 되어있는 상태라면 바로 컨텐츠 화면 return
+			// 수강신청을 눌렀을 때 수강신청이 되어있는 상태라면 바로 컨텐츠 화면으로 이동
 			if (msi != null) {
-				return "/view/classes/classContent.jsp";
+				msg = "수강신청이 완료된 강의입니다. 수강 화면으로 이동합니다.";
+				url = request.getContextPath() + "/classes/classContent";
 			} else {
 				// 수강신청을 눌렀을 때 수강신청이 안 되어 있으면 db 추가하고 수강신청 완료 메세지 출력 후 컨텐츠 화면으로 이동
 				msg = "수강신청이 완료되었습니다.";
@@ -287,9 +288,13 @@ public class ClassesController extends MskimRequestMapping {
 			contentNo = "1";
 		}
 		
+		
+		
 		Class_ContentDao cd = new Class_ContentDao();
+		List<Class_Content> contentList = cd.contentList(classId);
 		Class_Content contentOne = cd.contentOne(classId, contentNo);
 		
+		request.setAttribute("contentList", contentList);
 		request.setAttribute("content", contentOne);
 		
 		return "/view/classes/classContent.jsp";

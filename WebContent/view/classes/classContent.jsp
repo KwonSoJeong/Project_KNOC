@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡclassContentㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!DOCTYPE html>
 <html>
@@ -13,17 +14,22 @@
 
 	<div class="cc-wrapper">
 		<div class="cc-just">
-			<div class="cc-fsfc">클래스 소제목</div>
+			<div class="cc-fsfc">${content.title }</div>
 			<div class="cc-fsfc1">≡</div>
 		</div>
 		<div class="cc-bor-bot"></div>
 	
 		<div class="cc-justend">
-			<div class="cc-content">content</div>
+			<div class="cc-content">${content }</div>
+			<!-- 컨텐츠 부분은 현재 테스트 용으로 class_Content 객체 toString 메소드 실행 -->
 			<div class="cc-index">
 				<div>목차</div>
 				<ul id="cc-subnav">
-					<li><a href="#">1. 과자 사기</a></li>
+				<!--  
+				    <c:forEach var = "c" items = "${contentList }">
+					<li><a href="<%=request.getContextPath() %>/classes/classContent?no=${c.no}">${c.no }차시 | ${c.title }</a></li>
+					</c:forEach>-->
+					  
 					<li><a href="#">2. 봉지 뜯기</a></li>
 					<li><a href="#">3. 과자 꺼내기</a></li>
 					<li><a href="#">4. 과자 관찰하기</a></li>

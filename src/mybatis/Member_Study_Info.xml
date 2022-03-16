@@ -6,7 +6,7 @@
 insert into member_study_info values (#{id}, #{member_study_id}, #{type})
 </insert>
 
-<select id="infoOne" resultType="Member_Study_Info">
-select * from member_study_info where id = #{value}
+<select id="infoOne" parameterType="map" resultType="Member_Study_Info">
+select * from member_study_info where id = #{id} and member_study_id=#{value}
 </select>
 </mapper>
