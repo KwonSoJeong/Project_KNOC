@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,11 @@
 <link rel="stylesheet" href="/Project_KNOC/resource/style/swiper-bundle.min.css" />
 <link href="/Project_KNOC/resource/style/main.css" rel='stylesheet' type='text/css' />
 </head>
+<script>
+if(document.getElementById("input_Check2").checked) {
+    document.getElementById("input_Check1").disabled = true;
+}
+</script>
 <body style="padding-top: 70px;">
 
 	<!-- 모달창  -->
@@ -23,7 +29,7 @@
 					</button>
 				</div>
 
-				<form action="" method="post" id="" class="" role="form" onsubmit="">
+				<form action="<%=request.getContextPath() %>/help/qnaWritePro" method="post" id="" class="" role="form" onsubmit="">
 					<!--body-->
 					<div class="modal-body">
 
@@ -33,7 +39,7 @@
 								<div class="form-group">
 									<label>제목</label>
 									<!-- 폼컨트롤은 보더를 보기좋게 만든다. -->
-									<input type="text" class="form-control">
+									<input name="title" type="text" class="form-control">
 								</div>
 							</div>
 
@@ -41,7 +47,8 @@
 								<div class="form-group">
 									<label>공개 여부</label>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> <label class="form-check-label" for="defaultCheck1"> 비밀글 </label>
+										<input name="secret" class="form-check-input" type="checkbox" value="2" id="input_Check2"> <label class="form-check-label" for="defaultCheck1"> 비밀글 </label>
+										<input name="secret" type="hidden" value ="1" id="input_Check1">
 									</div>
 								</div>
 							</div>
@@ -49,7 +56,7 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label>내용</label>
-									<textarea placeholder="질문을 적어주세요!" style="height: 180px;" class="form-control"></textarea>
+									<textarea name="content" placeholder="질문을 적어주세요!" style="height: 180px;" class="form-control"></textarea>
 								</div>
 							</div>
 						</div>
@@ -134,24 +141,25 @@
 								</button>
 							</div>
 							<ul class="question-list">
-								<li class="question-container"><a href="/studies/473204">
+							<c:forEach items="${list }" var="list" varStatus="status">
+								<li class="question-container"><a href="<%=request.getContextPath()%>/help/qnaInfo?qna_Id=${list.qna_Id }">
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
-													<span class="question__status-tag question__status-tag--recruited">QnA 글 ID</span>
+													<span class="question__status-tag question__status-tag--recruited">${list.qna_Id }</span>
 													<h3 class="title__text">
-														for문없이 접근 방법 <span class="infd-icon title__icon"> </span>
+														${list.title } <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
 												<!-- <p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p> -->
 												<div class="question__tags"></div>
 												<div class="question__info-footer">
-													<i class="fa fa-user"> 작성자</i> <i class="fa fa-lock">비밀글</i> <i class="fa fa-pencil">등록일</i>
+													<i class="fa fa-user">${list.writer }</i> ${list.secret==1?"":"<i class='fa fa-lock'>비밀글</i>" } <i class="fa fa-pencil">${list.regDate}</i>
 												</div>
 											</div>
 											<div class="question__additional-info">
 												<div class="question__comment">
-													<span class="comment__count">0</span> <span class="comment__description">답변</span>
+													<span class="comment__count">${countList[status.index]}</span> <span class="comment__description">답변</span>
 												</div>
 												<!-- <button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
@@ -160,9 +168,11 @@
 												</button> -->
 											</div>
 										</div>
+										
 								</a></li>
+								</c:forEach>
 
-								<li class="question-container"><a href="/studies/472847">
+								<!-- <li class="question-container"><a href="/studies/472847">
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
@@ -171,7 +181,7 @@
 														김영한님 JPA 강의 (Spring Data JPA, QueryDsl 등) 같이 공부하실 스터디원 모집합니다! <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
-												<!-- <p class="question__body">안녕하세요! &nbsp; 저희 스터디는 인프런의 김영한님 JPA 강의들을 바탕으로 공부하고 있는 온라인 스터디입니다. &nbsp; 현재 진도는 자바 ORM 표준 JPA 프로그래...</p> -->
+												<p class="question__body">안녕하세요! &nbsp; 저희 스터디는 인프런의 김영한님 JPA 강의들을 바탕으로 공부하고 있는 온라인 스터디입니다. &nbsp; 현재 진도는 자바 ORM 표준 JPA 프로그래...</p>
 												<div class="question__info-footer">
 													<i class="fa fa-user"> 작성자</i> <i class="fa fa-pencil">등록일</i>
 												</div>
@@ -180,14 +190,15 @@
 												<div class="question__comment">
 													<span class="comment__count">0</span> <span class="comment__description">답변</span>
 												</div>
-												<!-- <button class="ac-button is-md is-text question__like e-like ">
+												<button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
-												</button> -->
+												</button>
 											</div>
 										</div>
-								</a></li>
+								</a>
+								</li>
 
 								<li class="question-container"><a href="/studies/472657">
 										<div class="question">
@@ -198,7 +209,7 @@
 														코딩 테스트 준비 <span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
-												<!-- <p class="question__body">코딩 테스트 준비를 위한 스터디 모집합니다!! &nbsp; 언어는 파이썬인데 스터디원들은 상관없을 것 같습니다. &nbsp; 진행 방식은 전 주에 정한 ...</p> -->
+												<p class="question__body">코딩 테스트 준비를 위한 스터디 모집합니다!! &nbsp; 언어는 파이썬인데 스터디원들은 상관없을 것 같습니다. &nbsp; 진행 방식은 전 주에 정한 ...</p>
 												<div class="question__info-footer">
 													<i class="fa fa-user"> 작성자</i> <i class="fa fa-lock">비밀글</i> <i class="fa fa-pencil">등록일</i>
 												</div>
@@ -208,22 +219,26 @@
 													<span class="comment__count">0</span> <span class="comment__description">답변</span>
 												</div>
 
-												<!-- <button class="ac-button is-md is-text question__like e-like ">
+												<button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
-												</button> -->
+												</button>
 											</div>
 										</div>
 								</a></li>
 							</ul>
-						</div>
-
-						<nav class="pagination is-centered is-small" role="navagation" aria-label="pagination">
-							<a class="pagination-next" href="?page=2">다음 페이지</a>
+							
+						</div> -->
+										<!-- javascript:void(0) -->
+							<nav class="pagination is-centered is-small" role="navagation" aria-label="pagination">
+							<a class="pagination-prev" href="<c:if test="${pageInt <= startPage}"> javascript:void(0)</c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt-1}">이전 페이지</a>
+							<a class="pagination-next" href="<c:if test="${pageInt >= maxPage }"> javascript:void(0) </c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt+1}">다음 페이지</a>
 							<ul class="pagination-list">
-								<li><a class="pagination-link is-current" href="?page=1" aria-label="1 페이지로 이동">1</a></li>
-								<li><a class="pagination-link " href="?page=2" aria-label="2 페이지로 이동">2</a></li>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+								<li><a class='pagination-link <c:if test="${i==pageInt }">is-current</c:if>' href="<%=request.getContextPath()%>/help/qnaList?pageNum=${i}" aria-label="1 페이지로 이동">${i }</a></li>
+								</c:forEach>
+								<!-- <li><a class="pagination-link " href="?page=2" aria-label="2 페이지로 이동">2</a></li>
 								<li><a class="pagination-link " href="?page=3" aria-label="3 페이지로 이동">3</a></li>
 								<li><a class="pagination-link " href="?page=4" aria-label="4 페이지로 이동">4</a></li>
 								<li><a class="pagination-link " href="?page=5" aria-label="5 페이지로 이동">5</a></li>
@@ -233,7 +248,7 @@
 								<li><a class="pagination-link " href="?page=9" aria-label="9 페이지로 이동">9</a></li>
 								<li><a class="pagination-link " href="?page=10" aria-label="10 페이지로 이동">10</a></li>
 								<li><a class="pagination-link " href="?page=11" aria-label="다음 페이지 모음으로 이동">…</a></li>
-								<li><a class="pagination-link " href="?page=26" aria-label="26 페이지로 이동">26</a></li>
+								<li><a class="pagination-link " href="?page=26" aria-label="26 페이지로 이동">26</a></li> -->
 							</ul>
 						</nav>
 					</div>

@@ -9,9 +9,21 @@ select * from qna_comment where refnum = #{refNum} order by regdate asc
 
 <select id="countList" resultType="int" parameterType="map">
 select count from (select rownum rnum, a.* from (
-select count(refnum) count from (select SUBSTR(qna_id,4)qna_id from qna ORDER by regdate desc) a, QNA_COMMENT qc 
-where qna_id = refnum(+) group by refnum) a) 
+select count(refnum) count from (select SUBSTR(qna_id,4)qna_id from qna ORDER by regdate desc) a, QNA_COMMENT  qc 
+where qna_id = refnum(+) group by qna_id order by length(qna_id)desc, qna_id desc) a) 
 where rnum between #{start} and #{end}
+</select>
+
+<select id="nextNum" resultType="int">
+select qnacomseq.nextval from dual
+</select>
+
+<insert id="insert" parameterType="qna_comment">
+insert into qna_comment values (#{comment_Id}, #{refNum}, #{title}, #{content} ,sysdate)
+</insert>
+
+<select id="countOne" resultType="int" parameterType="int">
+select count(*) from qna_comment where refnum = #{refNum}
 </select>
 
 </mapper>

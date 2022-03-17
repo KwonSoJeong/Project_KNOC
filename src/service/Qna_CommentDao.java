@@ -31,7 +31,7 @@ public class Qna_CommentDao {
 			map.clear();
 			map.put("start", (pageInt-1)*limit+1);
 			map.put("end", pageInt * limit);
-			return sqlSession.selectOne(ns + "count",map);
+			return sqlSession.selectList(ns + "countList",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -39,4 +39,41 @@ public class Qna_CommentDao {
 		}
 		return null;
 	}
+	
+	//다음 번호 불러오기
+		public int nextNum() {
+			SqlSession sqlSession = MyBatisConnection.getConnection();
+			try {
+				return sqlSession.selectOne(ns + "nextNum");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MyBatisConnection.close(sqlSession);
+			}
+			return 0;
+		}
+		
+		public int insert(Qna_Comment qc) {
+			SqlSession sqlSession = MyBatisConnection.getConnection();
+			try {
+				return sqlSession.insert(ns + "insert",qc);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MyBatisConnection.close(sqlSession);
+			}
+			return 0;
+		}
+		
+		public int countOne(int refNum) {
+			SqlSession sqlSession = MyBatisConnection.getConnection();
+			try {
+				return sqlSession.selectOne(ns + "countOne",refNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				MyBatisConnection.close(sqlSession);
+			}
+			return 0;
+		}
 }

@@ -3,16 +3,17 @@ package model;
 import java.util.Date;
 
 public class Mentoring {
-	private String mentoring_Id, mentor_Id, content, intro;
+	private String mentoring_Id, mentor_Id, content, intro, title;
 	private Date regDate;
 	
-	public Mentoring(String mentoring_Id, String mentor_Id, String content, String intro, Date regDate) {
+	public Mentoring(String mentoring_Id, String mentor_Id, String content, String intro, Date regDate, String title) {
 		super();
 		this.mentoring_Id = mentoring_Id;
 		this.mentor_Id = mentor_Id;
 		this.content = content;
 		this.intro = intro;
 		this.regDate = regDate;
+		this.title = title;
 	}
 
 	public Mentoring() {
@@ -57,6 +58,14 @@ public class Mentoring {
 
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Override
