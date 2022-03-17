@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +12,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.Knoc_Member;
+import model.Member_Study_Info;
 import service.Knoc_MemberDao;
+import service.Member_Study_InfoDao;
 
 //@WebServlet("/member/*")
 public class MemberController extends MskimRequestMapping {
@@ -346,10 +349,23 @@ public class MemberController extends MskimRequestMapping {
 			return "/view/alert.jsp";
 
 		}
+		
+		// 1) 회원 정보 가져오기
 		Knoc_MemberDao md = new Knoc_MemberDao();
 		Knoc_Member member = md.selectOne(id);
-
+		
+		Member_Study_InfoDao msd = new Member_Study_InfoDao();
+		// 2) 내가 개설한/수강중인/관심등록한 클래스 리스트 가져오기
+		List<Member_Study_Info> classList = msd.infoList(id, "class");
+		// 3) 참여중인 스터디 리스트 가져오기
+		List<Member_Study_Info> studyList = msd.infoList(id, "study");
+		// 4) 참여중인 멘토링 리스트 가져오기
+		List<Member_Study_Info> mentoringList = msd.infoList(id, "mentoring");
+			
 		request.setAttribute("member", member);
+		request.setAttribute("classList", classList);
+		request.setAttribute("studyList", studyList);
+		request.setAttribute("mentoringList", mentoringList);
 
 		return "/view/member/myPage.jsp";
 	}

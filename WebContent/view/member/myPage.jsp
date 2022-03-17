@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡmyPageㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!DOCTYPE html>
 <html>
@@ -22,8 +23,8 @@
 				<div class="mp-thumbnail">
 					<div class="mp-cdtitle">나의 프로필</div>
 					<div class="mp-profile2">
-						<div class="mp-profimg"> <img src="${imgage}" onerror="this.src='<%=request.getContextPath() %>/resource/image/profile.png'"> </div>
-						<div class="mp-procomt">xxx님 <br> 안녕하세요!</div>
+						<div class="mp-profimg"> <img src="<%=request.getContextPath() %>/profile/${member.profile}" onerror="this.src='<%=request.getContextPath() %>/resource/image/profile.png'"> </div>
+						<div class="mp-procomt">${member.id }님 <br> 안녕하세요!</div>
 					</div>
 					<div class="mp-just">
 						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/member/memberDelete">회원탈퇴</a>	
@@ -37,10 +38,16 @@
 					<div class="mp-cljust">
 						<div class="mp-clbox">
 							<ul>
+							<c:forEach var="c" items="${classList}">
+							     <c:if test="${c.type==1}">
+							     <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}">${c.title}</a></li>
+							     </c:if>
+							</c:forEach>
+							 <!--  
 								<li><a href="#">클래스리스트1......</a></li>
 								<li><a href="#">클래스리스트2......</a></li>
 								<li><a href="#">클래스리스트3......</a></li>
-
+                              -->
 							</ul>
 						</div>	
 						<div class="mp-justf">
@@ -57,11 +64,18 @@
 					<div class="mp-cljust">
 						<div class="mp-clbox">
 							<ul>
+							<c:forEach var="c" items="${classList}">
+                                <c:if test="${c.type==2}">
+                                <li><a href="<%=request.getContextPath()%>/classes/classContent?class_id=${c.member_study_id}">${c.title}</a></li>
+                                 </c:if>
+                            </c:forEach>
+                            <!--  
 								<li><a href="#">클래스리스트1......</a></li>
 								<li><a href="#">클래스리스트2......</a></li>
 								<li><a href="#">클래스리스트3......</a></li>
 								<li><a href="#">클래스리스트4....................</a></li>
 								<li><a href="#">클래스리스트5......</a></li>
+							-->
 							</ul>
 						</div>	
 						<div class="mp-justf">
@@ -82,12 +96,18 @@
 					<div class="mp-cljust">
 						<div class="mp-clbox">
 							<ul>
+							<c:forEach var="c" items="${classList}">
+                                <c:if test="${c.type==3}">
+                                <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}">${c.title}</a></li>
+                            </c:if>
+                            </c:forEach> <!-- 
 								<li><a href="#">클래스리스트1......</a></li>
 								<li><a href="#">클래스리스트2......</a></li>
 								<li><a href="#">클래스리스트3......</a></li>
 								<li><a href="#">클래스리스트4....................</a></li>
 								<li><a href="#">클래스리스트5......</a></li>
 								<li><a href="#">클래스리스트6......</a></li>
+								 -->
 							</ul>
 						</div>					
 					</div>		
@@ -98,6 +118,9 @@
 					<div class="mp-cljust">
 						<div class="mp-clbox">
 							<ul>
+							<c:forEach var="m" items="${mentoringList}">
+                            <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_id=${m.member_study_id}">${m.title}</a></li>
+                            </c:forEach>
 								<li><a href="#">멘토링리스트1......</a></li>
 								<li><a href="#">멘토링리스트2......</a></li>
 								<li><a href="#">멘토링리스트3......</a></li>
@@ -111,8 +134,13 @@
 					<div class="mp-cdtitle">스터디 현황</div>			
 					<div class="mp-cljust">
 						<div class="mp-clbox">
-							<ul>
+							<ul> 
+							<c:forEach var="s" items="${studyList}">
+                            <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_id=${s.member_study_id}">${s.title}</a></li>
+                            </c:forEach>
+							<!-- 
 								<li><a href="#">스터디리스트1......</a></li>
+								 -->
 							</ul>
 						</div>					
 					</div>	

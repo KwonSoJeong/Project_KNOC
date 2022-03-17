@@ -168,7 +168,7 @@ public class ClassesController extends MskimRequestMapping {
 			url = request.getContextPath() + "/classes/classInfo?class_id=" + newClass.getClass_id();
 			
 			Member_Study_InfoDao msd = new Member_Study_InfoDao();
-			Member_Study_Info msi = new Member_Study_Info(newClass.getLec_id(), newClass.getClass_id(), 1);
+			Member_Study_Info msi = new Member_Study_Info(newClass.getLec_id(), newClass.getClass_id(), newClass.getTitle(), 1);
 			
 			msd.insertInfo(msi);
 		}
@@ -241,6 +241,9 @@ public class ClassesController extends MskimRequestMapping {
 		String msg = "로그인 후 이용 가능합니다.";
 		String url = request.getContextPath() + "/member/login";
 		
+		ClassesDao cd = new ClassesDao();
+		Classes classOne = cd.classOne(class_id);
+		
 		Member_Study_InfoDao msd = new Member_Study_InfoDao();
 		Member_Study_Info msi = msd.infoOne(id, class_id);
 		
@@ -254,7 +257,7 @@ public class ClassesController extends MskimRequestMapping {
 				msg = "수강신청이 완료되었습니다.";
 				url = request.getContextPath() + "/classes/classContent";
 				
-				Member_Study_Info newInfo = new Member_Study_Info(id, class_id, 2);
+				Member_Study_Info newInfo = new Member_Study_Info(id, class_id, classOne.getTitle(), 2);
 				msd.insertInfo(newInfo);
 			}
 
@@ -270,9 +273,21 @@ public class ClassesController extends MskimRequestMapping {
 	@RequestMapping("classContent")
 	public String classContent(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
+		
+		String classId = null;
+		
+		// mypage를 통해서 content 페이지로 왔을 때는 세션에 url에서 classid 받아오고, session에 저장
+		if (request.getParameter("class_id") != null) {
+			classId = request.getParameter("class_id");
+			session.setAttribute("classId", classId);
+		} 
+		
+		// classInfo 화면을 거쳐서 content 페이지로 왔을 때는 세션에 classId가 저장되어 있음
+		classId = (String) session.getAttribute("classId");
 		String id = (String) session.getAttribute("memid");
-		String classId = (String) session.getAttribute("classId");
 		String contentNo = request.getParameter("no");
+		
+		// content화면 완성된 후에 제대로 다시 테스트 할 예정
 		
 		if (id == null) {
 			String msg = "로그인 정보가 없습니다.";
@@ -287,7 +302,6 @@ public class ClassesController extends MskimRequestMapping {
 		if (contentNo == null) {
 			contentNo = "1";
 		}
-		
 		
 		
 		Class_ContentDao cd = new Class_ContentDao();
@@ -314,7 +328,7 @@ public class ClassesController extends MskimRequestMapping {
 		
 		if (num > 0) {
 			Member_Study_InfoDao msd = new Member_Study_InfoDao();
-			Member_Study_Info newInfo = new Member_Study_Info(id, classId, 3);
+			Member_Study_Info newInfo = new Member_Study_Info(id, classId, classone.getTitle(),3);
 			msd.insertInfo(newInfo);
 		}
 		
