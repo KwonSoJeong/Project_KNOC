@@ -94,7 +94,7 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/logout">로그아웃</a>
 					</li>	
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/myPage.jsp">마이페이지</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/myPage">마이페이지</a>
 					</li>
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/help/qnaList.jsp">고객센터</a>
