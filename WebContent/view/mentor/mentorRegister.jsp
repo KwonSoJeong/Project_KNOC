@@ -26,20 +26,14 @@
 		<form action="<%=request.getContextPath() %>/member/mentorRegisterPro" enctype="multipart/form-data" method="post">
 		<!-- <form name="f" action="<%=request.getContextPath()%>" method="post"> -->
 		
-			<h4 id="center">자신에 대해 소개하고 멘토링 관련 내용을 자유롭게 써주세요~!</h4>
+			<h4 id="center">멘토링 주제, 소개글, 내용을 자유롭게 써주세요~!</h4>
 			<br><br>
 			
-			<div>
-			<label>프로필 이미지</label>
-			<input type="file" class="form-control" name="profile"> 
-			</div>
-			<br><br>
-			
-			<div>
-			<label>멘토링 이름</label>
-			<input type="text" class="form-control" name="mentor_id"> 
-			</div>
-			<br><br>
+			<div class="form-group">
+				<label>멘토링 주제</label>
+				<textarea class="form-control" rows="10" cols="40" placeholder="멘토링 주제 작성" name="input"></textarea>
+			</div> 
+			<br>
 			
             <div class="form-group">
 				<label>멘토 소개글 입력</label>
