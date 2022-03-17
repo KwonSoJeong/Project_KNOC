@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -143,6 +144,37 @@ public class ClassesController extends MskimRequestMapping {
 		
 		Classes classone = cl_d.classOne(newClass.getClass_id());
 		
+		int lastNum = 0;
+		if (classone != null) {
+			// 현재는 최대 10차시 까지 입력받도록 되어있음
+			for (int i = 1; i <= 11; i++) {
+				Class_Content newContent = new Class_Content();
+				
+				newContent.setTitle(multi.getParameter("title" + i));
+				
+				if (newContent.getTitle() == null) {
+					lastNum = i-1;
+					break;
+				}
+				
+				newContent.setFile1(multi.getFilesystemName("file" + i));
+				if(newContent.getFile1() == null) {
+					newContent.setFile1("");
+				}
+				
+				newContent.setClass_Id(newClass.getClass_id());
+				newContent.setContent_Id("content" + con_d.newContentNum());
+				newContent.setNo(i);
+				
+				
+				
+				if (con_d.contentUpload(newContent) > 0) {
+					contentResult++;
+				}
+			}
+		}
+		
+		/*
 		if (classone != null) {
 			// 현재는 3차시까지 입력받도록 되어있음
 			for (int i = 1; i <= 3; i++) {
@@ -159,11 +191,13 @@ public class ClassesController extends MskimRequestMapping {
 				}
 			}
 		}
+		*/
+		
 		String msg = "클래스 등록에 실패하였습니다.";
 		String url = request.getContextPath() + "/classes/classUpload";
 		
-		// 클래스도 정상 등록, 컨텐츠도 3차시까지 정상 등록일 경우
-		if (classResult > 0 && contentResult == 3) {
+		// 클래스, 컨텐츠까지 정상 등록일 경우
+		if (classResult > 0 && contentResult == lastNum) {
 			msg = "클래스가 정상적으로 등록되었습니다.";
 			url = request.getContextPath() + "/classes/classInfo?class_id=" + newClass.getClass_id();
 			
