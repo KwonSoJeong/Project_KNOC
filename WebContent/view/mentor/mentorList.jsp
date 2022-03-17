@@ -97,13 +97,13 @@ text-decoration: none ;
 	<c:forEach var="m" items="${mt}">
 	<div class="mentor-dot">
 	<img src="<%=request.getContextPath() %>/profile/${profile}" width="100" height="80" id="pic">멘토 이름:&nbsp;${m.mentor_Id}
-	<p>소개글:&nbsp;${m.intro}</p>
+	<p>멘토링 주제:&nbsp;${m.input}</p>
 	<a href="<%=request.getContextPath() %>/mentor/mentorInfo">내용보기</a>
 	</div>
 	</c:forEach>
 </div>
 
-<!--  
+<!-- 
 <div class="mentor-dot">
 	<img src="<%=request.getContextPath() %>/view/mentor/mentorInfo.jsp" width="100" height="80" id="pic">멘토 이름: 
 	<p>소개글</p>
