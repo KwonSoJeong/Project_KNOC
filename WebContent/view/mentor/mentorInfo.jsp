@@ -12,7 +12,7 @@
 	<div id="mentor-bot">
 		<h2 id ="mentor-h2">멘토링</h2>
 	</div>
-	<form class="mentor-form" action="#">
+	<form class="mentor-form" action="<%=request.getContextPath()%>/mentor/mentorInfo">
 		<input class="mentor-control" type="text" placeholder="검색하기">
 		<button id="mentro-bung" type="submit">검색</button>
 	</form>
@@ -27,9 +27,7 @@
 	<img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">멘토 이름: ${m.mentor_Id}
 	<br>
 	<p>멘토 소개글:&nbsp;${m.intro}</p>
-	<form action="#">
-	<button id="mentro-bung2" type="submit" value="멘토링 신청">멘토링신청</button>
-	</form>
+	<button id="mentro-bung2" type="button" onclick="location.href='<%=request.getContextPath()%>/mentor/mentorRegister'">멘토링신청</button>
 	</div>
 	</div>
 </body>
