@@ -1,6 +1,7 @@
 package service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,14 +44,33 @@ public class Member_Study_InfoDao {
 		return null;
 	}
 	
-	/* DAO 테스트 코드
+	public List<Member_Study_Info> infoList(String id, String value) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		map.clear();
+		map.put("id", id);
+		map.put("value", value);
+		
+		try {
+			return sqlSession.selectList(ns + "infoList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return null;
+	}
+	
+	/* DAO 테스트 코드 
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-		
-		Member_Study_Info msi = sqlSession.selectOne(ns + "infoOne", "qq");
-		
+		map.clear();
+		map.put("id", "aaa");
+		map.put("value", "class");
+		List<Member_Study_Info> list = sqlSession.selectList(ns + "infoList", map);
+		for (Member_Study_Info msi : list) {
 			System.out.println(msi);
-		
+		}
 	}
 	*/
 }
