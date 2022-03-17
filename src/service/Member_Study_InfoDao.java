@@ -27,11 +27,13 @@ public class Member_Study_InfoDao {
 
 	}
 	
-	public Member_Study_Info infoOne(String id) {
+	public Member_Study_Info infoOne(String id, String value) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
-		
+		map.clear();
+		map.put("id", id);
+		map.put("value", value);
 		try {
-			return sqlSession.selectOne(ns + "infoOne", id);
+			return sqlSession.selectOne(ns + "infoOne", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -1,6 +1,7 @@
 package service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,7 +51,22 @@ public class Class_ContentDao {
 		map.put("contentNo", contentNo);
 		
 		try {
-			return sqlSession.selectOne(ns + "contentUpload", map);
+			return sqlSession.selectOne(ns + "contentOne", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return null;
+	}
+	
+	// 클래스 아이디를 매개변수로 해당 클래스의 컨텐츠를 리스트로 반환
+	public List<Class_Content> contentList(String classId) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.selectList(ns + "contentList", classId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
