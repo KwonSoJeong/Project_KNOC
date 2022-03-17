@@ -51,6 +51,11 @@ public class HelpController extends MskimRequestMapping {
 		int maxPage = (qnaCount/limit)+(qnaCount%limit == 0?0:1);
 		if(endPage>maxPage) endPage = maxPage;
 		
+		//게시글마다 달린 댓글 수 list
+		Qna_CommentDao qcd = new Qna_CommentDao();
+		List countList =qcd.countList(pageInt, limit);
+		
+		request.setAttribute("countList", countList);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("bottomLine", bottomLine);
 		request.setAttribute("endPage", endPage);

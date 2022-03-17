@@ -7,4 +7,11 @@
 select * from qna_comment where refnum = #{refNum} order by regdate asc
 </select>
 
+<select id="countList" resultType="int" parameterType="map">
+select count from (select rownum rnum, a.* from (
+select count(refnum) count from (select SUBSTR(qna_id,4)qna_id from qna ORDER by regdate desc) a, QNA_COMMENT qc 
+where qna_id = refnum(+) group by refnum) a) 
+where rnum between #{start} and #{end}
+</select>
+
 </mapper>
