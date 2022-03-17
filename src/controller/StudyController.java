@@ -65,6 +65,7 @@ public class StudyController extends MskimRequestMapping {
 			Member_Study_Info msi = new Member_Study_Info();
 			Member_Study_InfoDao msid = new Member_Study_InfoDao();
 			
+			msi.setTitle(s.getTitle());
 			msi.setId(s.getLeader_Id());
 			msi.setMember_study_id(s.getStudy_Id());
 			msi.setType(1);
@@ -249,8 +250,8 @@ public class StudyController extends MskimRequestMapping {
 			//중복신청체크
 			StudyDao sd = new StudyDao();
 			String id = (String) request.getSession().getAttribute("memid");
-			String member_study_id = request.getParameter("studyId");
-			if(sd.infoChk(id,member_study_id)!=0) {
+			String studyId = request.getParameter("studyId");
+			if(sd.infoChk(id,studyId)!=0) {
 				msg = "이미 참가신청한 스터디 입니다.";
 				url = request.getContextPath()+"/study/studyInfo";
 				request.setAttribute("msg", msg);
@@ -261,9 +262,13 @@ public class StudyController extends MskimRequestMapping {
 			
 			Member_Study_Info msi = new Member_Study_Info();
 			Member_Study_InfoDao msid = new Member_Study_InfoDao();
+			Study s = new Study();
 			
+			s = sd.selectOne(studyId);
+			
+			msi.setTitle(s.getTitle());
 			msi.setId(id);
-			msi.setMember_study_id(member_study_id);
+			msi.setMember_study_id(s.getStudy_Id());
 			msi.setType(2);
 			
 			msid.insertInfo(msi);
