@@ -62,7 +62,8 @@ public class MentorController extends MskimRequestMapping {
 		mem = memdao.selectOne(id);
 
 		String mentoringId = "mentoring" + md.nextNum();
-
+		
+		m.setTitle(request.getParameter("input"));
 		m.setMentoring_Id(mentoringId);
 		m.setMentor_Id(mem.getId());
 		m.setContent(request.getParameter("content"));

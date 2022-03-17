@@ -8,7 +8,7 @@ select mentorseq.nextval from dual
 </select>
 
 <insert id="insert" parameterType="mentoring">
-insert into mentoring values (#{mentoring_Id}, #{mentor_Id}, #{content}, #{intro}, sysdate)
+insert into mentoring values (#{mentoring_Id}, #{mentor_Id}, #{content}, #{intro}, sysdate, #{title})
 </insert>
 
 <select id="selectList" resultType="mentoring">

@@ -85,7 +85,7 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/memberInput">회원가입</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/help/qnaList.jsp">고객센터</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>
 					</li>
 				</c:if>
 		
@@ -97,7 +97,7 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/member/myPage.jsp">마이페이지</a>
 					</li>
 					<li class="nav-it">
-						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/view/help/qnaList.jsp">고객센터</a>
+						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>
 					</li>				
 				</c:if>	
 			</ul>			
