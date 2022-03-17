@@ -119,12 +119,14 @@
 						<div class="mp-clbox">
 							<ul>
 							<c:forEach var="m" items="${mentoringList}">
-                            <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_id=${m.member_study_id}">${m.title}</a></li>
+                            <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_Id=${m.member_study_id}">${m.title}</a></li>
                             </c:forEach>
+                                <!-- 
 								<li><a href="#">멘토링리스트1......</a></li>
 								<li><a href="#">멘토링리스트2......</a></li>
 								<li><a href="#">멘토링리스트3......</a></li>
 								<li><a href="#">멘토링리스트4....................</a></li>
+								 -->
 							</ul>
 						</div>					
 					</div>			
@@ -136,7 +138,7 @@
 						<div class="mp-clbox">
 							<ul> 
 							<c:forEach var="s" items="${studyList}">
-                            <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_id=${s.member_study_id}">${s.title}</a></li>
+                            <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.member_study_id}">${s.title}</a></li>
                             </c:forEach>
 							<!-- 
 								<li><a href="#">스터디리스트1......</a></li>
