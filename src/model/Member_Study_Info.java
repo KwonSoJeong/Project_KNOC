@@ -1,16 +1,16 @@
 package model;
 
 public class Member_Study_Info {
-	private String id, member_study_id, title;
-	private int type;
+	private String id, member_study_id;
+	private int type, no;
 	
 	public Member_Study_Info() {}
 
-	public Member_Study_Info(String id, String member_study_id, String title, int type) {
+	public Member_Study_Info(String id, String member_study_id, int type, int no) {
 		this.id = id;
 		this.member_study_id = member_study_id;
-		this.title = title;
 		this.type = type;
+		this.no = no;
 	}
 
 	public String getId() {
@@ -29,14 +29,6 @@ public class Member_Study_Info {
 		this.member_study_id = member_study_id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public int getType() {
 		return type;
 	}
@@ -45,10 +37,17 @@ public class Member_Study_Info {
 		this.type = type;
 	}
 	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
 
 	@Override
 	public String toString() {
-		return "Member_Study_Info [id=" + id + ", member_study_id=" + member_study_id + ", title=" + title + ", type=" + type + "]";
+		return "Member_Study_Info [id=" + id + ", member_study_id=" + member_study_id + ", no=" + no + ", type=" + type + "]";
 	}
 	
 }
