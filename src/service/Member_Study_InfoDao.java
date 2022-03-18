@@ -61,6 +61,21 @@ public class Member_Study_InfoDao {
 		return null;
 	}
 	
+	public int nextSeq() {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.selectOne(ns + "nextSeq");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return 0;
+
+	}
+	
 	/* DAO 테스트 코드 
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
