@@ -57,7 +57,8 @@ public class HelpController extends MskimRequestMapping {
 		// 게시글마다 달린 댓글 수 list
 		Qna_CommentDao qcd = new Qna_CommentDao();
 		List countList = qcd.countList(pageInt, limit);
-  
+		
+		
 		request.setAttribute("pageInt", pageInt);
 		request.setAttribute("countList", countList);
 		request.setAttribute("startPage", startPage);
@@ -78,6 +79,9 @@ public class HelpController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		
+		QnaDao qd = new QnaDao();
+		Qna q = new Qna();
+		
 		//session에 info위치 저장
 		String qnaId = request.getParameter("qna_Id");
 		if(qnaId == null) {
@@ -85,25 +89,56 @@ public class HelpController extends MskimRequestMapping {
 		}
 		request.getSession().setAttribute("qna_Id", qnaId);
 		
-		QnaDao qd = new QnaDao();
-		Qna q = new Qna();
-		Qna_Comment qc = new Qna_Comment();
-		Qna_CommentDao qcd = new Qna_CommentDao();
-
 		//qna 상세정보 불러오기
 		q = qd.selectOne(qnaId);
+		
+		String memid = (String) request.getSession().getAttribute("memid");
+		if(memid==null) {
+			memid = "";
+		}
+		
+		//비밀글일시 admin, 작성자 체크
+		// !equals가 적용이 안됨 // 왜 안되는지 모르겠음 ㅠ
+		if(q.getSecret()==2) {	//게시글이 비밀글일때
+			if(memid.equals("admin") || memid.equals(q.getWriter())){ //admin, 작성자인 경우 접속
+				Qna_Comment qc = new Qna_Comment();
+				Qna_CommentDao qcd = new Qna_CommentDao();
+				
+				//comment count
+				int refNum = Integer.parseInt(qnaId.substring(3));
+				int commentCount = qcd.countOne(refNum);
+				
+				//comment select
+				Qna_Comment comment = qcd.selectOneComment(refNum);
+				System.out.println(comment);
+				request.setAttribute("comment", comment);
+				request.setAttribute("commentCount", commentCount);
+				request.setAttribute("q", q);
+				return "/view/help/qnaInfo.jsp";
+			}else { //admin, 작성자가 아닌 경우 접근불가
+				msg = "작성자와 관리자만 볼 수 있는 게시글 입니다.";
+				url = request.getContextPath()+"/help/qnaList";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+		}	//일반게시글
+			
+		Qna_Comment qc = new Qna_Comment();
+		Qna_CommentDao qcd = new Qna_CommentDao();
 		
 		//comment count
 		int refNum = Integer.parseInt(qnaId.substring(3));
 		int commentCount = qcd.countOne(refNum);
 		
 		//comment select
-		List<Qna_Comment> commentList = qcd.selectComment(refNum);
-		
-		request.setAttribute("commentList", commentList);
+		Qna_Comment comment = qcd.selectOneComment(refNum);
+		System.out.println(comment);
+		request.setAttribute("comment", comment);
 		request.setAttribute("commentCount", commentCount);
 		request.setAttribute("q", q);
 		return "/view/help/qnaInfo.jsp";
+
 	}
 
 	/*
@@ -125,6 +160,7 @@ public class HelpController extends MskimRequestMapping {
 			e.printStackTrace();
 		}
 		
+		//로그인 체크
 		String memid = (String) request.getSession().getAttribute("memid");
 		if (memid == null) {
 			msg = "로그인이 필요한 서비스 입니다.";
@@ -171,6 +207,17 @@ public class HelpController extends MskimRequestMapping {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			//어드민 계정 체크
+			String memid = (String) request.getSession().getAttribute("memid");
+			if (!memid.equals("admin")) {
+				msg = "어드민 계정만 답글을 등록하실 수 있습니다.";
+				url = request.getContextPath()+"/help/qnaInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+			
 			Qna_CommentDao qcd = new Qna_CommentDao();
 			Qna_Comment qc = new Qna_Comment();
 			

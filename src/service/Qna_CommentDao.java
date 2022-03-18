@@ -13,10 +13,24 @@ public class Qna_CommentDao {
 	private final static String ns = "qna_comment.";
 	private Map<String, Object> map = new HashMap<>();
 	
+	/*
 	public List<Qna_Comment> selectComment(int refNum) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		try {
 			return sqlSession.selectList(ns + "selectComment",refNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return null;
+	}
+	*/
+	
+	public Qna_Comment selectOneComment(int refNum) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.selectOne(ns + "selectOneComment",refNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
