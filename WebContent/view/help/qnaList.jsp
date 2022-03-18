@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,15 +148,32 @@ if(document.getElementById("input_Check2").checked) {
 										<div class="question">
 											<div class="question__info">
 												<div class="question__title">
-													<span class="question__status-tag question__status-tag--recruited">${list.qna_Id }</span>
+													<span class="question__status-tag question__status-tag--recruited">
+													<c:if test="${countList[status.index]==0}">미답변</c:if>
+													<c:if test="${countList[status.index]>=1}">답변완료</c:if>
+													</span>
 													<h3 class="title__text">
-														${list.title } <span class="infd-icon title__icon"> </span>
+													<c:if test="${list.secret==1 }"> ${list.title } </c:if>
+													<c:if test="${list.secret==2 }">
+													<i class='fa fa-lock'>비밀글</i>
+													<c:if test="${list.writer==memid || memid=='admin' }">${list.title }</c:if>
+													</c:if>
+														
+														 
+														
+														<span class="infd-icon title__icon"> </span>
 													</h3>
 												</div>
 												<!-- <p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p> -->
 												<div class="question__tags"></div>
 												<div class="question__info-footer">
-													<i class="fa fa-user">${list.writer }</i> ${list.secret==1?"":"<i class='fa fa-lock'>비밀글</i>" } <i class="fa fa-pencil">${list.regDate}</i>
+													<i class="fa fa-user">
+													<c:if test="${list.secret==1 }">${list.writer }</c:if>
+													<c:if test="${list.secret==2 }">
+													<c:set var="secretWriter" value="${fn:substring(list.writer,2,6) }"/>
+													${fn:replace(list.writer,secretWriter , "****")}
+													</c:if>
+													</i> ${list.secret==1?"":"<i class='fa fa-lock'>비밀글</i>" } <i class="fa fa-pencil">${list.regDate}</i>
 												</div>
 											</div>
 											<div class="question__additional-info">

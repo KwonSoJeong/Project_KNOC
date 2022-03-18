@@ -7,6 +7,10 @@
 select * from qna_comment where refnum = #{refNum} order by regdate asc
 </select>
 
+<select id="selectOneComment" resultType="qna_comment" parameterType="int">
+select * from qna_comment where refnum = #{refNum}
+</select>
+
 <select id="countList" resultType="int" parameterType="map">
 select count from (select rownum rnum, a.* from (
 select count(refnum) count from (select SUBSTR(qna_id,4)qna_id from qna ORDER by regdate desc) a, QNA_COMMENT  qc 
