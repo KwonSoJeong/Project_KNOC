@@ -40,7 +40,7 @@
 							<ul>
 							<c:forEach var="c" items="${classList}">
 							     <c:if test="${c.type==1}">
-							     <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}"></a></li>
+							     <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}">${c.title}</a></li>
 							     </c:if>
 							</c:forEach>
 							 <!--  
@@ -66,7 +66,7 @@
 							<ul>
 							<c:forEach var="c" items="${classList}">
                                 <c:if test="${c.type==2}">
-                                <li><a href="<%=request.getContextPath()%>/classes/classContent?class_id=${c.member_study_id}"></a></li>
+                                <li><a href="<%=request.getContextPath()%>/classes/classContent?class_id=${c.member_study_id}">${c.title}</a></li>
                                  </c:if>
                             </c:forEach>
                             <!--  
@@ -96,11 +96,10 @@
 					<div class="mp-cljust">
 						<div class="mp-clbox">
 							<ul>
-							<c:forEach var="c" items="${classList}">
-                                <c:if test="${c.type==3}">
-                                <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}"></a></li>
-                            </c:if>
-                            </c:forEach> <!-- 
+							<c:forEach var="w" items="${wishList}">
+                                <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${w.CLASS_ID}">${w.TITLE}</a></li>
+                            </c:forEach> 
+                            <!-- 
 								<li><a href="#">클래스리스트1......</a></li>
 								<li><a href="#">클래스리스트2......</a></li>
 								<li><a href="#">클래스리스트3......</a></li>
@@ -119,7 +118,7 @@
 						<div class="mp-clbox">
 							<ul>
 							<c:forEach var="m" items="${mentoringList}">
-                            <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_Id=${m.member_study_id}"></a></li>
+                            <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_Id=${m.member_study_id}">${m.title}</a></li>
                             </c:forEach>
                                 <!-- 
 								<li><a href="#">멘토링리스트1......</a></li>
@@ -138,7 +137,7 @@
 						<div class="mp-clbox">
 							<ul> 
 							<c:forEach var="s" items="${studyList}">
-                            <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.member_study_id}"></a></li>
+                            <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.member_study_id}">${s.title}</a></li>
                             </c:forEach>
 							<!-- 
 								<li><a href="#">스터디리스트1......</a></li>

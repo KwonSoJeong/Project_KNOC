@@ -76,16 +76,77 @@ public class Member_Study_InfoDao {
 
 	}
 	
+	public List<Map<String, Object>> infoClassList(String id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		map.clear();
+		map.put("table", "classes");
+		map.put("id", "class_id");
+		map.put("value", id);
+		
+		try {
+			return sqlSession.selectList(ns + "infoTitleList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return null;
+	}
+	
+	public List<Map<String, Object>> infoStudyList(String id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		map.clear();
+		map.put("table", "study");
+		map.put("id", "study_id");
+		map.put("value", id);
+		
+		try {
+			return sqlSession.selectList(ns + "infoTitleList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return null;
+	}
+	
+	public List<Map<String, Object>> infoMentoringList(String id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		map.clear();
+		map.put("table", "mentoring");
+		map.put("id", "mentoring_id");
+		map.put("value", id);
+		
+		try {
+			return sqlSession.selectList(ns + "infoTitleList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return null;
+	}
+	
 	/* DAO 테스트 코드 
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		map.clear();
-		map.put("id", "aaa");
-		map.put("value", "class");
-		List<Member_Study_Info> list = sqlSession.selectList(ns + "infoList", map);
-		for (Member_Study_Info msi : list) {
-			System.out.println(msi);
+		map.put("table", "classes");
+		map.put("id", "class_id");
+		map.put("value", "qq");
+		List<Map<String, Object>> list = sqlSession.selectList(ns + "infoTitleList", map);
+		for (Map<String, Object> msi : list) {
+			for(String s : msi.keySet()) {
+				System.out.println(msi.get(s));
+			}
 		}
 	}
 	*/
+	
 }

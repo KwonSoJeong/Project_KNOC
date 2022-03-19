@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import model.Knoc_Member;
 import model.Member_Study_Info;
 import service.Knoc_MemberDao;
 import service.Member_Study_InfoDao;
+import service.WishListDao;
 
 //@WebServlet("/member/*")
 public class MemberController extends MskimRequestMapping {
@@ -355,18 +357,22 @@ public class MemberController extends MskimRequestMapping {
 		Knoc_Member member = md.selectOne(id);
 		
 		Member_Study_InfoDao msd = new Member_Study_InfoDao();
-		// 2) 내가 개설한/수강중인/관심등록한 클래스 리스트 가져오기
-		List<Member_Study_Info> classList = msd.infoList(id, "class");
+		// 2) 내가 개설한/수강중인 클래스 리스트 가져오기
+		List<Map<String, Object>> classList = msd.infoClassList(id);
 		// 3) 참여중인 스터디 리스트 가져오기
-		List<Member_Study_Info> studyList = msd.infoList(id, "study");
+		List<Map<String, Object>> studyList = msd.infoStudyList(id);
 		// 4) 참여중인 멘토링 리스트 가져오기
-		List<Member_Study_Info> mentoringList = msd.infoList(id, "mentoring");
-			
+		List<Map<String, Object>> mentoringList = msd.infoMentoringList(id);
+		// 5) 관심등록한 클래스 리스트 가져오기
+		WishListDao wd = new WishListDao();
+		List<Map<String, Object>> wishList = wd.wishListOne(id);
+		
 		request.setAttribute("member", member);
 		request.setAttribute("classList", classList);
 		request.setAttribute("studyList", studyList);
 		request.setAttribute("mentoringList", mentoringList);
-
+		request.setAttribute("wishList", wishList);
+		
 		return "/view/member/myPage.jsp";
 	}
 	
