@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member_study_info">
+<resultMap type="HashMap" id="infoTitleList">
+    <id column="id" property="id"/>
+    <id column="title" property="title"/>
+    <id column="member_study_id" property="member_study_id"/>
+    <id column="type" property="type"/>
+</resultMap>
+
 <insert id="insertInfo" parameterType="Member_Study_Info">
 insert into member_study_info (id, member_study_id, type, no) values (#{id}, #{member_study_id}, #{type}, #{no})
 </insert>
@@ -17,4 +24,10 @@ select * from member_study_info where id = #{id} and member_study_id like '${val
 <select id="nextSeq" resultType="int">
 select infoseq.nextval from dual
 </select>
+
+<select id="infoTitleList" resultMap="infoTitleList" parameterType="String">
+select * from (select title, m.* from member_study_info m, ${table} c where m.member_study_id = c.${id}) where id = '${value}'
+</select>
+
+
 </mapper>

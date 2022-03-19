@@ -1,6 +1,7 @@
 package service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -73,4 +74,28 @@ public class WishListDao {
 		
 		return 0;
 	}
+	
+	public List<Map<String, Object>> wishListOne(String id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.selectList(ns + "wishListOne", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+		return null;
+	}
+	
+	/* DAO 테스트 코드 
+	public static void main(String[] args) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		List<Map<String, Object>> list = sqlSession.selectList(ns + "wishListOne", "qq");
+		for (Map<String, Object> msi : list) {
+			System.out.println(msi.keySet());
+		}
+	}
+	*/
 }
