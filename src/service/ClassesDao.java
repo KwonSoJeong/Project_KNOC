@@ -142,6 +142,20 @@ public class ClassesDao {
 
 		return 0;
 	}
+	
+	public int favoriteCntDown(String classId) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.update(ns + "favoriteCntDown", classId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return 0;
+	}
 
 	/* DAO 테스트 코드
 	public static void main(String[] args) {

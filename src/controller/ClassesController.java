@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -16,9 +17,11 @@ import model.Class_Content;
 import model.Classes;
 import model.Knoc_Member;
 import model.Member_Study_Info;
+import model.WishList;
 import service.Class_ContentDao;
 import service.ClassesDao;
 import service.Member_Study_InfoDao;
+import service.WishListDao;
 
 //@WebServlet("/classes/*")
 public class ClassesController extends MskimRequestMapping {
@@ -116,7 +119,7 @@ public class ClassesController extends MskimRequestMapping {
 		MultipartRequest multi = null;
 		String path = request.getServletContext().getRealPath("/") + "/contentfile/";
 		try {
-			multi = new MultipartRequest(request, path, 30 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
+			multi = new MultipartRequest(request, path, 300 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,55 +146,47 @@ public class ClassesController extends MskimRequestMapping {
 		Class_ContentDao con_d = new Class_ContentDao();
 		
 		Classes classone = cl_d.classOne(newClass.getClass_id());
+		String[] titleArr = multi.getParameterValues("contentTitle");
 		
-		int lastNum = 0;
+		List<String> fileList = new ArrayList<String>();
+		int num = 1;
+		
+		while(fileList.size() < titleArr.length) {
+			String filename = multi.getFilesystemName("file"+num);
+			System.out.println(filename);
+			
+			if (filename == null) {
+				num++;
+				continue;
+			}
+			
+			fileList.add(filename);
+			
+			num++;
+		}
+		
+		
+		int lastNum = titleArr.length;
 		if (classone != null) {
 			// 현재는 최대 10차시 까지 입력받도록 되어있음
-			for (int i = 1; i <= 11; i++) {
+			for (int i = 0; i < titleArr.length; i++) {
 				Class_Content newContent = new Class_Content();
 				
-				newContent.setTitle(multi.getParameter("title" + i));
+				newContent.setTitle(titleArr[i]);				
+				newContent.setFile1(fileList.get(i));
 				
-				if (newContent.getTitle() == null) {
-					lastNum = i-1;
-					break;
-				}
-				
-				newContent.setFile1(multi.getFilesystemName("file" + i));
 				if(newContent.getFile1() == null) {
 					newContent.setFile1("");
 				}
 				
 				newContent.setClass_Id(newClass.getClass_id());
 				newContent.setContent_Id("content" + con_d.newContentNum());
-				newContent.setNo(i);
-				
-				
 				
 				if (con_d.contentUpload(newContent) > 0) {
 					contentResult++;
 				}
 			}
 		}
-		
-		/*
-		if (classone != null) {
-			// 현재는 3차시까지 입력받도록 되어있음
-			for (int i = 1; i <= 3; i++) {
-				Class_Content newContent = new Class_Content();
-
-				newContent.setClass_Id(newClass.getClass_id());
-				newContent.setContent_Id("content" + con_d.newContentNum());
-				newContent.setNo(i);
-				newContent.setTitle(multi.getParameter("title" + i));
-				newContent.setFile1(multi.getFilesystemName("file" + i));
-
-				if (con_d.contentUpload(newContent) > 0) {
-					contentResult++;
-				}
-			}
-		}
-		*/
 		
 		String msg = "클래스 등록에 실패하였습니다.";
 		String url = request.getContextPath() + "/classes/classUpload";
@@ -202,7 +197,7 @@ public class ClassesController extends MskimRequestMapping {
 			url = request.getContextPath() + "/classes/classInfo?class_id=" + newClass.getClass_id();
 			
 			Member_Study_InfoDao msd = new Member_Study_InfoDao();
-			Member_Study_Info msi = new Member_Study_Info(newClass.getLec_id(), newClass.getClass_id(), newClass.getTitle(), 1);
+			Member_Study_Info msi = new Member_Study_Info(newClass.getLec_id(), newClass.getClass_id(), 1, msd.nextSeq());
 			
 			msd.insertInfo(msi);
 		}
@@ -256,11 +251,16 @@ public class ClassesController extends MskimRequestMapping {
 		ClassesDao cd = new ClassesDao();
 		Classes classone = cd.classOne(classId);
 		
+		Class_ContentDao ccd = new Class_ContentDao();
+		List<Class_Content> contentList = ccd.contentList(classId);
+		int contentNo = 1;
 		// parameter로 전달된 classId는 session에 저장, content view 출력 시 활용
 		HttpSession session = request.getSession();
 		session.setAttribute("classId", classId);
 		
+		request.setAttribute("contentNo", contentNo);
 		request.setAttribute("classone", classone);
+		request.setAttribute("contentList", contentList);
 		return "/view/classes/classInfo.jsp";
 	}
 	
@@ -291,7 +291,7 @@ public class ClassesController extends MskimRequestMapping {
 				msg = "수강신청이 완료되었습니다.";
 				url = request.getContextPath() + "/classes/classContent";
 				
-				Member_Study_Info newInfo = new Member_Study_Info(id, class_id, classOne.getTitle(), 2);
+				Member_Study_Info newInfo = new Member_Study_Info(id, class_id, 2, msd.nextSeq());
 				msd.insertInfo(newInfo);
 			}
 
@@ -319,7 +319,16 @@ public class ClassesController extends MskimRequestMapping {
 		// classInfo 화면을 거쳐서 content 페이지로 왔을 때는 세션에 classId가 저장되어 있음
 		classId = (String) session.getAttribute("classId");
 		String id = (String) session.getAttribute("memid");
-		String contentNo = request.getParameter("no");
+		
+		Class_ContentDao cd = new Class_ContentDao();
+		List<Class_Content> contentList = cd.contentList(classId);
+		
+		String contentId = request.getParameter("content_id");
+		
+		if (contentId == null) {
+			contentId = contentList.get(0).getContent_Id();
+		}
+		Class_Content contentOne = cd.contentOne(classId, contentId);
 		
 		// content화면 완성된 후에 제대로 다시 테스트 할 예정
 		
@@ -333,40 +342,46 @@ public class ClassesController extends MskimRequestMapping {
 			return "/view/alert.jsp";
 		}
 		
-		if (contentNo == null) {
-			contentNo = "1";
-		}
-		
-		
-		Class_ContentDao cd = new Class_ContentDao();
-		List<Class_Content> contentList = cd.contentList(classId);
-		Class_Content contentOne = cd.contentOne(classId, contentNo);
+		int contentNo = 1;
 		
 		request.setAttribute("contentList", contentList);
 		request.setAttribute("content", contentOne);
-		
+		request.setAttribute("contentNo", contentNo);
 		return "/view/classes/classContent.jsp";
 	}
 	
-	// 클래스 관심등록 아직 작성중, 관심등록 view 추가되면 마저 작성
+	// 클래스 관심등록 process, classInfo.jsp에서 javaScript + ajax로 구현
 	@RequestMapping("classFavorite")
 	public String classFavorite(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memid");
+		String status = "login-null";
 		
-		String classId = request.getParameter("class_id");
+		String classId = (String) session.getAttribute("classId");
 		ClassesDao cd = new ClassesDao();
-		Classes classone = cd.classOne(classId);
 		
-		int num = cd.favoriteCntUp(classId);
-		
-		if (num > 0) {
-			Member_Study_InfoDao msd = new Member_Study_InfoDao();
-			Member_Study_Info newInfo = new Member_Study_Info(id, classId, classone.getTitle(),3);
-			msd.insertInfo(newInfo);
+		if (id != null) {
+			WishListDao wd = new WishListDao();
+			WishList wishOne =  wd.wishOne(id, classId);
+
+			if (wishOne == null) {
+				WishList newWish = new WishList(wd.nextSeq(), id, classId);
+				int num = wd.insertWish(newWish);
+				int cntUp = cd.favoriteCntUp(classId);
+				status = "favorite-Cnt-Up";
+			} else {
+				int num = wd.deleteWish(id, classId);
+				int cntDown = cd.favoriteCntDown(classId);
+				status = "favorite-Cnt-Down";
+			}
+			
 		}
 		
-		request.setAttribute("classone", classone);
-		return "/view/classes/classInfo.jsp";
+		Classes classone = cd.classOne(classId);
+		int favoriteCnt = classone.getFavorite();
+		 
+		request.setAttribute("favoriteCnt", favoriteCnt);
+		request.setAttribute("status", status);
+		return "/single/classFavorite.jsp";
 	}
 }

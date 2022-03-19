@@ -2,15 +2,13 @@ package model;
 
 public class Class_Content {
 	private String content_Id, class_Id, title, file1;
-	private int no;
 	
-	public Class_Content(String content_Id, String class_Id, String title, String file1, int no) {
+	public Class_Content(String content_Id, String class_Id, String title, String file1) {
 		super();
 		this.content_Id = content_Id;
 		this.class_Id = class_Id;
 		this.title = title;
 		this.file1 = file1;
-		this.no = no;
 	}
 
 	public Class_Content() {
@@ -49,18 +47,10 @@ public class Class_Content {
 		this.file1 = file1;
 	}
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
 	@Override
 	public String toString() {
 		return "Class_Content [content_Id=" + content_Id + ", class_Id=" + class_Id + ", title=" + title + ", file1="
-				+ file1 + ", no=" + no + "]";
+				+ file1 + "]";
 	}
 	
 	

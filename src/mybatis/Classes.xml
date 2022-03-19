@@ -36,4 +36,8 @@ select * from (select rownum rnum, a.* from (select * from classes where title l
 <update id="favoriteCntUp" parameterType="string">
 update classes set favorite = favorite + 1 where class_id = #{value}
 </update>
+
+<update id="favoriteCntDown" parameterType="string">
+update classes set favorite = favorite - 1 where class_id = #{value}
+</update>
 </mapper>

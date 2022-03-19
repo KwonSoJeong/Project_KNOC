@@ -15,6 +15,7 @@
         <typeAlias type="model.Qna" alias="qna"/>
         <typeAlias type="model.Study_Comment" alias="study_comment"/>
         <typeAlias type="model.Study" alias="study"/>
+        <typeAlias type="model.WishList" alias="wishlist"/>
         
     </typeAliases>
     <environments default="development">
@@ -40,5 +41,6 @@
         <mapper resource="mybatis/Qna.xml" />
         <mapper resource="mybatis/Study_Comment.xml" />
         <mapper resource="mybatis/Study.xml" />
+        <mapper resource="mybatis/WishList.xml"/>
     </mappers>
 </configuration>
