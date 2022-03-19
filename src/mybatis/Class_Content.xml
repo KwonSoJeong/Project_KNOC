@@ -7,14 +7,14 @@ select contentseq.nextval from dual
 </select>
 
 <insert id="contentUpload" parameterType="class_content">
-insert into class_content values(#{content_Id}, #{class_Id}, #{no}, #{title}, #{file1})
+insert into class_content values(#{content_Id}, #{class_Id}, #{title}, #{file1})
 </insert>
 
 <select id="contentOne" parameterType="map" resultType="class_content">
-select * from class_content where class_id = #{classId} and no = #{contentNo} 
+select * from class_content where class_id = #{classId} and content_id = #{contentId} 
 </select>
 
 <select id="contentList" parameterType="string" resultType="class_content">
-select * from class_content where class_id = #{value} order by no
+select * from class_content where class_id = #{value}
 </select>
 </mapper>

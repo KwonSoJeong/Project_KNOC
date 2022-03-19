@@ -43,12 +43,12 @@ public class Class_ContentDao {
 		return 0;
 	}
 	
-	public Class_Content contentOne(String classId, String contentNo) {
+	public Class_Content contentOne(String classId, String contentId) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		
 		map.clear();
 		map.put("classId", classId);
-		map.put("contentNo", contentNo);
+		map.put("contentId", contentId);
 		
 		try {
 			return sqlSession.selectOne(ns + "contentOne", map);

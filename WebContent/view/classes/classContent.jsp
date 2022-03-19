@@ -26,7 +26,8 @@
 				<div>목차</div>
 				<ul id="cc-subnav">
 				    <c:forEach var = "c" items = "${contentList }">
-                    <li><a href="<%=request.getContextPath() %>/classes/classContent?no=${c.no}">${c.no }차시 | ${c.title }</a></li>
+                    <li><a href="<%=request.getContextPath() %>/classes/classContent?content_id=${c.content_Id}">${contentNo}차시 | ${c.title}</a></li>
+                    <c:set var= "contentNo" value="${contentNo+1}" ></c:set>
                     </c:forEach>
                     <!--  
 					<li><a href="#">2. 봉지 뜯기</a></li>
