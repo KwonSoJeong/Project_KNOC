@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="../js/click.js"></script>
-<link href="../resource/style/main.css" rel='stylesheet' type='text/css'/>
+<script src="<%=request.getContextPath() %>/js/click.js"></script>
+<link href="<%=request.getContextPath() %>/resource/style/main.css" rel='stylesheet' type='text/css'/>
 </head>
 <body style="padding-top: 70px;">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -63,64 +63,28 @@
 		<div class="mnc-class">New Class</div>
 		<div class="mnc-lcontainer">
 		<c:forEach var="c" items="${newClassList }">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
-				<div>
-					<div class="mnc-thumbnail">
+			<div class="mnc-content">
+				<div class="heart_img">
+					
+					<button class="noheartbtn n0" type="submit" >
+						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
+					</button>
+					<button class="heartbtn y0" type="submit" >
+						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
+					</button>
+					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
-					<div class="mnc-heart"></div>
+
 				</div>
-				<div class="mnc-creator">${c.lec_id }</div>
-				<div class="mnc-title">${c.title }</div>
-				<div class="mnc-heartcnt">♥ ${c.favorite }</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">${c.price }원</div>
+				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
+				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
+				<div class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
+				<div class="mnc-bor-bot" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'"></div>
+				<div class="mnc-price" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.price }원</div>
 				
 			</div>
 			</c:forEach>
-			<!--  
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[신규혜택]...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 10,700원</div>
-			</div>
-			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[반값할인] 과자 잘먹는법 잘먹는법 잘먹는법 잘먹는법 잘먹는법...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">연 1원</div>
-			</div>
-					
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[TEST] TEST TEST TEST TEST TEST TEST ...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 40,200원</div>
-			</div>
-			-->
 		</div>
 	</div>
 
@@ -143,49 +107,6 @@
 				<div class="mnc-price">${c.price }원</div>
 			</div>
 			</c:forEach>
-			<!-- 
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[신규혜택]...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 10,700원</div>
-			</div>
-			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[반값할인] 과자 잘먹는법 잘먹는법 잘먹는법 잘먹는법 잘먹는법...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">연 1원</div>
-			</div>
-			
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?='">
-				<div>
-					<div class="mnc-thumbnail">
-						<img src="#">
-					</div>
-					<div class="mnc-heart"></div>
-				</div>
-				<div class="mnc-creator">콕스</div>
-				<div class="mnc-title">[TEST] TEST TEST TEST TEST TEST TEST ...</div>
-				<div class="mnc-heartcnt">♥ 59756</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">월 40,200원</div>
-			</div>
-			-->
 		</div>
 	</div>	
 	
