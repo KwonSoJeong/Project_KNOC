@@ -43,106 +43,104 @@
 				</ul>			
 			</div>
 			
-<!-- 무한스크롤때문에 눈에보이는 12개는 무조건 구현해야함, 백앤드구현시 아래 스크립트 138행(addContent.innerHTML~~)도 구현요망 -->
-			<div class="class_List">
-			<section>	
-			    <c:forEach var="c" items="${classList}">
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id}">
-						<div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onerror="none" style="width: 100%; height: 100%;"></div>
-						<div class="cc-title">${c.title }</div>
-					</a>	
-				</div>	
-				</c:forEach> 
-				  
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>				
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>	
-				<div class="box">
-					<a href="<%=request.getContextPath()%>/classes/classInfo?=">
-						<div class="cc-cc"><img src="${imgage}" onerror="none"></div>
-						<div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div>
-					</a>	
-				</div>
-		</section>						
+		<section>
+			<div class="class_List"> 
+				<div>
+				    <c:forEach var="c" items="${classList}">
+					<div class="box">
+						<a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id}">
+							<div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onerror="none" style="width: 100%; height: 100%;"></div>
+							<div class="cc-title">${c.title }</div>
+							<div class="cc-heartcnt">♥ ${c.favorite }</div>
+							<div class="cc-bor-bot"></div>
+							<div class="cc-price">${c.price }원</div>
+						</a>
+					</div>	
+					</c:forEach> 
+				</div>						
 			</div>
-		
+		</section>	
+			
+			
+			
+			
 			
 			<!-- classList 테스트용 코드입니다! <c:forEach var = "classes" items="${classList}">${classes}</c:forEach>--> 		
 		</div>
 	</div>
-	
+
 <script>
 /*무한스크롤*/
-window.onscroll = function(e) {
-  console.log(window.innerHeight , window.scrollY,document.body.offsetHeight)
-  if((window.innerHeight + window.scrollY)+1000 >= document.body.offsetHeight) { 
-    setTimeout(function(){
-	  var addContent = document.createElement("div");
-      addContent.classList.add("box")
-      addContent.innerHTML = '<a href="<%=request.getContextPath()%>/classes/classInfo?="><div class="cc-cc"><img src="${imgage}" onerror="none"></div><div class="cc-title">[단기간] 포토샵 잘하는법 단기간에 섭렵하기 진짜 고수되는법...</div></a>'
-      
-    document.querySelector('section').appendChild(addContent);
-    })  
-  }
+var loading = false;    //중복실행여부 확인 변수
+var page = ${pageInt};   //불러올 페이지
+let pageInt = 2;
+/*nextpageload function*/
+function next_load()
+{
+        $.ajax({
+                type:"GET",
+                url:" classes/classList",
+                data : {'page':page},
+                dataType : "text",
+                success: function(classList)
+                {
+                	if(classList.length > 1){
+
+       					var addContent = document.createElement("div");
+       					addContent.innerHTML = '<c:forEach var="c" items="${classList}"><div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id}"><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onerror="none" style="width: 100%; height: 100%;"></div><div class="cc-title">${c.title }</div></a></div></c:forEach> '								
+       					document.querySelector('.class_List').appendChild(addContent);
+						
+       					
+       					pageInt++;
+       					pageplus(pageInt); //증가한 페이지를 컨트롤러로 전송
+                        loading = false;    //실행 가능 상태로 변경
+                    }
+                    else
+                    {
+                        alert('failed');
+                    }
+                }
+                ,error: function(request,status,error) 
+                {
+                	alert(" message = " + request.responseText + " error = " + error); // 실패 시
+                }
+            });
 }
+
+function pageplus(pageInt){
+
+	 $.ajax({//컨트롤러의 pageInt를 pageInt++된 값으로 패치
+         type:"PATCH",
+         url:" classes/classList",
+         data : {'pageInt':pageInt},
+         dataType : "text",//타입을..뭘로..
+         success: function(result){alert("success!")}
+         ,error: function(request,status,error) {
+         	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+         }
+     });
+	
+}
+
+$(window).scroll(function(){
+    if($(window).scrollTop()+200>=$(document).height() - $(window).height())
+    {
+        if(!loading)//실행 가능
+        {
+            loading = true;//실행 불가능 상태로 변경
+            next_load(); 
+        }
+        else//실행 불가능 상태
+        {
+        	alert('로딩중입니다.');
+        	}
+    }
+});
+
+
+
+
+
 
 /* 스크롤바 */
 $(function(){

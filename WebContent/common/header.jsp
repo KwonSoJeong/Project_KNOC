@@ -12,8 +12,7 @@
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');</script>
-<link href="../resource/style/header.css" rel='stylesheet' type='text/css'/>
-<link href="../../resource/style/header.css" rel='stylesheet' type='text/css'/>
+<link href="<%=request.getContextPath() %>/resource/style/header.css" rel='stylesheet' type='text/css'/>
 <script src="../js/hover.js"></script>
 
 <body>
