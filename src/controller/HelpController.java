@@ -105,11 +105,11 @@ public class HelpController extends MskimRequestMapping {
 				Qna_CommentDao qcd = new Qna_CommentDao();
 				
 				//comment count
-				int refNum = Integer.parseInt(qnaId.substring(3));
-				int commentCount = qcd.countOne(refNum);
+				String refId = qnaId;
+				int commentCount = qcd.countOne(refId);
 				
 				//comment select
-				Qna_Comment comment = qcd.selectOneComment(refNum);
+				Qna_Comment comment = qcd.selectOneComment(refId);
 				System.out.println(comment);
 				request.setAttribute("comment", comment);
 				request.setAttribute("commentCount", commentCount);
@@ -128,11 +128,11 @@ public class HelpController extends MskimRequestMapping {
 		Qna_CommentDao qcd = new Qna_CommentDao();
 		
 		//comment count
-		int refNum = Integer.parseInt(qnaId.substring(3));
-		int commentCount = qcd.countOne(refNum);
+		String refId = qnaId;
+		int commentCount = qcd.countOne(refId);
 		
 		//comment select
-		Qna_Comment comment = qcd.selectOneComment(refNum);
+		Qna_Comment comment = qcd.selectOneComment(refId);
 		System.out.println(comment);
 		request.setAttribute("comment", comment);
 		request.setAttribute("commentCount", commentCount);
@@ -222,16 +222,17 @@ public class HelpController extends MskimRequestMapping {
 			Qna_Comment qc = new Qna_Comment();
 			
 			String qnaId = request.getParameter("qna_Id");
-			int refNum = Integer.parseInt(qnaId.substring(3));
+			String refId = qnaId;
 			String id = "qnacomment"+qcd.nextNum();
 			String title=" ";
 			if(request.getParameter("title")!=null) {
 				title = request.getParameter("title");
 			}
 			
+			qc.setWriter(memid);
 			qc.setComment_Id(id);
 			qc.setContent(request.getParameter("content"));
-			qc.setRefNum(refNum);
+			qc.setRefId(refId);
 			qc.setTitle(title);
 			
 			System.out.println(qc);

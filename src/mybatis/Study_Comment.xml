@@ -3,20 +3,24 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="study_comment">
 
+<select id="nextNum" resultType="int">
+select studycomseq.nextval from dual
+</select>
+
 <insert id="insert" parameterType="study_comment">
-insert into study_comment values (#{comment_Id}, #{refNum}, #{content}, 0, 0, sysdate)
+insert into study_comment values (#{comment_Id}, #{refId}, #{content}, 0, 0, sysdate, #{writer})
 </insert>
 
-<select id="selectComment" resultType="study_comment" parameterType="int">
-select * from study_comment where refnum = #{refNum} order by regdate asc
+<select id="selectComment" resultType="study_comment" parameterType="string">
+select * from study_comment where refId = #{refId} order by regdate asc
 </select>
 
-<select id="count" resultType="int" parameterType="int">
-select count(*) from study_comment where refnum = #{refNum}
+<select id="count" resultType="int" parameterType="string">
+select count(*) from study_comment where refId = #{refId}
 </select>
 
-<select id="callProfile" resultType="string" parameterType="int">
-select m.profile from study_comment s,KNOC_MEMBER m where s.COMMENT_ID = m.ID(+) and s.refnum = #{refNum} order by regdate asc
+<select id="callProfile" resultType="string" parameterType="string">
+select m.profile from study_comment s,KNOC_MEMBER m where s.COMMENT_ID = m.ID(+) and s.refId = #{refId} order by regdate asc
 </select>
 
 </mapper>
