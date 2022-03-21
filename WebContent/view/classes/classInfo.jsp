@@ -42,7 +42,7 @@ function favoriteCntUp() {
 
 <body>
 <div id="class-bot">
-		<h2 id ="class-h2">${classone.title}</h2>
+		<h1 id ="class-h1">${classone.title}</h1>
 	</div>
 
 	<!-- <form class="class-form" action="#">
@@ -52,27 +52,35 @@ function favoriteCntUp() {
 
 
 	<div class="class-wrapper">
-	<div class="class-font">
-	<label>클래스 제목:&nbsp;${classone.title}</label>
-	<img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="200" height="210">
-	<p>${classone.intro}</p>
-	<p>목차</p>
+	<div id="class-info">
+	
+	<div><img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="500px" height="330px"></div>
+	<div class="class-detail"><h2>클래스 제목:&nbsp;${classone.title}</h2></div>
+	<div class="class-detail">클래스 카테고리:&nbsp;#######</div>
+	<div class="class-detail">${classone.intro}</div>
+	<div>
+	<div class="class-detail" style="text-align: center;">목차</div>
+	
 	<c:forEach var="c" items="${contentList}">
+	<div class="content-list">
 	${contentNo}차시 | ${c.title } <br />
 	<c:set var="contentNo" value="${contentNo+1}"/>
+	</div>
 	</c:forEach>
+	
+	</div>
 	</div>
 	
-	<div class="class-font"> <!--<label>클래스 공유자 프로필</label>
+	<div id="class-register"> <!--<label>클래스 공유자 프로필</label>
 	 <img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">
 	<br> -->
-	<p>클래스 공유자 이름:&nbsp;${classone.lec_id}</p>
-	<p>가격: ${classone.price}</p>
-	<p id="fav">♥ ${classone.favorite}</p>
+	<div class="class-detail">클래스 공유자:&nbsp;${classone.lec_id}</div>
+	<div id="price" class="class-detail">${classone.price}원</div>
+	<div id="fav" class="class-detail">♥ ${classone.favorite}</div>
 	
 	<!-- <button id="class-bung2" type="submit" value="멘토링 신청">멘토링신청</button>  -->
-	<button id="class-bung2" type="button" onclick="location.href='<%=request.getContextPath()%>/classes/classRegister'">수강신청</button>
-	<input id="class-bung22" type="button" onclick="favoriteCntUp()" value="관심등록">
+	<button id="class-bung2" class="class-detail" type="button" onclick="location.href='<%=request.getContextPath()%>/classes/classRegister'">수강신청</button>
+	<input id="class-bung22" class="class-detail" type="button" onclick="favoriteCntUp()" value="관심등록">
 	</div>
 	</div>
 
