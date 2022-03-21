@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -103,6 +105,44 @@ public class MemberController extends MskimRequestMapping {
 		request.setAttribute("filename", filename);
 		
 		return "/single/picturePro.jsp";
+	}
+	
+	// 회원가입 시 아이디 유효성 확인
+	@RequestMapping("idChk")
+	public String idChk(HttpServletRequest request, HttpServletResponse response) {
+		String chk = "";
+		String id = request.getParameter("id");
+		
+		Knoc_MemberDao md = new Knoc_MemberDao();
+		Knoc_Member member = md.selectOne(id);
+		
+		if (member == null) {
+			chk = "ok";
+		} else {
+			chk = "alreadyExistId";
+		}
+		
+		request.setAttribute("chk", chk);
+		return "/single/userInputChk.jsp";
+	}
+	
+	// 회원가입 시 비밀번호 유효성 체크
+	@RequestMapping("pwdChk")
+	public String pwdChk(HttpServletRequest request, HttpServletResponse response) {
+		String chk = "";
+		String pwd = request.getParameter("pwd");
+		
+		Pattern pwdPattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W)");
+		Matcher pwdMatcher = pwdPattern.matcher(pwd);
+		
+		if (!pwdMatcher.find()) {
+			chk = "false";
+		} else {
+			chk = "true";
+		}
+		
+		request.setAttribute("chk", chk);
+		return "/single/userInputChk.jsp";
 	}
 	
 	@RequestMapping("login")
