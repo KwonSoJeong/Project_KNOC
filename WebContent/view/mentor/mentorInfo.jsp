@@ -24,10 +24,17 @@
 	</div>
 	
 	<div class="mentor-font"> 
-	<img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">멘토 이름: ${m.mentor_Id}
+	<c:choose>
+	<%--프로필 사진이 없으면 기본 프로필사진, 있으면 설정한 프로필 사진 --%>
+	<c:when test="${profile!=null }"><img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">멘토 이름: ${m.mentor_Id}</c:when>
+	<c:otherwise><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" width="110" height="90">멘토 이름: ${m.mentor_Id}</c:otherwise>
+	</c:choose>
 	<br>
 	<p>멘토 소개글:&nbsp;${m.intro}</p>
-	<button id="mentro-bung2" type="button" onclick="location.href='<%=request.getContextPath()%>/mentor/mentorRegister'">멘토링신청</button>
+	<form action="<%=request.getContextPath()%>/mentor/mentoringEntry" method="post">
+	<input type="hidden" name="mentoringId" value="${m.mentoring_Id }">
+	<button id="mentro-bung2" type="submit">멘토링신청</button>
+	</form>
 	</div>
 	</div>
 </body>

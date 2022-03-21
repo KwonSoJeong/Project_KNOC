@@ -23,7 +23,7 @@
 
 <div class="container" style="padding: 80px;">
 
-		<form action="<%=request.getContextPath() %>/member/mentorRegisterPro" enctype="multipart/form-data" method="post">
+		<form action="<%=request.getContextPath() %>/mentor/mentorRegisterPro" method="post">
 		<!-- <form name="f" action="<%=request.getContextPath()%>" method="post"> -->
 		
 			<h4 id="center">멘토링 주제, 소개글, 내용을 자유롭게 써주세요~!</h4>
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div id="center" style="padding: 10px;">
-				<button type="button" onclick="location.href='<%=request.getContextPath()%>/mentor/mentorRegister'">등록하기</button>
+				<button type="submit" onclick="location.href='<%=request.getContextPath()%>/mentor/mentorRegister'">등록하기</button>
 			</div>
 		</form>
 	</div>

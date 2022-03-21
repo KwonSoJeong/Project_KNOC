@@ -89,16 +89,19 @@ text-decoration: none ;
 		<h2 id ="font">멘토링</h2>
 	</div>
 	<form class="mtl-form" action="<%=request.getContextPath()%>/mentor/mentorList">
-		<input class="form-control" type="text" name="" placeholder="검색하기">
+		<input class="form-control" type="text" name="keyword" placeholder="검색하기">
 		<button id="bung" type="submit">검색</button>
 	</form>
 
 	<div class="dot-wrapper">
-	<c:forEach var="m" items="${mt}">
+	<c:forEach var="m" items="${mt}" varStatus="status">
 	<div class="mentor-dot">
-	<img src="<%=request.getContextPath() %>/profile/${profile}" width="100" height="80" id="pic">멘토 이름:&nbsp;${m.mentor_Id}
-	<p>멘토링 주제:&nbsp;${m.input}</p>
-	<a href="<%=request.getContextPath() %>/mentor/mentorInfo">내용보기</a>
+	<%-- 프로필사진이 없으면 기본 프로필사진으로 설정 --%>
+	<c:if test="${profile[status.index]!=null }"><img src="<%=request.getContextPath() %>/profile/${profile[status.index]}" width="100" height="80" id="pic"></c:if>
+	<c:if test="${profile[status.index]==null }"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" width="100" height="80" id="pic"></c:if>
+	멘토 이름:&nbsp;${m.mentor_Id}
+	<p>멘토링 주제:&nbsp;${m.title}</p>
+	<a href="<%=request.getContextPath() %>/mentor/mentorInfo?mentoring_Id=${m.mentoring_Id}">내용보기</a>
 	</div>
 	</c:forEach>
 </div>
