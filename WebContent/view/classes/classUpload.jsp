@@ -130,10 +130,20 @@ margin: 0 auto;
 text-align: center;
 }
 
+#upload-thumbnail {
+display: inline-block;
+width : 300px;
+}
+
 #blank_thumbnail {
-width: 200px;
-height: 130px;
+width: 400px;
+height: 270px;
+margin: 0 auto;
 background-color: gray;
+}
+
+#upload-option {
+margin-top: 50px;
 }
 
 p {
@@ -150,30 +160,49 @@ margin: 0;
 	<div class="container" style="padding: 80px;">
 		<form action="<%=request.getContextPath()%>/classes/classUploadPro" enctype="multipart/form-data" method="post" name="inputform">
 			<br>
-			
-			<label>카테고리</label>
+            <label>썸네일</label>
+            <div id="blank_thumbnail">
+            <img id="picture" src="" alt="썸네일 이미지" style="width:100%; height:100%;"/>
+            </div>
+            <input type="hidden" class="form-control" name="thumbnail">
+            <button type="button" onclick="thumbnail_upload()">썸네일 등록</button>
+            
+			<div id="upload-option">
+            <label>카테고리</label>
+            <select name="caterory_id">
+            <option value="category1">운동</option>
+            <option value="category2">크리에이티브</option>
+            <option value="category3">디자인</option>
+            <option value="category4">개발/프로그래밍</option>
+            <option value="category5">요리/베이킹</option>
+            <option value="category6">금융/재태크</option>
+            </select>
+             <label>타입</label>
+             <input type="radio" name="type" value="1">영상
+             <input type="radio" name="type" value="2">글
+            </div>
+            
+            
+            <br><br>
+			<!-- 
 			<div id= "upload-option">
+			<label>카테고리</label>
 			<select name="caterory_id">
-			<option value="1">요리</option>
-			<option value="2">디저트</option>
-			<option value="3">금융</option>
-			<option value="3">디자인</option>
-			<option value="3">음악</option>
-			<option value="3">개발/프로그래밍</option>
-			<option value="3">금융</option>
-			<option value="3">영어</option>
+			<option value="category1">운동</option>
+			<option value="category2">크리에이티브</option>
+			<option value="category3">디자인</option>
+			<option value="category4">개발/프로그래밍</option>
+			<option value="category5">요리/베이킹</option>
+			<option value="category6">금융/재태크</option>
 			</select>
-			</div>
-			<br><br>
-			
-			<div>
+			<br />
 			 <label>타입</label>
-			 <input type="radio" name="type" value="1">영상
-			 <input type="radio" name="type" value="2">글
-			</div>
-			<br><br>
+             <input type="radio" name="type" value="1">영상
+             <input type="radio" name="type" value="2">글
+            </div>
 			
-			<div>
+			<br><br>
+			<div id="upload-thumbnail">
 			<label>썸네일</label>
 			<div id="blank_thumbnail">
 			<img id="picture" src="" alt="썸네일 이미지" style="width:100%; height:100%;"/>
@@ -182,7 +211,7 @@ margin: 0;
 			<button type="button" onclick="thumbnail_upload()">썸네일 등록</button>
 			</div>
 			<br><br>
-			
+			 -->
 			<div>
 			<label>제목</label>
 			<input type="text" name="title" class="form-control">
