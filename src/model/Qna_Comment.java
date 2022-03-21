@@ -3,18 +3,18 @@ package model;
 import java.util.Date;
 
 public class Qna_Comment {
-	private String comment_Id, title, content;
-	private int refNum;
+	private String comment_Id, title, content, refId, writer;
 	private Date regDate;
 	
 	public Qna_Comment() {}
 	
-	public Qna_Comment(String comment_Id, String title, String content, int refNum, Date regDate) {
+	public Qna_Comment(String comment_Id, String title, String content, String refId, Date regDate, String writer) {
 		this.comment_Id = comment_Id;
 		this.title = title;
 		this.content = content;
-		this.refNum = refNum;
+		this.refId = refId;
 		this.regDate = regDate;
+		this.writer = writer;
 	}
 
 	public String getComment_Id() {
@@ -41,12 +41,12 @@ public class Qna_Comment {
 		this.content = content;
 	}
 
-	public int getRefNum() {
-		return refNum;
+	public String getRefId() {
+		return refId;
 	}
 
-	public void setRefNum(int refNum) {
-		this.refNum = refNum;
+	public void setRefId(String refId) {
+		this.refId = refId;
 	}
 
 	public Date getRegDate() {
@@ -56,11 +56,21 @@ public class Qna_Comment {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
 	@Override
 	public String toString() {
-		return "Qna_Comment [comment_Id=" + comment_Id + ", title=" + title + ", content=" + content + ", refNum="
-				+ refNum + ", regDate=" + regDate + "]";
+		return "Qna_Comment [comment_Id=" + comment_Id + ", title=" + title + ", content=" + content + ", refId="
+				+ refId + ", writer=" + writer + ", regDate=" + regDate + "]";
 	}
+
+	
 	
 }

@@ -27,10 +27,10 @@ public class Qna_CommentDao {
 	}
 	*/
 	
-	public Qna_Comment selectOneComment(int refNum) {
+	public Qna_Comment selectOneComment(String refId) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		try {
-			return sqlSession.selectOne(ns + "selectOneComment",refNum);
+			return sqlSession.selectOne(ns + "selectOneComment",refId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -79,10 +79,10 @@ public class Qna_CommentDao {
 			return 0;
 		}
 		
-		public int countOne(int refNum) {
+		public int countOne(String refId) {
 			SqlSession sqlSession = MyBatisConnection.getConnection();
 			try {
-				return sqlSession.selectOne(ns + "countOne",refNum);
+				return sqlSession.selectOne(ns + "countOne",refId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

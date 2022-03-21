@@ -65,10 +65,10 @@ public class StudyController extends MskimRequestMapping {
 			Member_Study_Info msi = new Member_Study_Info();
 			Member_Study_InfoDao msid = new Member_Study_InfoDao();
 			
-			msi.setTitle(s.getTitle());
 			msi.setId(s.getLeader_Id());
 			msi.setMember_study_id(s.getStudy_Id());
 			msi.setType(1);
+			msi.setNo(msid.nextSeq());
 			
 			msid.insertInfo(msi);
 			
@@ -175,17 +175,17 @@ public class StudyController extends MskimRequestMapping {
 		
 		//게시글과 답글 불러오기
 		s = sd.selectOne(studyId);
-		int refNum = Integer.parseInt(studyId.substring(5));
-		List<Study_Comment> commentlist = scd.selectComment(refNum);
+		String refId = studyId;
+		List<Study_Comment> commentlist = scd.selectComment(refId);
 		
 		//댓글 갯수
-		int count = scd.count(refNum);
+		int count = scd.count(refId);
 		
 		//작성자 프로필 사진
 		String leaderProfile = sd.callProfile(s.getLeader_Id());
 		
 		//댓글 작성자 프로필 사진
-		List<String> commentProfileList = scd.callProfile(refNum);
+		List<String> commentProfileList = scd.callProfile(refId);
 		
 		request.setAttribute("commentProfileList", commentProfileList);
 		request.setAttribute("leaderProfile", leaderProfile);
@@ -208,11 +208,14 @@ public class StudyController extends MskimRequestMapping {
 		
 		String id = (String) request.getSession().getAttribute("memid");
 		String study_Id = request.getParameter("study_Id");
-		int refNum = Integer.parseInt(study_Id.substring(5));
+		String refId = study_Id;
 		
-		sc.setComment_Id(id);
+		String commentId = "studycomment"+scd.nextNum();
+		
+		sc.setComment_Id(commentId);
+		sc.setWriter(id);
 		sc.setContent(request.getParameter("text"));
-		sc.setRefNum(refNum);
+		sc.setRefId(refId);
 		
 		int num = scd.insert(sc);
 		if(num>0) {
@@ -266,10 +269,10 @@ public class StudyController extends MskimRequestMapping {
 			
 			s = sd.selectOne(studyId);
 			
-			msi.setTitle(s.getTitle());
 			msi.setId(id);
 			msi.setMember_study_id(s.getStudy_Id());
 			msi.setType(2);
+			msi.setNo(msid.nextSeq());
 			
 			msid.insertInfo(msi);
 			

@@ -88,7 +88,7 @@
 										<c:otherwise><span class="avatar-photo"><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></span></c:otherwise>
 										</c:choose>
 										<div class="avatar-info">
-											<span class="nickname" title="김코딩">${c.comment_Id }</span>
+											<span class="nickname" title="김코딩">${c.writer }</span>
 											<div class="date-created">
 												<span class="timeago" title="2022-03-09T13:44:19">${c.regDate }</span>
 											</div>

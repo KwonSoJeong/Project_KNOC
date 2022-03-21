@@ -4,19 +4,20 @@ import java.util.Date;
 
 public class Study_Comment {
 	private String comment_Id;
-	private String content;
-	private int refNum, refLevel, refStep;
+	private String content, refId, writer;
+	private int refLevel, refStep;
 	private Date regDate;
 	
 	public Study_Comment() {}
 	
-	public Study_Comment(String comment_Id, String content, int refNum, int refLevel, int refStep, Date regDate) {
+	public Study_Comment(String comment_Id, String content, String refId, int refLevel, int refStep, Date regDate, String writer) {
 		this.comment_Id = comment_Id;
 		this.content = content;
-		this.refNum = refNum;
+		this.refId = refId;
 		this.refLevel = refLevel;
 		this.refStep = refStep;
 		this.regDate = regDate;
+		this.writer = writer;
 	}
 
 	public String getComment_Id() {
@@ -35,12 +36,12 @@ public class Study_Comment {
 		this.content = content;
 	}
 
-	public int getRefNum() {
-		return refNum;
+	public String getRefId() {
+		return refId;
 	}
 
-	public void setRefNum(int refNum) {
-		this.refNum = refNum;
+	public void setRefId(String refId) {
+		this.refId = refId;
 	}
 
 	public int getRefLevel() {
@@ -67,11 +68,21 @@ public class Study_Comment {
 		this.regDate = regDate;
 	}
 
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
 	@Override
 	public String toString() {
-		return "Study_Comment [comment_Id=" + comment_Id + ", content=" + content + ", refNum=" + refNum + ", refLevel="
-				+ refLevel + ", refStep=" + refStep + ", regDate=" + regDate + "]";
+		return "Study_Comment [comment_Id=" + comment_Id + ", content=" + content + ", refId=" + refId + ", writer="
+				+ writer + ", refLevel=" + refLevel + ", refStep=" + refStep + ", regDate=" + regDate + "]";
 	}
+
+	
 	
 	
 }
