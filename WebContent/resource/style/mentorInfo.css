@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 .mentor-font{
-	width: 35vw;
-	height: 40vh;
+	width:35vw;
+	height:50vh;
 	line-height:100px;
 	background-color: rgb(211, 211, 211);
 	font-size:15px;
 	text-align:center;
 	display:inline-block;
-	margin-top: 9vh;
+	margin-top: 10vh;
 }
 
 .mentor-wrapper{
 display: flex;
-margin-top: 3vh;
+margin-top: 10vh;
 text-align: center;
 background-color: #ecebed;
 height: 800px;
@@ -21,7 +21,7 @@ justify-content: space-evenly;
 }
 
 #mentor-bot{ 
-    margin-top: 80px;
+    margin-top: 7vh;
     margin-left: 240px;
     margin-bottom: 12px;
     width: 1286px;

@@ -89,7 +89,7 @@ text-decoration: none ;
 		<h2 id ="font">멘토링</h2>
 	</div>
 	<form class="mtl-form" action="<%=request.getContextPath()%>/mentor/mentorList">
-		<input class="form-control" type="text" placeholder="검색하기">
+		<input class="form-control" type="text" name="" placeholder="검색하기">
 		<button id="bung" type="submit">검색</button>
 	</form>
 

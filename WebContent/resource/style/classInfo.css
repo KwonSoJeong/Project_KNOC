@@ -2,18 +2,18 @@
 
 .class-font{
 	width: 35vw;
-	height: 40vh;
+	height: 50vh;
 	line-height:100px;
 	background-color: rgb(211, 211, 211);
 	font-size:15px;
 	text-align:center;
 	display:inline-block;
-	margin-top: 9vh;
+	margin-top: 10vh;
 }
 
 .class-wrapper{
 display: flex;
-margin-top: 3vh;
+margin-top: 10vh;
 text-align: center;
 background-color: #ecebed;
 height: 800px;
@@ -22,14 +22,14 @@ justify-content: space-evenly;
 
 
 #class-bot{ 
-    margin-top: 80px;
+    margin-top: 15vh;
     margin-left: 240px;
     margin-bottom: 12px;
     width: 1286px;
 } 
 
 #class-h2{
-margin-top: 5vh;
+margin-top: 10vh;
 font-size: 24px;
 border-bottom : solid 2px #B8E6E1; 
 margin-left: 400px;

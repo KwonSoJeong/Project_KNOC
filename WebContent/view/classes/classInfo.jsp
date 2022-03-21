@@ -44,12 +44,12 @@ function favoriteCntUp() {
 <div id="class-bot">
 		<h2 id ="class-h2">${classone.title}</h2>
 	</div>
-	<!-- 
-	<form class="class-form" action="#">
+
+	<!-- <form class="class-form" action="#">
 		<input class="class-control" type="text" placeholder="검색하기">
 		<button id="class-bung" type="submit">검색</button>
-	</form>
-	 -->
+	</form> -->
+
 
 	<div class="class-wrapper">
 	<div class="class-font">

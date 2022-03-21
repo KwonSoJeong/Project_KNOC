@@ -13,7 +13,7 @@
 		<h2 id ="mentor-h2">멘토링</h2>
 	</div>
 	<form class="mentor-form" action="<%=request.getContextPath()%>/mentor/mentorInfo">
-		<input class="mentor-control" type="text" placeholder="검색하기">
+		<input class="mentor-control" name="" type="text" placeholder="검색하기">
 		<button id="mentro-bung" type="submit">검색</button>
 	</form>
 
