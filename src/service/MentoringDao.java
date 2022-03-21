@@ -1,6 +1,8 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -9,6 +11,7 @@ import util.MyBatisConnection;
 
 public class MentoringDao {
 	private final static String ns = "mentoring.";
+	private Map<String, Object> map = new HashMap<>();
 	
 	public int nextNum() {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
@@ -46,6 +49,20 @@ public class MentoringDao {
 		return null;
 	}
 	
+	public List<Mentoring> selectListKeyword(String keyword) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("keyword", keyword);
+			return sqlSession.selectList(ns + "selectListKeyword",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return null;
+	}
+	
 	public Mentoring selectOne(String id) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		try {
@@ -57,6 +74,33 @@ public class MentoringDao {
 		}
 		return null;
 	}
+	
+	public List profileList() {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.selectList(ns + "profileList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return null;
+	}
+	
+	public List profileListKeyword(String keyword) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("keyword", keyword);
+			return sqlSession.selectList(ns + "profileListKeyword",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return null;
+	}
+	
 	
 	
 	

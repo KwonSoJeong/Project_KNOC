@@ -65,6 +65,7 @@ public class StudyController extends MskimRequestMapping {
 			Member_Study_Info msi = new Member_Study_Info();
 			Member_Study_InfoDao msid = new Member_Study_InfoDao();
 			
+			//member_study_info에 저장
 			msi.setId(s.getLeader_Id());
 			msi.setMember_study_id(s.getStudy_Id());
 			msi.setType(1);
@@ -250,10 +251,17 @@ public class StudyController extends MskimRequestMapping {
 				return "/view/alert.jsp";
 			}
 			
-			//중복신청체크
 			StudyDao sd = new StudyDao();
+			Member_Study_Info msi = new Member_Study_Info();
+			Member_Study_InfoDao msid = new Member_Study_InfoDao();
+			Study s = new Study();
+			
 			String id = (String) request.getSession().getAttribute("memid");
 			String studyId = request.getParameter("studyId");
+			s = sd.selectOne(studyId);	//스터디 정보 불러오기
+			
+			//중복신청체크
+
 			if(sd.infoChk(id,studyId)!=0) {
 				msg = "이미 참가신청한 스터디 입니다.";
 				url = request.getContextPath()+"/study/studyInfo";
@@ -261,13 +269,6 @@ public class StudyController extends MskimRequestMapping {
 				request.setAttribute("url", url);
 				return "/view/alert.jsp";
 			}
-			
-			
-			Member_Study_Info msi = new Member_Study_Info();
-			Member_Study_InfoDao msid = new Member_Study_InfoDao();
-			Study s = new Study();
-			
-			s = sd.selectOne(studyId);
 			
 			msi.setId(id);
 			msi.setMember_study_id(s.getStudy_Id());
@@ -281,6 +282,48 @@ public class StudyController extends MskimRequestMapping {
 			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
+		
+		// 스터디 info에서 모집전환 버튼 클릭시 모집전환 프로세스
+		@RequestMapping("studyChangeProcess")
+		public String studyChangeProcess(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			StudyDao sd = new StudyDao();
+			Study s = new Study();
+			String studyId = request.getParameter("studyId");
+			s = sd.selectOne(studyId);
+			String id = (String)request.getSession().getAttribute("memid");
+			
+			if(id==null || !id.equals(s.getLeader_Id())) { //작성자인지 체크
+				msg = "모집전환은 작성자 본인만 전환할 수 있습니다.";
+				url = request.getContextPath()+"/study/studyInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+
+			System.out.println("process"+s.getProcess());
+			// 모집중 전환
+			if (s.getProcess() == 1) {
+				sd.changeProcessToTwo(studyId);
+				msg = "모집완료로 전환하였습니다.";
+				url = request.getContextPath() + "/study/studyInfo";
+			} else {
+				sd.changeProcessToOne(studyId);
+				msg = "모집중으로 전환하였습니다.";
+				url = request.getContextPath() + "/study/studyInfo";
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+
 			return "/view/alert.jsp";
 		}
 }

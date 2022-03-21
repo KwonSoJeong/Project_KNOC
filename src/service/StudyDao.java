@@ -222,6 +222,30 @@ public class StudyDao {
 		return 0;
 	}
 	
+	public void changeProcessToTwo(String study_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			sqlSession.update(ns + "changeProcessToTwo",study_Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+	}
+	
+	public void changeProcessToOne(String study_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			sqlSession.update(ns + "changeProcessToOne",study_Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		
+	}
+	
 	
 	
 	

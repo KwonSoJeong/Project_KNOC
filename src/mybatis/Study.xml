@@ -78,5 +78,13 @@ where rnum between #{start} and #{end}
 <select id="infoChk" resultType="int" parameterType="map">
 select count(*) from MEMBER_STUDY_INFO where id = #{id} and MEMBER_STUDY_ID = #{member_study_id}
 </select>
+
+<update id="changeProcessToTwo">
+update study set process = 2 where study_Id = #{study_Id}
+</update>
+
+<update id="changeProcessToOne">
+update study set process = 1 where study_Id = #{study_Id}
+</update>
  
 </mapper>
