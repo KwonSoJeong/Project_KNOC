@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <script src="<%=request.getContextPath() %>/js/click.js"></script>
 <link href="<%=request.getContextPath() %>/resource/style/main.css" rel='stylesheet' type='text/css'/>
+<script type="text/javascript">
+var hd = 0;
+
+</script>
 </head>
 <body style="padding-top: 70px;">
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -62,14 +66,14 @@
 	<div class="mnc-container"> 
 		<div class="mnc-class">New Class</div>
 		<div class="mnc-lcontainer">
-		<c:forEach var="c" items="${newClassList }">
+		<c:forEach var="c" items="${newClassList}" varStatus="status">
 			<div class="mnc-content">
 				<div class="heart_img">
 					
-					<button class="noheartbtn n0" type="submit" >
+					<button class="noheartbtn n${status.count}" type="submit" >
 						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 					</button>
-					<button class="heartbtn y0" type="submit" >
+					<button class="heartbtn y${status.count}" type="submit" >
 						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
 					</button>
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">

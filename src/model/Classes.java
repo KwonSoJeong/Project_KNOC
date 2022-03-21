@@ -112,9 +112,25 @@ public class Classes {
 
 	@Override
 	public String toString() {
-		return "Classes [class_id=" + class_id + ", lec_id=" + lec_id + ", title=" + title + ", intro=" + intro
-				+ ", category_id=" + category_id + ", type=" + type + ", favorite=" + favorite + ", regDate=" + regDate
-				+ ", price=" + price + ", thumbnail=" + thumbnail + "]";
+		return "{\"class_id\":\"" + class_id + "\", \"lec_id\":\"" + lec_id + "\", \"title\":\"" + title
+				+ "\", \"intro\":\"" + intro + "\", \"category_id\":\"" + category_id + "\", \"type\":\"" + type
+				+ "\", \"favorite\":\"" + favorite + "\", \"regDate\":\"" + regDate + "\", \"price\":\"" + price
+				+ "\", \"thumbnail\":\"" + thumbnail + "\"}";
 	}
+
+	
+	
+	
+	/*
+	 * @Override public String toString() { return "Classes [class_id=" + class_id +
+	 * ", lec_id=" + lec_id + ", title=" + title + ", intro=" + intro +
+	 * ", category_id=" + category_id + ", type=" + type + ", favorite=" + favorite
+	 * + ", regDate=" + regDate + ", price=" + price + ", thumbnail=" + thumbnail +
+	 * "]"; }
+	 */
+	
+	
+	
+	
 	
 }

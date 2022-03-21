@@ -72,18 +72,24 @@
 <script>
 /*무한스크롤*/
 var loading = false;    //중복실행여부 확인 변수
-var page = ${pageInt};   //불러올 페이지
-let pageInt = 2;
+//var page = ${size};   //불러올 페이지
+let pageInt = 1;
 /*nextpageload function*/
-function next_load()
-{
+function next_load(pageInt)
+{       alert(pageInt)
         $.ajax({
                 type:"GET",
-                url:" classes/classList",
-                data : {'page':page},
-                dataType : "text",
+                url:"classes/classList?pageInt="+pageInt,
+                data : '',
+                dataType : "json",
                 success: function(classList)
-                {
+                {   
+                	console.log(classList)
+                	let classes = classList;
+                	console.log(classes[0])
+                	
+                	
+                	
                 	if(classList.length > 1){
 
        					var addContent = document.createElement("div");
@@ -91,8 +97,8 @@ function next_load()
        					document.querySelector('.class_List').appendChild(addContent);
 						
        					
-       					pageInt++;
-       					pageplus(pageInt); //증가한 페이지를 컨트롤러로 전송
+       					//pageInt++;
+       					//pageplus(pageInt); //증가한 페이지를 컨트롤러로 전송
                         loading = false;    //실행 가능 상태로 변경
                     }
                     else
@@ -108,12 +114,12 @@ function next_load()
 }
 
 function pageplus(pageInt){
-
-	 $.ajax({//컨트롤러의 pageInt를 pageInt++된 값으로 패치
-         type:"PATCH",
-         url:" classes/classList",
-         data : {'pageInt':pageInt},
-         dataType : "text",//타입을..뭘로..
+     alert(pageInt);
+	 $.ajax({
+         type:"GET", 
+         url:"classes/classList?pageInt="+pageInt,
+         data : null,
+         dataType : "text",//그 제가 하고싶은게 이
          success: function(result){alert("success!")}
          ,error: function(request,status,error) {
          	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
@@ -128,7 +134,7 @@ $(window).scroll(function(){
         if(!loading)//실행 가능
         {
             loading = true;//실행 불가능 상태로 변경
-            next_load(); 
+            next_load(++pageInt);//처음엔  
         }
         else//실행 불가능 상태
         {
