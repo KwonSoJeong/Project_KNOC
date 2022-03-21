@@ -14,13 +14,17 @@
 
 	<div class="cc-wrapper">
 		<div class="cc-just">
-			<div class="cc-fsfc">${content.title }</div>
+			<div class="cc-fsfc">${content.title}</div>
 			<div class="cc-fsfc1">≡</div>
 		</div>
 		<div class="cc-bor-bot"></div>
 	
 		<div class="cc-justend">
-			<div class="cc-content">${content }</div>
+			<div class="cc-content">
+				<div id="vimeoWrap">
+					<iframe frameborder="0" cols="" rows="" title="" src="<%=request.getContextPath() %>/contentfile/${content.file1}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+			</div>
 			<!-- 컨텐츠 부분은 현재 테스트 용으로 class_Content 객체 toString 메소드 실행 -->
 			<div class="cc-index">
 				<div>목차</div>
