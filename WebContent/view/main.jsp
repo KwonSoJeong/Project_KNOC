@@ -167,7 +167,7 @@ var hd = 0;
 const msgArea = document.querySelector(".m-cht-msg-win")
 const inputArea = document.querySelector(".m-cht-input-msg")
 let groupId = '${groupId}'
-const webSocket = new WebSocket('ws://192.168.25.8:8080/Project_KNOC/groupchat')
+const webSocket = new WebSocket('ws://#/Project_KNOC/groupchat')
 
 webSocket.onopen = function(event) {onOpen(event)}
 webSocket.onerror = function(event) {onError(event)}
