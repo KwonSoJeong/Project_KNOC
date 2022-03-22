@@ -19,7 +19,6 @@ public class ClassesDao {
 		map.clear();
 		map.put("start", (pageInt - 1) * limit + 1);
 		map.put("end", pageInt * limit);
-	System.out.println(map);
 		try {
 			return sqlSession.selectList(ns + "classList", map);
 		} catch (Exception e) {
