@@ -75,8 +75,7 @@ var loading = false;    //중복실행여부 확인 변수
 //var page = ${size};   //불러올 페이지
 let pageInt = 1;
 /*nextpageload function*/
-function next_load(pageInt)
-{       alert(pageInt)
+function next_load(pageInt){
         $.ajax({
                 type:"GET",
                 url:"classes/classList?pageInt="+pageInt,
@@ -93,17 +92,17 @@ function next_load(pageInt)
                 	if(classList.length > 1){
 
        					var addContent = document.createElement("div");
-       					addContent.innerHTML = '<c:forEach var="c" items="${classList}"><div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id}"><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onerror="none" style="width: 100%; height: 100%;"></div><div class="cc-title">${c.title }</div></a></div></c:forEach> '								
+       					
+       					for (let cls of classList) {
+       						addContent.innerHTML += '<div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id='+cls.id+'" ><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/'+cls.thumbnail+'"  onerror="none" style="width: 100%; height: 100%;"></div><div class="cc-title">'+cls.title +'</div></a></div>'								
+       	       				
+       					}
        					document.querySelector('.class_List').appendChild(addContent);
 						
        					
        					//pageInt++;
        					//pageplus(pageInt); //증가한 페이지를 컨트롤러로 전송
                         loading = false;    //실행 가능 상태로 변경
-                    }
-                    else
-                    {
-                        alert('failed');
                     }
                 }
                 ,error: function(request,status,error) 
@@ -119,8 +118,8 @@ function pageplus(pageInt){
          type:"GET", 
          url:"classes/classList?pageInt="+pageInt,
          data : null,
-         dataType : "text",//그 제가 하고싶은게 이
-         success: function(result){alert("success!")}
+         dataType : "text",
+         success: function(result){console.log("success!")}
          ,error: function(request,status,error) {
          	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
@@ -134,12 +133,8 @@ $(window).scroll(function(){
         if(!loading)//실행 가능
         {
             loading = true;//실행 불가능 상태로 변경
-            next_load(++pageInt);//처음엔  
+            next_load(++pageInt); 
         }
-        else//실행 불가능 상태
-        {
-        	alert('로딩중입니다.');
-        	}
     }
 });
 
