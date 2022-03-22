@@ -123,10 +123,168 @@ var hd = 0;
 		<div class="m-cht-box">
 			<div class="m-cht-box-title">KNOC</div>
 			<div class="cht-bor-bot"></div>
-			<div></div>
+			<div class="m-cht-msg-win">
+			  <c:choose>
+                    <c:when test="${userId==null}">
+                     <div class="m-cht-login-null">로그인 후 이용 가능합니다.</div>
+                    </c:when>
+                    <c:when test="${userId=='admin'}">
+                     <c:forEach var="user" items="${groupList}">
+                         <div class="m-cht-login-admin">
+                            <input class="m-cht-qna-link" type="button" value="${user}님의 문의가 있습니다." onclick="adminChatLink('${user}')"/>
+                         </div>
+                     </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                     <c:forEach var="webchat" items="${chatList}">
+                         <c:if test="${webchat.userId.equals(userId)}">
+                            <div class="right">
+                                <div id="me">${webchat.message}</div>
+                            </div>
+                         </c:if>
+                         <c:if test="${!webchat.userId.equals(userId)}">
+                            <div class="left">
+                                <div id="you">${webchat.message }</div>
+                            </div>
+                         </c:if>
+                     </c:forEach>
+                    </c:otherwise>
+                 </c:choose>
+            
+			</div>
+			<div class="m-cht-input-win">
+			    
+			    <input class="m-cht-input-msg" type="text" placeholder="메세지를 적어주세요." />
+			    <input class="m-cht-input-send" type="button" value="전송" onclick="sendText()" />
+                <div class="m-cht-input-img">이미지를 끌어와서 전송해보세요.</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="no2 m-cht-box-x" style="display: none;">-</div>
+	
+<script>
+const msgArea = document.querySelector(".m-cht-msg-win")
+const inputArea = document.querySelector(".m-cht-input-msg")
+let groupId = '${groupId}'
+const webSocket = new WebSocket('ws://192.168.25.8:8080/Project_KNOC/groupchat')
+
+webSocket.onopen = function(event) {onOpen(event)}
+webSocket.onerror = function(event) {onError(event)}
+webSocket.onmessage = function(event) {onMessage(event)}
+
+function onOpen(event) {
+    // alert(new Date() + "연결 성공")
+    msgArea.innerHTML += "<p style='font-size: 13px; text-align: center;'>" + new Date() +"</p>"
+    webSocket.send(groupId + ':${userId}:${userId}님이 입장하였습니다.')
+}
+
+function onMessage(event) {
+    let line = event.data
+    let msg = JSON.parse(line)
+    let filenameArr = [".jpg", ".png", ".gif"]
+    //event.data.includes(filenameArr.some(i => filename.includes(i)))
+    if (filenameArr.some(i => event.data.includes(i))) {
+        let filename = event.data.split(":")[2]
+        
+        msgArea.innerHTML += "<div class='left'><div id='you'>"+ "<img src='/Project_KNOC/chatimg/"+msg.message+"' width='200px'/>"  + "</div></div>" 
+    } else {
+        msgArea.innerHTML += "<div class='left'><div id='you'>" + msg.message + "</div></div>"
+    }
+    messageArea.scrollTop = messageArea.scrollHeight
+}
+
+function sendText() {
+    msgArea.innerHTML += "<div class='right'><div id='me'>" + inputArea.value + "</div></div>"
+    webSocket.send(groupId + ':${userId}:' + inputArea.value)
+    msgArea.scrollTop = msgArea.scrollHeight
+    inputArea.value = ""
+}
+
+function init() {
+    let imgArea = document.querySelector(".m-cht-input-img")
+    
+    imgArea.ondragenter = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        
+        imgArea.classList.add("focus")
+    }
+    
+    imgArea.ondragleave = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        
+        imgArea.classList.remove("focus")
+    }
+    
+    imgArea.ondragover = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+    }
+    
+    imgArea.ondrop = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        
+        imgArea.classList.remove("focus")
+        
+        imgUpload(event.dataTransfer.files)
+    }
+}
+
+function imgUpload(files) {
+    let inputImg = new FormData()
+    inputImg.append("file", files[0])
+    inputImg.append("groupId", groupId)
+    inputImg.append("userId", '${userId}')
+    
+    let httpreq = new XMLHttpRequest()
+    
+    httpreq.open("POST", "/Project_KNOC/classes/imgUpload", true)
+    
+    httpreq.send(inputImg)
+    
+    httpreq.onload = function(e) {
+        if (httpreq.status == 200) {
+            sendImg(httpreq.responseText)
+        } else {
+            alert("error")
+        }
+    }
+}
+
+function sendImg(filename) {
+    msgArea.innerHTML += "<div class='right'><div id='me'>"
+           + "<img src='/Project_KNOC/chatimg/" + filename + "' width='200px'/>"
+           + "</div></div>"
+           
+    webSocket.send(groupId + ':${userId}:'+filename)
+    msgArea.scrollTop = msgArea.scrollHeight
+}
+
+function adminChatLink(user){
+    let httpreq = new XMLHttpRequest()
+    let param = "?groupId="+encodeURIComponent(user)
+
+    let url = "/Project_KNOC/classes/adminChat" 
+    // /Project_KNOC/classes/adminChat
+    httpreq.open("GET", "/Project_KNOC/classes/adminChat"+param, true)
+    
+    httpreq.send()
+    
+    httpreq.onload = function(e) {
+        if (httpreq.status == 200) {
+            msgArea.innerHTML = this.responseText.trim()
+            msgArea.innerHTML += "<p style='font-size: 13px; text-align: center;'>" + new Date() +"</p>"
+            
+            groupId = user
+        }
+    }
+    
+}
+
+init()
+</script>	
 </body>
 </html>

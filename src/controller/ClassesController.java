@@ -17,10 +17,12 @@ import model.Class_Content;
 import model.Classes;
 import model.Knoc_Member;
 import model.Member_Study_Info;
+import model.WebChat;
 import model.WishList;
 import service.Class_ContentDao;
 import service.ClassesDao;
 import service.Member_Study_InfoDao;
+import service.WebChatDao;
 import service.WishListDao;
 
 //@WebServlet("/classes/*")
@@ -29,14 +31,72 @@ public class ClassesController extends MskimRequestMapping {
 	// main화면 view
 	@RequestMapping("main")
 	public String memberInput(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("memid");
+		String groupId = userId;
+		
+		if (userId == null) {
+			groupId = "";
+		}
+		
 		ClassesDao cd = new ClassesDao();
+		
+		WebChatDao wcd = new WebChatDao();
+		
+		// 일반 사용자의 경우, 문의톡 아이콘을 눌렀을 때 바로 대화 내용 출력
+		List<WebChat> chatList = wcd.chatList(groupId);
+		// 관리자(admin)일 경우, 문의톡 아이콘을 눌렀을 때 우선 문의한 유저 리스트가 먼저 출력
+		List<String> groupList = wcd.groupList();
 		
 		List<Classes> newClassList = cd.sortedClassList("regdate");
 		List<Classes> favoriteClassList = cd.sortedClassList("favorite");
 		
+		request.setAttribute("userId", userId);
+		request.setAttribute("groupId", groupId);
+		request.setAttribute("chatList", chatList);
+		request.setAttribute("groupList", groupList);
 		request.setAttribute("newClassList", newClassList);
 		request.setAttribute("favoriteClassList", favoriteClassList);
 		return "/view/main.jsp";
+	}
+	
+	// main화면 문의톡에서 img 업로드 할 때 사용할 페이지 
+	@RequestMapping("imgUpload")
+	public String imgUpload(HttpServletRequest request, HttpServletResponse response) {
+		String path = getServletContext().getRealPath("/") + "chatimg/";
+		MultipartRequest multi = null;
+		
+		try {
+			multi = new MultipartRequest(request, path, 10*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String groupId = multi.getParameter("groupId");
+		String userId = multi.getParameter("userId");
+		String filename = multi.getFilesystemName("file");
+		
+		request.setAttribute("filename", filename);
+		
+		return "/single/imgUpload.jsp";
+	}
+	
+	// main화면 문의톡에서 admin 계정에서 사용할 문의한 고객 리스트 전달
+	@RequestMapping("adminChat")
+	public String adminChat(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		String groupId = request.getParameter("groupId");
+		String userId = (String) session.getAttribute("memid");
+		
+		WebChatDao wcd = new WebChatDao();
+		List<WebChat> chatList = wcd.chatList(groupId);
+		
+		request.setAttribute("groupId", groupId);
+		request.setAttribute("userId", userId);
+		request.setAttribute("chatList", chatList);
+		
+		return "/single/adminChat.jsp";
 	}
 	
 	// 클래스 리스트 view
