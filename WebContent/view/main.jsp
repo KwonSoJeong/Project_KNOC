@@ -7,9 +7,37 @@
 <meta charset="UTF-8">
 <script src="<%=request.getContextPath() %>/js/click.js"></script>
 <link href="<%=request.getContextPath() %>/resource/style/main.css" rel='stylesheet' type='text/css'/>
-<script type="text/javascript">
-var hd = 0;
-
+<script>
+function favoriteCntUp() {
+	// ajax를 이용하여 관심등록/해제 구현
+    let httpreq = new XMLHttpRequest()
+    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite", true)
+    httpreq.send()
+    
+    // callback
+    httpreq.onreadystatechange = function() {
+       
+        if (httpreq.readyState == 4 && httpreq.status == 200) {
+            let result = document.querySelector("#result")
+            
+            // responseText = status,favoriteCnt
+            let arr = this.responseText.trim().split(",")
+            let status = arr[0]
+            let favoriteCnt = arr[1]
+            let fav = document.querySelector("#fav")
+            
+            if (status == "login-null") {
+                alert("관심 등록은 로그인 후 이용 가능합니다.")
+            } else if (status == "favorite-Cnt-Up") {
+                alert("관심 클래스로 추가되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+            } else if (status == "favorite-Cnt-Down"){
+                alert("관심 등록이 해제되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+            }
+        }
+    }
+}
 </script>
 </head>
 <body style="padding-top: 70px;">
@@ -70,10 +98,10 @@ var hd = 0;
 			<div class="mnc-content">
 				<div class="heart_img">
 					
-					<button class="noheartbtn n${status.count}" type="submit" >
+					<button class="noheartbtn n${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 					</button>
-					<button class="heartbtn y${status.count}" type="submit" >
+					<button class="heartbtn y${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
 					</button>
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
@@ -83,7 +111,7 @@ var hd = 0;
 				</div>
 				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
 				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
-				<div class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
+				<div id="fav" class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
 				<div class="mnc-bor-bot" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'"></div>
 				<div class="mnc-price" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.price }원</div>
 				
