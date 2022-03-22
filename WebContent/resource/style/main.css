@@ -252,3 +252,104 @@ h1{
     font-size: 50px;
     cursor: pointer;
 }
+
+.m-cht-msg-win {
+	width: 100%;
+	height: 400px;
+	overflow: auto;
+	border-bottom: 2px solid #b4b4b4;
+}
+
+.m-cht-input-msg {
+	width: 282px;
+	border: none;
+	float: left;
+}
+
+.m-cht-input-send {
+	border:none;
+	background-color : #B8E6E1;
+	width: 48px;
+	clear: left;
+}
+
+.m-cht-input-img {
+	height: 65px;
+	border: 1px dashed #b4b4b4;
+	text-align: center;
+	line-height: 65px;
+	color: #b4b4b4;
+	border-radius: 0 0 30px 30px;
+}
+
+.m-cht-input-img.focus {
+    background: #B8E6E1;
+}
+
+#you {
+    display: inline-block;
+    position: relative;
+    background: #B8E6E1;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+#me {
+    display: inline-block;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    padding: 3px;
+}
+#you:after {
+    border-top: 10px solid #B8E6E1;
+    border-left: 10px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -10px;
+}
+
+#me:after {
+    border-top: 10px solid white;
+    border-left: 0px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: -10px;
+}
+.right {
+    text-align: right;
+    margin: 10px;
+}
+
+.left {
+    text-align: left;
+    margin: 10px;
+}
+
+.m-cht-login-null {
+	text-align: center;
+	height: 200px;
+	line-height: 200px;
+}
+
+.m-cht-login-admin {
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border: 3px dashed white;
+	border-radius: 10px;
+	margin-top: 5px;
+}
+
+.m-cht-qna-link {
+	width: 100%;
+	height: 100%;
+	border : none;
+	background: none;
+}
