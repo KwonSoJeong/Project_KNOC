@@ -459,4 +459,133 @@ public class ClassesController extends MskimRequestMapping {
 		request.setAttribute("status", status);
 		return "/single/classFavorite.jsp";
 	}
+	
+	// 클래스 수정 view
+	@RequestMapping("classUpdate")
+	public String classUpdate(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		String id = (String) session.getAttribute("memid");
+		
+		if (id == null) {
+			String msg = "로그인 정보가 없습니다.";
+			String url = request.getContextPath() + "/member/login";
+			
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			
+			return "/view/alert.jsp";
+		} 
+		
+		String classId = request.getParameter("class_id");
+		ClassesDao cd = new ClassesDao();
+		Classes classOne = cd.classOne(classId);
+		
+		Class_ContentDao ccd = new Class_ContentDao();
+		
+		List<Class_Content> contentList = ccd.contentList(classId);
+		
+		request.setAttribute("classOne", classOne);
+		request.setAttribute("contentList", contentList);
+		return "/view/classes/classUpdate.jsp";
+	}
+	
+	// 클래스 수정 process
+	@RequestMapping("classUpdatePro")
+	public String classUpdatePro(HttpServletRequest request, HttpServletResponse response) {
+		
+		// 수정가능 요소 : 클래스 소개글, 가격, 썸네일, 각 차시별 제목, 각 차시별 컨텐츠
+		// 수정 불가능 : 클래스 아이디, 강사 아이디, 클래스 제목, 카테고리, 타입, 관심수, 등록일
+
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// 클래스 객체 생성
+		MultipartRequest multi = null;
+		
+		String path = request.getServletContext().getRealPath("/") + "/contentfile/";
+		try {
+			multi = new MultipartRequest(request, path, 300 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String classId = multi.getParameter("class_id");
+		Classes updatedClass = new Classes();
+		updatedClass.setClass_id(classId);
+		updatedClass.setThumbnail(multi.getParameter("thumbnail"));
+		updatedClass.setIntro(multi.getParameter("intro"));
+		updatedClass.setPrice(Integer.parseInt(multi.getParameter("price")));
+		
+		ClassesDao cd = new ClassesDao();
+		int classUpdateCnt = cd.classUpdate(updatedClass);
+		
+		Class_ContentDao ccd = new Class_ContentDao();
+		
+		int listSize = (ccd.contentList(classId)).size();
+		
+		int contentUpdateCnt = 0;
+		
+		for (int i = 1; i <= listSize; i++) {
+			Class_Content updatedContent = new Class_Content();
+			updatedContent.setClass_Id(classId);
+			updatedContent.setContent_Id(multi.getParameter("content_id"+i));
+			updatedContent.setTitle(multi.getParameter("contentTitle"+i));
+			updatedContent.setFile1(multi.getFilesystemName("newFile"+i));
+			
+			if (updatedContent.getFile1() == null) {
+				updatedContent.setFile1(multi.getParameter("file"+i));
+			}
+			
+			
+			contentUpdateCnt += ccd.contentUpdate(updatedContent);
+			
+		}
+		
+		String msg = "";
+		String url = "";
+		if (classUpdateCnt > 0 && contentUpdateCnt == listSize) {
+			msg = "클래스 수정이 정상적으로 처리되었습니다.";
+			url = request.getContextPath() + "/classes/classInfo?class_id=" + classId;
+		} else {
+			msg = "클래스 수정에 실패하였습니다.";
+			url = request.getContextPath() + "/classes/classUpdate?class_id=" + classId;
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "/view/alert.jsp";
+	}
+	
+	// 클래스 삭제 process
+	@RequestMapping("classDeletePro")
+	public String classDelete(HttpServletRequest request, HttpServletResponse response) {
+		String classId = request.getParameter("class_id");
+		
+		ClassesDao cd = new ClassesDao();
+		int classDeleteCnt = cd.classDelete(classId);
+		
+		Class_ContentDao ccd = new Class_ContentDao();
+		
+		int listSize = (ccd.contentList(classId)).size(); 
+		int contentDeleteCnt = ccd.contentDelete(classId);
+				
+		String msg = "";
+		String url = request.getContextPath() + "/member/myPage";
+		if (classDeleteCnt > 0 && contentDeleteCnt == listSize) {
+			msg = "클래스 삭제가 정상적으로 처리되었습니다.";
+		} else {
+			msg = "클래스 삭제에 실패하였습니다.";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "/view/alert.jsp";
+	}
 }

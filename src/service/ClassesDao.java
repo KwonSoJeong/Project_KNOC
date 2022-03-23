@@ -128,7 +128,7 @@ public class ClassesDao {
 		return null;
 	}
 
-	// 검색어를 입력하여 해당 검색어를 제목에 포함하는 클래스만 리스트로 반환
+	// 클래스 관심 등록 수 1 증가
 	public int favoriteCntUp(String classId) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		
@@ -143,11 +143,42 @@ public class ClassesDao {
 		return 0;
 	}
 	
+	// 클래스 관심 등록 수 1 감소
 	public int favoriteCntDown(String classId) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		
 		try {
 			return sqlSession.update(ns + "favoriteCntDown", classId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return 0;
+	}
+	
+	// 클래스 수정
+	public int classUpdate(Classes updatedClass) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.update(ns + "classUpdate", updatedClass);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return 0;
+	}
+	
+	// 클래스 삭제
+	public int classDelete(String classId) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.delete(ns + "classDelete", classId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

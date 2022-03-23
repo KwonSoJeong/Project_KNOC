@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,97 +72,71 @@ margin-top: 50px;
 p {
 margin: 0;
 }
-</style>    
+</style>
+  
 </head>
 <body>
+<script>
+function deleteChk() {
+	if (confirm("삭제 후 복구가 불가능합니다. 진행하시겠습니까?")) {
+		location.href="<%=request.getContextPath()%>/classes/classDeletePro?class_id="+'${classOne.class_id}';
+	}
+}
+
+function thumbnail_upload() {
+    let loca_left = window.screen.width/2 - 175
+    let loca_top = window.screen.height/2 - 150
+    const option = "width=350, height=300, left=" + loca_left + ", top=" + loca_top
+    open("<%=request.getContextPath()%>/classes/thumbnailForm", "", option)
+}
+</script>  
 <div id="upload-col">
-    <h4 id="upload-h3">새 클래스 추가</h4>
+    <h4 id="upload-h3">클래스 편집</h4>
     </div>
     
     <div id="upload-div">
     <div class="container" style="padding: 80px;">
-        <form action="<%=request.getContextPath()%>/classes/classUploadPro" enctype="multipart/form-data" method="post" name="inputform">
+        <form action="<%=request.getContextPath()%>/classes/classUpdatePro" enctype="multipart/form-data" method="post" name="inputform">
             <br>
             <label>썸네일</label>
             <div id="blank_thumbnail">
-            <img id="picture" src="" alt="썸네일 이미지" style="width:100%; height:100%;"/>
+            <img id="picture" src="<%=request.getContextPath() %>/thumbnail/${classOne.thumbnail}" alt="썸네일 이미지" style="width:100%; height:100%;"/>
             </div>
-            <input type="hidden" class="form-control" name="thumbnail">
-            <button type="button" onclick="thumbnail_upload()">썸네일 등록</button>
-            
-            <div id="upload-option">
-            <label>카테고리</label>
-            <select name="caterory_id">
-            <option value="category1">운동</option>
-            <option value="category2">크리에이티브</option>
-            <option value="category3">디자인</option>
-            <option value="category4">개발/프로그래밍</option>
-            <option value="category5">요리/베이킹</option>
-            <option value="category6">금융/재태크</option>
-            </select>
-             <label>타입</label>
-             <input type="radio" name="type" value="1">영상
-             <input type="radio" name="type" value="2">글
-            </div>
-            
+            <input type="hidden" name="class_id" value="${classOne.class_id}" />
+            <input type="hidden" name="thumbnail" value="${classOne.thumbnail}">
+            <button type="button" onclick="thumbnail_upload()">썸네일 수정</button>
             
             <br><br>
-            <!-- 
-            <div id= "upload-option">
-            <label>카테고리</label>
-            <select name="caterory_id">
-            <option value="category1">운동</option>
-            <option value="category2">크리에이티브</option>
-            <option value="category3">디자인</option>
-            <option value="category4">개발/프로그래밍</option>
-            <option value="category5">요리/베이킹</option>
-            <option value="category6">금융/재태크</option>
-            </select>
-            <br />
-             <label>타입</label>
-             <input type="radio" name="type" value="1">영상
-             <input type="radio" name="type" value="2">글
-            </div>
-            
-            <br><br>
-            <div id="upload-thumbnail">
-            <label>썸네일</label>
-            <div id="blank_thumbnail">
-            <img id="picture" src="" alt="썸네일 이미지" style="width:100%; height:100%;"/>
-            </div>
-            <input type="hidden" class="form-control" name="thumbnail">
-            <button type="button" onclick="thumbnail_upload()">썸네일 등록</button>
-            </div>
-            <br><br>
-             -->
             <div>
             <label>제목</label>
-            <input type="text" name="title" class="form-control">
+            <input type="text" name="title" class="form-control" value="${classOne.title}" readonly="readonly">
             </div>
             <br><br>
             
             <div>
             <label>소개글</label>
-            <textarea class="form-control" rows="10" cols="60" placeholder="소개글 작성" name="intro"></textarea>
+            <textarea class="form-control" rows="10" cols="60" placeholder="소개글 작성" name="intro" >${classOne.intro}</textarea>
             </div>
             <br><br>
             
             <div>
             <label>가격</label>
-            <input type="text" name="price" class="form-control">
+            <input type="text" name="price" class="form-control" value="${classOne.price}" />
             </div>
             <br><br>
-            
-           <div class="form-group">
-                <label>컨텐츠 입력</label><br />
-                제목을 입력하세요<input type="text" name="contentTitle" class="form-control">
-                컨텐츠 파일을 입력하세요.<input type="file" name="file1" class="form-control" required="required">
-                <button id="1" type="button" onclick="removeContent(this)">차시 삭제</button>
-            </div>
-            <button type="button" onclick="addContent()">차시 추가</button>
-            
+            <label>컨텐츠 수정</label><br />
+            <c:forEach var="content" items="${contentList}">
+                <c:set var="no" value="${no+1}"/>
+                <div class="form-group">
+                    <input type="hidden" name="content_id${no}" value="${content.content_Id}" />
+                    제목을 입력하세요<input type="text" name="contentTitle${no}" class="form-control" value="${content.title}">
+                    컨텐츠 파일을 입력하세요.<input type="file" name="newFile${no}" class="form-control">
+                    <input type="hidden" name="file${no}" value="${content.file1}"/>
+                </div>
+            </c:forEach>
             <div id="center" style="padding: 25px;">
-            <button type="submit">등록하기</button>
+            <button type="submit">수정</button>
+            <button type="button" onclick="deleteChk()" >삭제</button>
             </div>
         </form>
     </div>
