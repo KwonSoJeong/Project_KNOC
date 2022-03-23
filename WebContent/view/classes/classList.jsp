@@ -16,11 +16,7 @@
 				<button id="cl-btn" type="submit">검색</button>
 			</form>	
 		</div>
-		<div class="bottom-line">	
-<!-- 			<div class="search">
-
-			</div> -->
-		</div>
+		<div class="bottom-line"></div>
 		<div class="main_content">
 			<div class="categori quick_menu">
 				<ul id="cl-subnav" class="submenu">
