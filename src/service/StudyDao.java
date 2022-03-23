@@ -258,7 +258,7 @@ public class StudyDao {
 		return 0;
 	}
 	
-	public int Update(String title, String content, String study_Id) {
+	public int update(String title, String content, String study_Id) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		try {
 			map.clear();

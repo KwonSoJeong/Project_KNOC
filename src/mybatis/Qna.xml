@@ -25,5 +25,13 @@ where rnum between #{start} and #{end}
 select count(*) from qna
 </select>
 
+<delete id="delete" parameterType="string">
+delete from qna where qna_Id = #{qna_Id}
+</delete>
+
+<update id="update" parameterType="map">
+update qna set title = #{title}, content = #{content}, secret = #{secret} where qna_Id = #{qna_Id}
+</update>
+
 
 </mapper>

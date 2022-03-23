@@ -252,5 +252,106 @@ public class HelpController extends MskimRequestMapping {
 
 			return "/view/alert.jsp";
 		}
+		
+		//qna 게시글 수정
+		@RequestMapping("qnaUpdate")
+		public String qnaUpdate(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+					
+			QnaDao qd = new QnaDao();
+			Qna q = new Qna();
+			StudyDao sd = new StudyDao();
+			String qna_Id = request.getParameter("qna_Id");
+			String id = (String)request.getSession().getAttribute("memid");
+			q = qd.selectOne(qna_Id);
+					
+			if(id==null || !id.equals(q.getWriter())) { //작성자인지 체크
+				msg = "게시글 삭제는 작성자만 할 수 있습니다.";
+				url = request.getContextPath()+"/help/qnaInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+
+			request.setAttribute("q", q);
+			return "/view/help/qnaUpdate.jsp";
+		}
+				
+		//qna 게시글 수정 pro
+		@RequestMapping("qnaUpdatePro")
+		public String qnaUpdatePro(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+							
+			QnaDao qd = new QnaDao();
+			Qna q = new Qna();
+			String qna_Id = request.getParameter("qna_Id");
+			q = qd.selectOne(qna_Id);
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int secret = Integer.parseInt(request.getParameter("secret"));
+					
+			int num = qd.update(title,content,qna_Id,secret);
+					
+			if(num>0) {		//성공적으로 수정이 되었을 경우
+				msg = "수정이 되었습니다";
+				url = request.getContextPath()+"/help/qnaInfo";
+			}else {			//수정에 오류 발생
+				msg = "수정에 실패하였습니다";
+				url = request.getContextPath()+"/help/qnaInfo?qna_Id="+qna_Id;
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
+				
+		//qna 게시글 삭제
+		@RequestMapping("qnaDeletePro")
+		public String qnaDeletePro(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+					
+			QnaDao qd = new QnaDao();
+			Qna q = new Qna();
+			String qna_Id = request.getParameter("qna_Id");
+			q = qd.selectOne(qna_Id);
+			String id = (String)request.getSession().getAttribute("memid");
+
+			if(id==null || !id.equals(q.getWriter())) { //작성자인지 체크
+				msg = "게시글 삭제는 작성자만 할 수 있습니다.";
+				url = request.getContextPath()+"/help/qnaInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+					
+			int num = qd.delete(qna_Id);
+					
+			if(num>0) {		//성공적으로 삭제가 되었을 경우
+				msg = "삭제가 되었습니다";
+				url = request.getContextPath()+"/help/qnaList";
+			}else {			//삭제에 오류 발생
+				msg = "삭제에 실패하였습니다";
+				url = request.getContextPath()+"/help/qnaInfo";
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
 
 }

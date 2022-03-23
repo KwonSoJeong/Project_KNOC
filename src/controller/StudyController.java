@@ -351,8 +351,9 @@ public class StudyController extends MskimRequestMapping {
 				return "/view/alert.jsp";
 			}
 			
-			System.out.println(s);
+			String leaderProfile = sd.callProfile(s.getLeader_Id());	//프로필 call
 			
+			request.setAttribute("leaderProfile", leaderProfile);
 			request.setAttribute("s", s);
 			return "/view/study/studyUpdate.jsp";
 		}
@@ -374,7 +375,7 @@ public class StudyController extends MskimRequestMapping {
 			String title = request.getParameter("title");
 			String content = request.getParameter("text");
 			
-			int num = sd.Update(title,content,study_Id);
+			int num = sd.update(title,content,study_Id);
 			
 			if(num>0) {		//성공적으로 수정이 되었을 경우
 				msg = "수정이 되었습니다";

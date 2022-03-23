@@ -33,7 +33,7 @@
 							<a href="/user/info/138252" class="avatar-photo">
 							
 							<c:choose>
-							<c:when test="${profile!=null}"><img src="<%=request.getContextPath() %>/profile/${profile}" /></c:when>
+							<c:when test="${leaderProfile!=null}"><img src="<%=request.getContextPath() %>/profile/${leaderProfile}" /></c:when>
 							<c:otherwise><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></c:otherwise>
 							</c:choose>
 							
@@ -50,12 +50,12 @@
 
 								<div class="form-group has-feedback">
 									<div>
-										<input type="text" name="title" required="" value="" placeholder="${s.title }" class="form-control" id="title" />
+										<input type="text" name="title" required="" value="${s.title }" placeholder="제목을 입력해 주세요." class="form-control" id="title" />
 									</div>
 								</div>
 
 								<div class="form-group has-feedback">
-									<textarea name="text" placeholder="${s.content }" id="summernote" rows="20" class="form-control input-block-level"></textarea>
+									<textarea name="text" id="summernote" rows="20" class="form-control input-block-level">${s.content }</textarea>
 								</div>
 								<input type="hidden" name="textType" value="HTML" id="textType" />
 								<input type="hidden" name="study_Id" value="${s.study_Id }">
