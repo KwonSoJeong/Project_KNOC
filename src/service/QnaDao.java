@@ -81,4 +81,33 @@ public class QnaDao {
 		return 0;
 	}
 	
+	public int update(String title, String content, String qna_Id, int secret) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("qna_Id", qna_Id);
+			map.put("title", title);
+			map.put("content", content);
+			map.put("secret", secret);
+			return sqlSession.delete(ns + "update",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
+	
+	public int delete(String qna_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.delete(ns + "delete",qna_Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
+	
 }

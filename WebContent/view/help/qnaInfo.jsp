@@ -57,7 +57,8 @@
 								
 
 							</div>
-
+							
+						
 						</div>
 					</div>
 				</section>
@@ -151,12 +152,17 @@
 													</div>
 												</div>
 											</form>
+							
 										</div>
 									</div>
 									</c:when>
 									<%--댓글도 없고 어드민이 아닌경우 아무것도 표시 안함 --%>
 									<c:otherwise></c:otherwise>
 									</c:choose>
+									<c:if test="${memid==q.writer }">
+									<input type="button" onclick="location.href='qnaUpdate?qna_Id=${q.qna_Id}'" name="Update" class="create btn btn-success btn-wide pull-left" style="background-color: #37d3c0; border-color: #37d3c0; margin-right: 10px; margin-top: 5px;" value="수정"/>
+									<input type="button" onclick="location.href='qnaDeletePro?qna_Id=${q.qna_Id}'" name="Delete" class="create btn btn-success btn-wide pull-left" style="background-color: #37d3c0; border-color: #37d3c0; margin-right: 10px; margin-top: 5px;" value="삭제"/>
+									</c:if>
 								</div>
 							</div>
 						</div>
