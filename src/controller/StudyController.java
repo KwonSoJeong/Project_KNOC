@@ -326,4 +326,105 @@ public class StudyController extends MskimRequestMapping {
 
 			return "/view/alert.jsp";
 		}
+		
+		//스터디 게시글 수정
+		@RequestMapping("studyUpdate")
+		public String studyUpdate(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			StudyDao sd = new StudyDao();
+			Study s = new Study();
+			String study_Id = request.getParameter("study_Id");
+			String id = (String)request.getSession().getAttribute("memid");
+			s = sd.selectOne(study_Id);
+			
+			if(id==null || !id.equals(s.getLeader_Id())) { //작성자인지 체크
+				msg = "게시글 수정은 작성자만 할 수 있습니다.";
+				url = request.getContextPath()+"/study/studyInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+			
+			System.out.println(s);
+			
+			request.setAttribute("s", s);
+			return "/view/study/studyUpdate.jsp";
+		}
+		
+		//스터디 게시글 수정 pro
+		@RequestMapping("studyUpdatePro")
+		public String studyUpdatePro(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+					
+			StudyDao sd = new StudyDao();
+			Study s = new Study();
+			String study_Id = request.getParameter("study_Id");
+			s = sd.selectOne(study_Id);
+			String title = request.getParameter("title");
+			String content = request.getParameter("text");
+			
+			int num = sd.Update(title,content,study_Id);
+			
+			if(num>0) {		//성공적으로 수정이 되었을 경우
+				msg = "수정이 되었습니다";
+				url = request.getContextPath()+"/study/studyInfo";
+			}else {			//수정에 오류 발생
+				msg = "수정에 실패하였습니다";
+				url = request.getContextPath()+"/study/studyInfo?study_Id="+study_Id;
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
+		
+		//스터디 게시글 삭제
+		@RequestMapping("stydyDeletePro")
+		public String studyDeletePro(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			StudyDao sd = new StudyDao();
+			Study s = new Study();
+			String study_Id = request.getParameter("study_Id");
+			s = sd.selectOne(study_Id);
+			String id = (String)request.getSession().getAttribute("memid");
+
+			if(id==null || !id.equals(s.getLeader_Id())) { //작성자인지 체크
+				msg = "게시글 삭제는 작성자만 할 수 있습니다.";
+				url = request.getContextPath()+"/study/studyInfo";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
+				return "/view/alert.jsp";
+			}
+			
+			int num = sd.delete(study_Id);
+			
+			if(num>0) {		//성공적으로 삭제가 되었을 경우
+				msg = "삭제가 되었습니다";
+				url = request.getContextPath()+"/study/studyList";
+			}else {			//삭제에 오류 발생
+				msg = "삭제에 실패하였습니다";
+				url = request.getContextPath()+"/study/studyInfo";
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
 }

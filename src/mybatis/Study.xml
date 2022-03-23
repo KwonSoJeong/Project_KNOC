@@ -86,5 +86,13 @@ update study set process = 2 where study_Id = #{study_Id}
 <update id="changeProcessToOne">
 update study set process = 1 where study_Id = #{study_Id}
 </update>
+
+<delete id="delete" parameterType="string">
+delete from study where study_Id = #{study_Id}
+</delete>
+ 
+<update id="update" parameterType="map">
+update study set title = #{title}, content = #{content} where study_Id = #{study_Id}
+</update>
  
 </mapper>
