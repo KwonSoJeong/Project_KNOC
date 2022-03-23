@@ -8,8 +8,36 @@
 <script src="<%=request.getContextPath() %>/js/click.js"></script>
 <link href="<%=request.getContextPath() %>/resource/style/main.css" rel='stylesheet' type='text/css'/>
 <script type="text/javascript">
-var hd = 0;
-
+function favoriteCntUp() {
+	// ajax를 이용하여 관심등록/해제 구현
+    let httpreq = new XMLHttpRequest()
+    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite", true)
+    httpreq.send()
+    
+    // callback
+    httpreq.onreadystatechange = function() {
+       
+        if (httpreq.readyState == 4 && httpreq.status == 200) {
+            let result = document.querySelector("#result")
+            
+            // responseText = status,favoriteCnt
+            let arr = this.responseText.trim().split(",")
+            let status = arr[0]
+            let favoriteCnt = arr[1]
+            let fav = document.querySelector("#fav")
+            
+            if (status == "login-null") {
+                alert("관심 등록은 로그인 후 이용 가능합니다.")
+            } else if (status == "favorite-Cnt-Up") {
+                alert("관심 클래스로 추가되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+            } else if (status == "favorite-Cnt-Down"){
+                alert("관심 등록이 해제되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+            }
+        }
+    }
+}
 </script>
 </head>
 <body style="padding-top: 70px;">
@@ -70,10 +98,10 @@ var hd = 0;
 			<div class="mnc-content">
 				<div class="heart_img">
 					
-					<button class="noheartbtn n${status.count}" type="submit" >
+					<button class="noheartbtn n${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 					</button>
-					<button class="heartbtn y${status.count}" type="submit" >
+					<button class="heartbtn y${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
 					</button>
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
@@ -83,7 +111,7 @@ var hd = 0;
 				</div>
 				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
 				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
-				<div class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
+				<div id="fav" class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
 				<div class="mnc-bor-bot" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'"></div>
 				<div class="mnc-price" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.price }원</div>
 				
@@ -121,9 +149,12 @@ var hd = 0;
 
 	<div class="ya1" style="display: none;">
 		<div class="m-cht-box">
-			<div class="m-cht-box-title">KNOC</div>
+			<div class="m-cht-flex">
+				<div id="back" onclick="nLoad()"><img src="<%=request.getContextPath()%>/resource/image/back.png"></div>
+				<div id ="ti" class="m-cht-box-title">KNOC</div>
+			</div>
 			<div class="cht-bor-bot"></div>
-			<div class="m-cht-msg-win">
+			<div id="nload" class="m-cht-msg-win">
 			  <c:choose>
                     <c:when test="${userId==null}">
                      <div class="m-cht-login-null">로그인 후 이용 가능합니다.</div>
@@ -131,7 +162,7 @@ var hd = 0;
                     <c:when test="${userId=='admin'}">
                      <c:forEach var="user" items="${groupList}">
                          <div class="m-cht-login-admin">
-                            <input class="m-cht-qna-link" type="button" value="${user}님의 문의가 있습니다." onclick="adminChatLink('${user}')"/>
+                            <input class="cl m-cht-qna-link" type="button" value="${user}님의 문의가 있습니다." onclick="adminChatLink('${user}')"/>
                          </div>
                      </c:forEach>
                     </c:when>
@@ -149,7 +180,7 @@ var hd = 0;
                          </c:if>
                      </c:forEach>
                     </c:otherwise>
-                 </c:choose>
+              </c:choose>
             
 			</div>
 			<div class="m-cht-input-win">
@@ -167,7 +198,7 @@ var hd = 0;
 const msgArea = document.querySelector(".m-cht-msg-win")
 const inputArea = document.querySelector(".m-cht-input-msg")
 let groupId = '${groupId}'
-const webSocket = new WebSocket('ws://#/Project_KNOC/groupchat')
+const webSocket = new WebSocket('ws://115.136.241.242:8090//Project_KNOC/groupchat')
 
 webSocket.onopen = function(event) {onOpen(event)}
 webSocket.onerror = function(event) {onError(event)}
@@ -265,6 +296,8 @@ function sendImg(filename) {
 }
 
 function adminChatLink(user){
+	document.getElementById("back").style.display = "block";
+	document.getElementById("ti").style.margin = '20px 0px 0px 0px';
 	
     let httpreq = new XMLHttpRequest()
     let param = "?groupId="+encodeURIComponent(user)
@@ -289,6 +322,10 @@ function adminChatLink(user){
 }
 
 init()
+
+function nLoad(){  
+      $("#nload").load(window.location.href + " #nload");
+}
 </script>	
 </body>
 </html>
