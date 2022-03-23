@@ -8,34 +8,40 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/mentorInfo.css">
 </head>
-<body>
-	<div id="mentor-bot">
-		<h2 id ="mentor-h2">멘토링</h2>
-	</div>
-	<form class="mentor-form" action="<%=request.getContextPath()%>/mentor/mentorInfo">
-		<input class="mentor-control" name="" type="text" placeholder="검색하기">
-		<button id="mentro-bung" type="submit">검색</button>
-	</form>
+<body style="padding-top: 70px;">
+	<div class="mti-wrapper">
+		<div class="mentor_header">
+			<h2 id ="font">멘토링</h2>
+		</div>
+		<div class="bottom-line"></div>
 
-	<div class="mentor-wrapper">
-	<div class="mentor-font">
-	<label>멘토링 내용</label>
-	<p>내용:&nbsp;${m.content}</p>
-	</div>
-	
-	<div class="mentor-font"> 
-	<c:choose>
-	<%--프로필 사진이 없으면 기본 프로필사진, 있으면 설정한 프로필 사진 --%>
-	<c:when test="${profile!=null }"><img src="<%=request.getContextPath() %>/profile/${profile}" width="110" height="90">멘토 이름: ${m.mentor_Id}</c:when>
-	<c:otherwise><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" width="110" height="90">멘토 이름: ${m.mentor_Id}</c:otherwise>
-	</c:choose>
-	<br>
-	<p>멘토 소개글:&nbsp;${m.intro}</p>
-	<form action="<%=request.getContextPath()%>/mentor/mentoringEntry" method="post">
-	<input type="hidden" name="mentoringId" value="${m.mentoring_Id }">
-	<button id="mentro-bung2" type="submit">멘토링신청</button>
-	</form>
-	</div>
+		<div class="mti-wrapper2">
+			<div class="mti-intro">
+				<div class="mti-lh">${m.content}</div>
+			</div>
+			
+			
+			<div class="mti-wrapper3">
+				<div class="mti-profile"> 
+					<div class="mti-pro-img">
+						<c:choose>
+							<%--프로필 사진이 없으면 기본 프로필사진, 있으면 설정한 프로필 사진 --%>
+							<c:when test="${profile!=null }"><img src="<%=request.getContextPath() %>/profile/${profile}" onerror="this.src='<%=request.getContextPath() %>/resource/image/profile.png'"></c:when>
+							<c:otherwise><img src="<%=request.getContextPath() %>/resource/image/profile.png" width="110" height="90"></c:otherwise>
+						</c:choose>
+					</div>	
+					<div class="mti-pro-name">MENTOR : ${m.mentor_Id}</div>
+					<div>${m.intro}</div>	
+				</div>
+				
+				<div>
+					<form action="<%=request.getContextPath()%>/mentor/mentoringEntry" method="post">
+						<input type="hidden" name="mentoringId" value="${m.mentoring_Id }">
+						<button id="mentro-bung2" type="submit">멘토링신청</button>
+					</form>	
+				</div>
+			</div>		
+		</div>
 	</div>
 </body>
 </html>
