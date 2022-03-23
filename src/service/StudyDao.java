@@ -246,6 +246,34 @@ public class StudyDao {
 		
 	}
 	
+	public int delete(String study_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.delete(ns + "delete",study_Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
+	
+	public int Update(String title, String content, String study_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("study_Id", study_Id);
+			map.put("title", title);
+			map.put("content", content);
+			return sqlSession.delete(ns + "update",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
+	
 	
 	
 	

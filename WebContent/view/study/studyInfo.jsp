@@ -116,7 +116,13 @@
 									<c:otherwise>
 									<form action="<%=request.getContextPath()%>/study/writeStudyCommentPro" method="post">
 									<textarea name="text" id="summernote" rows="3" class="form-control input-block-level"></textarea>
-									<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0;" value="댓글등록" id="create" />
+									<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0; margin-top: 5px;" value="댓글등록" id="create" />
+									<c:if test="${memid==s.leader_Id }">
+									<div>
+									<input type="button" onclick="location.href='studyUpdate?study_Id=${s.study_Id}'" name="Update" class="create btn btn-success btn-wide pull-left" style="background-color: #37d3c0; border-color: #37d3c0; margin-right: 10px; margin-top: 5px;" value="수정"/>
+									<input type="button" onclick="location.href='stydyDeletePro?study_Id=${s.study_Id}'" name="Delete" class="create btn btn-success btn-wide pull-left" style="background-color: #37d3c0; border-color: #37d3c0; margin-right: 10px; margin-top: 5px;" value="삭제"/>
+									</div>
+									</c:if>
 									<input type = "hidden" name="study_Id" value="${s.study_Id}">
 									</form>
 									</c:otherwise>
