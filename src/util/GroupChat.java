@@ -21,10 +21,10 @@ public class GroupChat {
 		WebChat webChat = new WebChat(message.split(":"));
 		
 		synchronized (clients) {
-			if (clients.get(session) == null) {
-				clients.put(session, webChat.getGroupId());
-			} else if (webChat.getGroupId() != "") {
-				
+			clients.put(session, webChat.getGroupId());
+			
+			if (webChat.getGroupId() != "") {
+				// 로그인 정보가 없을 때는 db에 메세지 데이터를 추가시키지 않음
 				WebChatDao wcd = new WebChatDao();
 				int no = wcd.nextSeq();
 				
@@ -43,7 +43,7 @@ public class GroupChat {
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.println("open: " + session);
-		clients.put(session, null);
+		// clients.put(session, null);
 	}
 	
 	@OnClose
