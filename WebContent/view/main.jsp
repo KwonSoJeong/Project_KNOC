@@ -8,10 +8,13 @@
 <script src="<%=request.getContextPath() %>/js/click.js"></script>
 <link href="<%=request.getContextPath() %>/resource/style/main.css" rel='stylesheet' type='text/css'/>
 <script type="text/javascript">
-function favoriteCntUp() {
+function favoriteCntUp(class_id, cnt) {
+	console.log(class_id)
+	console.log(cnt)
 	// ajax를 이용하여 관심등록/해제 구현
     let httpreq = new XMLHttpRequest()
-    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite", true)
+	let param = "?class_id=" + encodeURIComponent(class_id)
+    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite"+param, true)
     httpreq.send()
     
     // callback
@@ -19,21 +22,23 @@ function favoriteCntUp() {
        
         if (httpreq.readyState == 4 && httpreq.status == 200) {
             let result = document.querySelector("#result")
-            
+            let heartButton = document.querySelector("#n" + cnt)
             // responseText = status,favoriteCnt
             let arr = this.responseText.trim().split(",")
             let status = arr[0]
             let favoriteCnt = arr[1]
-            let fav = document.querySelector("#fav")
+            let fav = document.querySelector("#fav" + cnt)
             
             if (status == "login-null") {
                 alert("관심 등록은 로그인 후 이용 가능합니다.")
             } else if (status == "favorite-Cnt-Up") {
                 alert("관심 클래스로 추가되었습니다.")
                 fav.innerHTML = "♥ " + favoriteCnt
+                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/heart.png'>"
             } else if (status == "favorite-Cnt-Down"){
                 alert("관심 등록이 해제되었습니다.")
                 fav.innerHTML = "♥ " + favoriteCnt
+                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/noheart.png'>"
             }
         }
     }
@@ -97,13 +102,34 @@ function favoriteCntUp() {
 		<c:forEach var="c" items="${newClassList}" varStatus="status">
 			<div class="mnc-content">
 				<div class="heart_img">
+					<c:set var="class_id" value="${c.class_id}"/>
+					<c:set var="doneLoop" value="false" />
+					<c:forEach var="w" items="${wishList}">
+					 <c:if test="${not doneLoop}">
+					       <c:if test="${w.CLASS_ID.equals(class_id)}">
+					           <c:set var="doneLoop" value="true"/>
+					       </c:if>
+					 </c:if>
+					</c:forEach>
 					
+					<c:if test="${doneLoop==true}">
+					   <button class="heartbtn" id="n${status.count}" type="button" onclick="favoriteCntUp('${class_id}', '${status.count}')">
+                        <img src="<%=request.getContextPath()%>/resource/image/heart.png">
+                        </button>
+					</c:if>
+					<c:if test="${doneLoop==false}">
+					   <button class="noheartbtn" id="n${status.count}" type="button" onclick="favoriteCntUp('${class_id}', '${status.count}')">
+                        <img src="<%=request.getContextPath()%>/resource/image/noheart.png">
+                        </button>
+					</c:if>
+					
+					<!-- 
 					<button class="noheartbtn n${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 					</button>
 					<button class="heartbtn y${status.count}" type="submit" onclick="favoriteCntUp()">
 						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
-					</button>
+					</button> -->
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
@@ -111,7 +137,7 @@ function favoriteCntUp() {
 				</div>
 				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
 				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
-				<div id="fav" class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
+				<div id="fav${status.count}" class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
 				<div class="mnc-bor-bot" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'"></div>
 				<div class="mnc-price" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.price }원</div>
 				
