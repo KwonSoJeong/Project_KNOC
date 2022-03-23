@@ -40,7 +40,7 @@
 							<ul>
 							<c:forEach var="c" items="${classList}">
 							     <c:if test="${c.type==1}">
-							     <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${c.member_study_id}">${c.title}</a></li>
+							     <li><a href="<%=request.getContextPath()%>/classes/classUpdate?class_id=${c.member_study_id}">${c.title}</a></li>
 							     </c:if>
 							</c:forEach>
 							 <!--  

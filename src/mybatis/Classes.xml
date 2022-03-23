@@ -40,4 +40,13 @@ update classes set favorite = favorite + 1 where class_id = #{value}
 <update id="favoriteCntDown" parameterType="string">
 update classes set favorite = favorite - 1 where class_id = #{value}
 </update>
+
+<update id="classUpdate" parameterType="classes">
+update classes set thumbnail = #{thumbnail}, intro = #{intro}, price = #{price}
+where class_id = #{class_id}
+</update>
+
+<delete id="classDelete" parameterType="string">
+delete from classes where class_id = #{value}
+</delete>
 </mapper>

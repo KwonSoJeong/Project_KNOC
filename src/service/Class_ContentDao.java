@@ -76,6 +76,36 @@ public class Class_ContentDao {
 		return null;
 	}
 	
+	// 컨텐츠 수정
+	public int contentUpdate(Class_Content updatedContent) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.update(ns + "contentUpdate", updatedContent);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return 0;
+	}
+	
+	// 컨텐츠 삭제
+	public int contentDelete(String classId) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		
+		try {
+			return sqlSession.delete(ns + "contentDelete", classId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+
+		return 0;
+	}
+	
 	/* DAO 테스트 코드
 	public static void main(String[] args) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
