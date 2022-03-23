@@ -29,12 +29,12 @@
 					<li id="num1" class="nav-it">
 						<a href="<%=request.getContextPath() %>/classes/classList" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
-							<li><a href="#">운동</a></li>
-							<li><a href="#">크리에이티브</a></li>
-							<li><a href="#">디자인</a></li>
-							<li><a href="#">개발/프로그래밍</a></li>
-							<li><a href="#">요리/베이킹</a></li>
-							<li><a href="#">금융/재태크</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category1">운동</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category2">크리에이티브</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category3">디자인</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category4">개발/프로그래밍</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category5">요리/베이킹</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category6">금융/재태크</a></li>
 						</ul>
 					</li>
 					<li class="nav-it">
@@ -49,12 +49,12 @@
 					<li id="num1" class="nav-it">
 						<a href="<%=request.getContextPath() %>/classes/classList" id="fsfc" class="nav-link">클래스 ▼</a>
 						<ul id="subnav" class="submenu">
-							<li><a href="#">운동</a></li>
-							<li><a href="#">크리에이티브</a></li>
-							<li><a href="#">디자인</a></li>
-							<li><a href="#">개발/프로그래밍</a></li>
-							<li><a href="#">요리/베이킹</a></li>
-							<li><a href="#">금융/재태크</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category1">운동</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category2">크리에이티브</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category3">디자인</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category4">개발/프로그래밍</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category5">요리/베이킹</a></li>
+							<li><a href="<%=request.getContextPath()%>/classes/classList?category_id=category6">금융/재태크</a></li>
 						</ul>
 					</li>
 					<li class="nav-it">

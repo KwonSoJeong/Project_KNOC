@@ -55,8 +55,8 @@ function favoriteCntUp() {
 	<div id="class-info">
 	
 	<div><img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="500px" height="330px"></div>
-	<div class="class-detail"><h2>클래스 제목:&nbsp;${classone.title}</h2></div>
-	<div class="class-detail">클래스 카테고리:&nbsp;#######</div>
+	<div class="class-detail"><h2>&lt;&lt;&nbsp;${classone.title}&gt;&gt;</h2></div>
+	<div class="class-detail">클래스 카테고리:&nbsp;${category}</div>
 	<div class="class-detail">${classone.intro}</div>
 	<div>
 	<div class="class-detail" style="text-align: center;">목차</div>

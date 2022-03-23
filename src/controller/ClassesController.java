@@ -19,6 +19,7 @@ import model.Knoc_Member;
 import model.Member_Study_Info;
 import model.WebChat;
 import model.WishList;
+import service.CategoryDao;
 import service.Class_ContentDao;
 import service.ClassesDao;
 import service.Member_Study_InfoDao;
@@ -321,6 +322,9 @@ public class ClassesController extends MskimRequestMapping {
 		ClassesDao cd = new ClassesDao();
 		Classes classone = cd.classOne(classId);
 		
+		CategoryDao cgd = new CategoryDao();
+		String categoryName = cgd.selectCategoryName(classone.getCategory_id());
+		
 		Class_ContentDao ccd = new Class_ContentDao();
 		List<Class_Content> contentList = ccd.contentList(classId);
 		int contentNo = 1;
@@ -330,6 +334,7 @@ public class ClassesController extends MskimRequestMapping {
 		
 		request.setAttribute("contentNo", contentNo);
 		request.setAttribute("classone", classone);
+		request.setAttribute("category", categoryName);
 		request.setAttribute("contentList", contentList);
 		return "/view/classes/classInfo.jsp";
 	}
