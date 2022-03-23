@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+a{
+text-decoration: none ;
+}
+
 .mti-wrapper{
 	margin: 6.7vh auto 0;
 	min-height: 50vh;
@@ -65,7 +69,8 @@
 }
 
 .mti-pro-name{
-	margin: 20px;
+	margin: 20px 0;
+	font-weight: 700;
 }
 
 #mentro-bung2{
@@ -80,14 +85,6 @@
     border-radius: 25px;
 }
 
-/* button{
-width : 100px;
-height: 35px;
-font-size : 11px;
-border:none;
-text-align:center;
-} */
-
-a{
-text-decoration: none ;
+#mentro-bung2:hover{
+	background-color: #d4fff9;
 }

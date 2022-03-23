@@ -10,10 +10,14 @@
 </head>
 <body style="padding-top: 70px;">
 	<div class="mti-wrapper">
+	
+	
 		<div class="mentor_header">
-			<h2 id ="font">멘토링</h2>
+			<h2>멘토링</h2>
 		</div>
 		<div class="bottom-line"></div>
+
+
 
 		<div class="mti-wrapper2">
 			<div class="mti-intro">

@@ -40,22 +40,19 @@ function favoriteCntUp() {
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/classInfo.css">
 </head>
 
-<body>
-<div id="class-bot">
-		<h1 id ="class-h1">${classone.title}</h1>
-	</div>
-
-	<!-- <form class="class-form" action="#">
-		<input class="class-control" type="text" placeholder="검색하기">
-		<button id="class-bung" type="submit">검색</button>
-	</form> -->
+<body style="padding-top: 70px;">
+	<div class="ci-wrapper">
+		<div class="class_header">
+			<h2>${classone.title}</h2>
+		</div>
+		<div class="bottom-line"></div>
 
 
 	<div class="class-wrapper">
 	<div id="class-info">
 	
-	<div><img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="500px" height="330px"></div>
-	<div class="class-detail"><h2>&lt;&lt;&nbsp;${classone.title}&gt;&gt;</h2></div>
+	<div><img src="<%=request.getContextPath() %>/thumbnail/${classone.thumbnail}" width="825px" height="600px" style="border-radius: 15px;"></div>
+	<div class="class-detail"><h2>${classone.title}</h2></div>
 	<div class="class-detail">클래스 카테고리:&nbsp;${category}</div>
 	<div class="class-detail">${classone.intro}</div>
 	<div>
@@ -84,47 +81,6 @@ function favoriteCntUp() {
 	</div>
 	</div>
 
-
-<%-- <div id="class-col">
-	<h3 id="classInfo-h2">클래스 제목</h3>
 	</div>
-	
- 	<div class="calss-canter">
-	<div class="item-wrap">
-	<div class="class-card">
-	<h4>디자인</h4>
-	<div class="col-3">
-	<img src="" width="520" height="300">
-	</div>
-	<p>
-	<br>
-	<br>가격: ${classone.price}원
-	</p>
-    </div>
-	</div>
-	</div>
-
-	<div class="class-fnete">
-	<div class="class-card">
-	<img src="" alt="">
-	<h3>클래스 공유자 프로필</h3><br>
-	<div class="row">
-	<div class="col-3">
-	<img src="" width="100" height="120">
-	<br>클래스 공유자 이름: ${classone.lec_id}</div>
-	<div class="class-info">
-	<div class="user-wrap">
-	
-	<p>${classone.intro}</p>
-	<div class="card-chat">
-	<div class="chat"> 
-	<button type="button" onclick="location.href='<%=request.getContextPath()%>/classes/classRegister'">수강신청</button>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div> --%>
 </body>
 </html>
