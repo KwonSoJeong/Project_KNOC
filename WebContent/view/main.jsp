@@ -67,35 +67,15 @@ var hd = 0;
 		<div class="mnc-class">New Class</div>
 		<div class="mnc-lcontainer">
 		<c:forEach var="c" items="${newClassList}" varStatus="status">
-		    <c:set var="class_id" value="${c.class_id}" />
 			<div class="mnc-content">
 				<div class="heart_img">
-					   <c:set var="doneLoop" value="false" />
-					   <c:forEach var="wish" items="${wishList}">
-					       <c:if test="${not doneLoop}">
-					           <c:if test="${wish.CLASS_ID.equals(class_id)}">
-                                    <c:set var="doneLoop" value="true" />
-					           </c:if>
-					       </c:if>
-					   </c:forEach>
-					   <c:if test="${doneLoop==true}">
-					       <button class="heartbtn y${status.count}" type="button" >
-                            <img src="<%=request.getContextPath()%>/resource/image/heart.png">
-                            </button>
-					   </c:if>
-					   <c:if test="${doneLoop==false}">
-					       <button class="noheartbtn n${status.count}" type="button" >
-                            <img src="<%=request.getContextPath()%>/resource/image/noheart.png">
-                            </button>
-					   </c:if>
-					<!-- 
+					
 					<button class="noheartbtn n${status.count}" type="submit" >
 						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 					</button>
 					<button class="heartbtn y${status.count}" type="submit" >
 						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
 					</button>
-					 -->
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
