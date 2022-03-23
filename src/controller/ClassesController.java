@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +44,6 @@ public class ClassesController extends MskimRequestMapping {
 		ClassesDao cd = new ClassesDao();
 		
 		WebChatDao wcd = new WebChatDao();
-		
 		// 일반 사용자의 경우, 문의톡 아이콘을 눌렀을 때 바로 대화 내용 출력
 		List<WebChat> chatList = wcd.chatList(groupId);
 		// 관리자(admin)일 경우, 문의톡 아이콘을 눌렀을 때 우선 문의한 유저 리스트가 먼저 출력
@@ -52,12 +52,16 @@ public class ClassesController extends MskimRequestMapping {
 		List<Classes> newClassList = cd.sortedClassList("regdate");
 		List<Classes> favoriteClassList = cd.sortedClassList("favorite");
 		
+		WishListDao wld = new WishListDao();
+		List<Map<String, Object>> wishList = wld.wishListOne(userId);
+		
 		request.setAttribute("userId", userId);
 		request.setAttribute("groupId", groupId);
 		request.setAttribute("chatList", chatList);
 		request.setAttribute("groupList", groupList);
 		request.setAttribute("newClassList", newClassList);
 		request.setAttribute("favoriteClassList", favoriteClassList);
+		request.setAttribute("wishList", wishList);
 		return "/view/main.jsp";
 	}
 	

@@ -139,7 +139,7 @@ h1{
 	background: none;
 	border: none;
 	position: absolute;
-	display: none;
+	/*display: none;*/
 	margin: 5px 5px 0 0;
 }
 
