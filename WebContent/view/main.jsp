@@ -176,22 +176,23 @@ webSocket.onmessage = function(event) {onMessage(event)}
 function onOpen(event) {
     // alert(new Date() + "연결 성공")
     msgArea.innerHTML += "<p style='font-size: 13px; text-align: center;'>" + new Date() +"</p>"
-    webSocket.send(groupId + ':${userId}:${userId}님이 입장하였습니다.')
 }
 
 function onMessage(event) {
     let line = event.data
     let msg = JSON.parse(line)
-    let filenameArr = [".jpg", ".png", ".gif"]
+    let filenameArr = [".jpg", ".png", ".gif", ".JPG", ".PNG", ".GIF"]
+    let fileChk = event.data.split(":")[4].toLowerCase()
+    console.log(fileChk)
     //event.data.includes(filenameArr.some(i => filename.includes(i)))
-    if (filenameArr.some(i => event.data.includes(i))) {
-        let filename = event.data.split(":")[2]
+    if (fileChk.includes('.jpg') || fileChk.includes('.png') || fileChk.includes('.gif') || fileChk.includes('.jpeg')) {
+        let filename = event.data.split(":")[4]
         
-        msgArea.innerHTML += "<div class='left'><div id='you'>"+ "<img src='/Project_KNOC/chatimg/"+msg.message+"' width='200px'/>"  + "</div></div>" 
+        msgArea.innerHTML += "<div class='left'><div id='you'>"+ "<img src='<%=request.getContextPath()%>/chatimg/"+msg.message+"' width='200px'/>"  + "</div></div>" 
     } else {
         msgArea.innerHTML += "<div class='left'><div id='you'>" + msg.message + "</div></div>"
     }
-    messageArea.scrollTop = messageArea.scrollHeight
+    msgArea.scrollTop = msgArea.scrollHeight
 }
 
 function sendText() {
@@ -247,7 +248,7 @@ function imgUpload(files) {
     
     httpreq.onload = function(e) {
         if (httpreq.status == 200) {
-            sendImg(httpreq.responseText)
+            sendImg(httpreq.responseText.trim())
         } else {
             alert("error")
         }
@@ -264,11 +265,11 @@ function sendImg(filename) {
 }
 
 function adminChatLink(user){
+	
     let httpreq = new XMLHttpRequest()
     let param = "?groupId="+encodeURIComponent(user)
 
     let url = "/Project_KNOC/classes/adminChat" 
-    // /Project_KNOC/classes/adminChat
     httpreq.open("GET", "/Project_KNOC/classes/adminChat"+param, true)
     
     httpreq.send()
@@ -278,9 +279,12 @@ function adminChatLink(user){
             msgArea.innerHTML = this.responseText.trim()
             msgArea.innerHTML += "<p style='font-size: 13px; text-align: center;'>" + new Date() +"</p>"
             
-            groupId = user
+            
         }
     }
+    
+    groupId = user
+    //webSocket.send(groupId + ':${userId}:${userId}님이 입장하였습니다.')
     
 }
 

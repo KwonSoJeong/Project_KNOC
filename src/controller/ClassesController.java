@@ -30,7 +30,7 @@ public class ClassesController extends MskimRequestMapping {
 	
 	// main화면 view
 	@RequestMapping("main")
-	public String memberInput(HttpServletRequest request, HttpServletResponse response) {
+	public String main(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("memid");
 		String groupId = userId;
@@ -67,6 +67,13 @@ public class ClassesController extends MskimRequestMapping {
 		MultipartRequest multi = null;
 		
 		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
 			multi = new MultipartRequest(request, path, 10*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -75,7 +82,6 @@ public class ClassesController extends MskimRequestMapping {
 		String groupId = multi.getParameter("groupId");
 		String userId = multi.getParameter("userId");
 		String filename = multi.getFilesystemName("file");
-		
 		request.setAttribute("filename", filename);
 		
 		return "/single/imgUpload.jsp";
