@@ -11,6 +11,16 @@ $(document).ready(function(){
 	        $(this).hide();
 	});
 
+	
+
+	$("#back").click(function(){
+          $(this).hide();
+          $("#ti").css("margin", "20px 0px 0px 32px");
+    });
+
+	
+
+
 
 	$(".n1").click(function(){
 	        $(this).hide();
