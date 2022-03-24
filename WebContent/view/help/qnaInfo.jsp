@@ -41,8 +41,10 @@
 
 										<h1>${q.title }</h1>
 
+										<input type="button" onclick="location.href='qnaList'" name="Update" class="question__status-tag question__status-tag--recruited" style="background-color: #da77f2; border-color: #da77f2; margin-left: 20px; margin-right: 0px;" value="목록으로" />
 										<c:if test="${memid==q.writer }">
-											<input type="button" onclick="location.href='qnaUpdate?qna_Id=${q.qna_Id}'" name="Update" class="question__status-tag question__status-tag--recruited" style="background-color: #4dabf7; border-color: #4dabf7; margin-left: 20px; margin-right: 0px;" value="수정" />
+
+											<input type="button" onclick="location.href='qnaUpdate?qna_Id=${q.qna_Id}'" name="Update" class="question__status-tag question__status-tag--recruited" style="background-color: #4dabf7; border-color: #4dabf7; margin-left: 8px; margin-right: 0px;" value="수정" />
 											<input type="button" onclick="location.href='qnaDeletePro?qna_Id=${q.qna_Id}'" name="Delete" class="question__status-tag question__status-tag--recruited" style="background-color: #ced4da; border-color: #ced4da; margin-left: 8px;" value="삭제" />
 										</c:if>
 									</div>
