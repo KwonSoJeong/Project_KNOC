@@ -4931,7 +4931,7 @@ a.label:focus {
   background-color: #449d44;
 }
 .label-info {
-  background-color: #b8e6e1;
+  background-color: #37d3c0;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
@@ -10092,7 +10092,7 @@ vertical-align: middle;
 }
 #article h2 {
   font-size: 22px;
-  margin-top: 0;
+  margin-top: 10px;
   word-break: break-all;
 }
 #article .article-id {
@@ -10151,8 +10151,8 @@ vertical-align: middle;
 }
 .content-body {
   position: relative;
-  border-right: 1px solid #ddd;
-  width: 700px;
+  /* border-right: 1px solid #ddd; */
+  width: 100%;
 }
 .content-body label {
   font-size: 16px;

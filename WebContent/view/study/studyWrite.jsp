@@ -61,7 +61,7 @@
 
 								<div class="nav" role="navigation">
 									<fieldset class="buttons">
-										<a href="<%=request.getContextPath() %>/study/studyList" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> <input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0;" action="create" value="등록" id="create" />
+										<a href="<%=request.getContextPath() %>/study/studyList" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> <input type="submit" name="create" class="create btn btn-success btn-wide pull-right" style="background-color: #37d3c0; border-color: #37d3c0; margin-left: 10px;" action="create" value="등록" id="create" />
 									</fieldset>
 								</div>
 							</fieldset>
