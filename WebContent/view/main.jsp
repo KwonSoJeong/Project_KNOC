@@ -150,19 +150,42 @@ function favoriteCntUp(class_id, cnt) {
 	<div class="mnc-container"> 
 		<div class="mnc-class">ONE PICK! Class</div>
 		<div class="mnc-lcontainer">
+		<c:set var="cnt" value="4"/>
 		<c:forEach var="c" items="${favoriteClassList}">
-			<div class="mnc-content" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
-				<div >
-					<div class="mnc-thumbnail">
-						<img src="#">
+			<div class="mnc-content">
+				<div class="heart_img">
+				    <c:set var="cnt" value="${cnt+1}"/>
+					<c:set var="class_id" value="${c.class_id}"/>
+                    <c:set var="doneLoop" value="false" />
+                    <c:forEach var="w" items="${wishList}">
+                     <c:if test="${not doneLoop}">
+                           <c:if test="${w.CLASS_ID.equals(class_id)}">
+                               <c:set var="doneLoop" value="true"/>
+                           </c:if>
+                     </c:if>
+                    </c:forEach>
+                    
+                    <c:if test="${doneLoop==true}">
+                       <button class="heartbtn" id="n${cnt}" type="button" onclick="favoriteCntUp('${class_id}', '${cnt}')">
+                        <img src="<%=request.getContextPath()%>/resource/image/heart.png">
+                        </button>
+                    </c:if>
+                    <c:if test="${doneLoop==false}">
+                       <button class="noheartbtn" id="n${cnt}" type="button" onclick="favoriteCntUp('${class_id}', '${cnt}')">
+                        <img src="<%=request.getContextPath()%>/resource/image/noheart.png">
+                        </button>
+                    </c:if>
+					
+					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
+						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
-					<div class="mnc-heart"></div>
+<!-- 					<div class="mnc-heart"></div> -->
 				</div>
-				<div class="mnc-creator">${c.lec_id }</div>
-				<div class="mnc-title">${c.title }</div>
-				<div class="mnc-heartcnt">♥ ${c.favorite }</div>
-				<div class="mnc-bor-bot"></div>
-				<div class="mnc-price">${c.price }원</div>
+				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
+				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
+				<div id="fav${cnt}" class="mnc-heartcnt" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">♥ ${c.favorite }</div>
+				<div class="mnc-bor-bot" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'"></div>
+				<div class="mnc-price" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.price }원</div>
 			</div>
 			</c:forEach>
 		</div>
