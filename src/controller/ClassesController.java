@@ -51,8 +51,10 @@ public class ClassesController extends MskimRequestMapping {
 		List<String> groupList = wcd.groupList();
 		
 		WishListDao wld = new WishListDao();
-		List<Map<String, Object>> wishList = wld.wishListOne(userId);
-		
+		if (userId != null) {
+			List<Map<String, Object>> wishList = wld.wishListOne(userId);
+			request.setAttribute("wishList", wishList);
+		}
 		List<Classes> newClassList = cd.sortedClassList("regdate");
 		List<Classes> favoriteClassList = cd.sortedClassList("favorite");
 		
@@ -62,7 +64,7 @@ public class ClassesController extends MskimRequestMapping {
 		request.setAttribute("groupList", groupList);
 		request.setAttribute("newClassList", newClassList);
 		request.setAttribute("favoriteClassList", favoriteClassList);
-		request.setAttribute("wishList", wishList);
+		
 		return "/view/main.jsp";
 	}
 	
