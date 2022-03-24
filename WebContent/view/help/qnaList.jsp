@@ -13,9 +13,9 @@
 <link href="/Project_KNOC/resource/style/main.css" rel='stylesheet' type='text/css' />
 </head>
 <script>
-if(document.getElementById("input_Check2").checked) {
-    document.getElementById("input_Check1").disabled = true;
-}
+	if (document.getElementById("input_Check2").checked) {
+		document.getElementById("input_Check1").disabled = true;
+	}
 </script>
 <body style="padding-top: 70px;">
 
@@ -31,7 +31,7 @@ if(document.getElementById("input_Check2").checked) {
 					</button>
 				</div>
 
-				<form action="<%=request.getContextPath() %>/help/qnaWritePro" method="post" id="" class="" role="form" onsubmit="">
+				<form action="<%=request.getContextPath()%>/help/qnaWritePro" method="post" id="" class="" role="form" onsubmit="">
 					<!--body-->
 					<div class="modal-body">
 
@@ -49,8 +49,7 @@ if(document.getElementById("input_Check2").checked) {
 								<div class="form-group">
 									<label>공개 여부</label>
 									<div class="form-check">
-										<input name="secret" class="form-check-input" type="checkbox" value="2" id="input_Check2"> <label class="form-check-label" for="defaultCheck1"> 비밀글 </label>
-										<input name="secret" type="hidden" value ="1" id="input_Check1">
+										<input name="secret" class="form-check-input" type="checkbox" value="2" id="input_Check2"> <label class="form-check-label" for="defaultCheck1"> 비밀글 </label> <input name="secret" type="hidden" value="1" id="input_Check1">
 									</div>
 								</div>
 							</div>
@@ -143,52 +142,61 @@ if(document.getElementById("input_Check2").checked) {
 								</button>
 							</div>
 							<ul class="question-list">
-							<c:forEach items="${list }" var="list" varStatus="status">
-								<li class="question-container"><a href="<%=request.getContextPath()%>/help/qnaInfo?qna_Id=${list.qna_Id }">
-										<div class="question">
-											<div class="question__info">
-												<div class="question__title">
-													<span class="question__status-tag question__status-tag--recruited">
-													<c:if test="${countList[status.index]==0}">미답변</c:if>
-													<c:if test="${countList[status.index]>=1}">답변완료</c:if>
-													</span>
-													<h3 class="title__text">
-													<c:if test="${list.secret==1 }"> ${list.title } </c:if>
-													<c:if test="${list.secret==2 }">
-													<i class='fa fa-lock'>비밀글</i>
-													<c:if test="${list.writer==memid || memid=='admin' }">${list.title }</c:if>
-													</c:if>
-														
-														 
-														
-														<span class="infd-icon title__icon"> </span>
-													</h3>
-												</div>
-												<!-- <p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p> -->
-												<div class="question__tags"></div>
-												<div class="question__info-footer">
-													<i class="fa fa-user">
-													<c:if test="${list.secret==1 }">${list.writer }</c:if>
-													<c:if test="${list.secret==2 }">
-													<c:set var="secretWriter" value="${fn:substring(list.writer,2,6) }"/>
+								<c:forEach items="${list }" var="list" varStatus="status">
+									<li class="question-container"><a href="<%=request.getContextPath()%>/help/qnaInfo?qna_Id=${list.qna_Id }">
+											<div class="question">
+												<div class="question__info">
+													<div class="question__title">
+														<c:if test="${countList[status.index]==0}">
+															<span class="question__status-tag question__status-tag--recruited">미답변</span>
+														</c:if>
+														<c:if test="${countList[status.index]>=1}">
+															<span class="question__status-tag question__status-tag--recruited" style="background-color: #37d3c0;">답변완료</span>
+														</c:if>
+
+														<h3 class="title__text">
+															<c:if test="${list.secret==1 }"> ${list.title } </c:if>
+															<c:if test="${list.secret==2 }">
+																<i class='fa fa-lock'>비밀글</i>
+																<c:if test="${list.writer==memid || memid=='admin' }">${list.title }</c:if>
+															</c:if>
+
+															<span class="infd-icon title__icon"> </span>
+														</h3>
+													</div>
+													<!-- <p class="question__body">N, K = map(int,input().split()) # N: 왕자, K: 탈락 숫자deq = deque([i+1 for i in range(N)])i = 1while len(...</p> -->
+													<div class="question__tags"></div>
+													<div class="question__info-footer">
+														<i class="fa fa-user"> <c:if test="${list.secret==1 }">${list.writer }</c:if> <c:if test="${list.secret==2 }">
+																<c:set var="secretWriter" value="${fn:substring(list.writer,2,6) }" />
 													${fn:replace(list.writer,secretWriter , "****")}
 													</c:if>
-													</i> ${list.secret==1?"":"<i class='fa fa-lock'>비밀글</i>" } <i class="fa fa-pencil">${list.regDate}</i>
+														</i> ${list.secret==1?"":"<i class='fa fa-lock'>비밀글</i>" } <i class="fa fa-pencil">${list.regDate}</i>
+													</div>
 												</div>
-											</div>
-											<div class="question__additional-info">
-												<div class="question__comment">
-													<span class="comment__count">${countList[status.index]}</span> <span class="comment__description">답변</span>
-												</div>
-												<!-- <button class="ac-button is-md is-text question__like e-like ">
+												<div class="question__additional-info">
+
+														<c:if test="${countList[status.index]==0}">
+																											<div class="question__comment">
+															<span class="comment__count" style="font-size: 12px; font-weight: 500; color: #616568;">답변중</span>
+																												</div>
+														</c:if>
+														<c:if test="${countList[status.index]>=1}">
+																																									<div class="question__comment" style="background-color:#37d3c0; ">
+															<span class="comment__count" style="font-size: 12px; font-weight: 900; background-color: #37d3c0; color: white;">답변OK</span>
+																																											</div>
+														</c:if>
+														<!-- <span class="comment__description">답변</span> -->
+
+													<!-- <button class="ac-button is-md is-text question__like e-like ">
 													<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
 												<path fill="#616568" d="M9.333 13.605c-.328.205-.602.365-.795.473-.102.057-.205.113-.308.168h-.002c-.143.074-.313.074-.456 0-.105-.054-.208-.11-.31-.168-.193-.108-.467-.268-.795-.473-.655-.41-1.53-1.007-2.408-1.754C2.534 10.382.667 8.22.667 5.676c0-2.308 1.886-4.01 3.824-4.01 1.529 0 2.763.818 3.509 2.07.746-1.252 1.98-2.07 3.509-2.07 1.938 0 3.824 1.702 3.824 4.01 0 2.545-1.867 4.706-3.592 6.175-.878.747-1.753 1.344-2.408 1.754z"></path></svg>
 													0
 												</button> -->
+												</div>
 											</div>
-										</div>
-										
-								</a></li>
+
+									</a></li>
 								</c:forEach>
 
 								<!-- <li class="question-container"><a href="/studies/472847">
@@ -249,15 +257,19 @@ if(document.getElementById("input_Check2").checked) {
 							</ul>
 							
 						</div> -->
-										<!-- javascript:void(0) -->
-							<nav class="pagination is-centered is-small" role="navagation" aria-label="pagination">
-							<a class="pagination-prev" href="<c:if test="${pageInt <= startPage}"> javascript:void(0)</c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt-1}">이전 페이지</a>
-							<a class="pagination-next" href="<c:if test="${pageInt >= maxPage }"> javascript:void(0) </c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt+1}">다음 페이지</a>
-							<ul class="pagination-list">
-								<c:forEach var="i" begin="${startPage }" end="${endPage }">
-								<li><a class='pagination-link <c:if test="${i==pageInt }">is-current</c:if>' href="<%=request.getContextPath()%>/help/qnaList?pageNum=${i}" aria-label="1 페이지로 이동">${i }</a></li>
-								</c:forEach>
-								<!-- <li><a class="pagination-link " href="?page=2" aria-label="2 페이지로 이동">2</a></li>
+								<!-- javascript:void(0) -->
+								<nav class="pagination is-centered is-small" role="navagation" aria-label="pagination">
+									<c:if test="${pageInt != startPage }">
+										<a class="pagination-previous" href="<c:if test="${pageInt <= startPage}"> javascript:void(0)</c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt-1}">이전 페이지</a>
+									</c:if>
+									<c:if test="${pageInt != maxPage }">
+										<a class="pagination-next" href="<c:if test="${pageInt >= maxPage }"> javascript:void(0) </c:if><%=request.getContextPath()%>/help/qnaList?pageNum=${pageInt+1}">다음 페이지</a>
+									</c:if>
+									<ul class="pagination-list">
+										<c:forEach var="i" begin="${startPage }" end="${endPage }">
+											<li><a class='pagination-link <c:if test="${i==pageInt }">is-current</c:if>' href="<%=request.getContextPath()%>/help/qnaList?pageNum=${i}" aria-label="1 페이지로 이동">${i }</a></li>
+										</c:forEach>
+										<!-- <li><a class="pagination-link " href="?page=2" aria-label="2 페이지로 이동">2</a></li>
 								<li><a class="pagination-link " href="?page=3" aria-label="3 페이지로 이동">3</a></li>
 								<li><a class="pagination-link " href="?page=4" aria-label="4 페이지로 이동">4</a></li>
 								<li><a class="pagination-link " href="?page=5" aria-label="5 페이지로 이동">5</a></li>
@@ -268,9 +280,9 @@ if(document.getElementById("input_Check2").checked) {
 								<li><a class="pagination-link " href="?page=10" aria-label="10 페이지로 이동">10</a></li>
 								<li><a class="pagination-link " href="?page=11" aria-label="다음 페이지 모음으로 이동">…</a></li>
 								<li><a class="pagination-link " href="?page=26" aria-label="26 페이지로 이동">26</a></li> -->
-							</ul>
-						</nav>
-					</div>
+									</ul>
+								</nav>
+						</div>
 				</section>
 
 			</main>
