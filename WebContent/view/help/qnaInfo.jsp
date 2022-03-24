@@ -146,15 +146,17 @@
 												<div class="comment__card comment__card--new">
 													<form action="<%=request.getContextPath()%>/help/commentWritePro" method="post" id="" class="" role="form" onsubmit="">
 														<div class="comment__header flex-row">
-															<img class="comment__user-profile" src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" alt="won joon lee 프로필">
+															<img class="comment__user-profile" src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" alt="">
 															<div class="flex-column">
-
-																<textarea name="title" class="tinymce comment-editor" data-id="175159" placeholder="제목을 입력해주세요.." rows="1" style="color: transparent; text-shadow: 0 0 0 black;"></textarea>
+																<div class="flex-row">
+																	<a href="/users/366575" class="comment__user-name">운영자 (KNOC 지기)<%-- ${comment.title } --%></a>
+																</div>
+																<!-- <textarea name="title" class="tinymce comment-editor" data-id="175159" placeholder="제목을 입력해주세요.." rows="1" style="color: transparent; text-shadow: 0 0 0 black;"></textarea> -->
 															</div>
 														</div>
 
 
-														<textarea name="content" class="tinymce comment-editor" data-id="175159" placeholder="답글을 입력해주세요.." rows="10" style="color: transparent; text-shadow: 0 0 0 black;"></textarea>
+														<textarea name="content" class="tinymce comment-editor" data-id="175159" placeholder="답글을 입력해주세요.." rows="10" style="padding: 10px;"></textarea>
 														<input type="hidden" name="qna_Id" value="${q.qna_Id }">
 														<div class="comment__body markdown-body" style="padding: 0;">
 															<div class="comment__footer flex-row">
