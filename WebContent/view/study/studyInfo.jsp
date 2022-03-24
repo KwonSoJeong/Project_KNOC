@@ -31,7 +31,7 @@
 				<div class="panel panel-default clearfix fa-">
 					<div class="panel-heading clearfix">
 						<div class="avatar clearfix avatar-medium pull-left">
-							<a href="/user/info/45597" class="avatar-photo"> <c:choose>
+							<a href="#" class="avatar-photo"> <c:choose>
 									<c:when test="${leaderProfile!=null}">
 										<img src="<%=request.getContextPath() %>/profile/${leaderProfile}" />
 									</c:when>
@@ -41,7 +41,7 @@
 								</c:choose>
 							</a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/45597" title="KNOC">${s. leader_Id}</a>
+								<a class="nickname" href="#" title="KNOC">${s. leader_Id}</a>
 								<div class="date-created">
 									<span class="timeago" title="2022-03-02 14:33:59">${s.regDate }</span>
 								</div>
@@ -58,14 +58,15 @@
 										<c:if test="${s.process==2 }">list-group-item-text item-tag label label-gray'>모집완료</c:if>
 									</button>
 									<input type="hidden" name="studyId" value="${s.study_Id }">
-									<button type="submit" style="margin-left: 10px; display: inline; background-color: #ffa94d; border-color: #ffa94d; padding: 0.2em 0.6em 0.3em; font-size: 75%; font-weight: bold; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: 0.25em;">참가신청</button>
 
+									<c:if test="${memid!=s.leader_Id }">
+										<button type="submit" style="margin-left: 10px; display: inline; background-color: #ffa94d; border-color: #ffa94d; padding: 0.2em 0.6em 0.3em; font-size: 75%; font-weight: bold; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: 0.25em;">참가신청</button>
+									</c:if>
 
 									<c:if test="${memid==s.leader_Id }">
 										<button type="button" onclick="location.href='studyUpdate?study_Id=${s.study_Id}'" style="margin-left: 10px; display: inline; background-color: #4dabf7; border-color: #4dabf7; padding: 0.2em 0.6em 0.3em; font-size: 75%; font-weight: bold; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: 0.25em;">수정</button>
 										<button type="button" onclick="location.href='stydyDeletePro?study_Id=${s.study_Id}'" style="margin-left: 10px; display: inline; background-color: #ced4da; border-color: #ced4da; padding: 0.2em 0.6em 0.3em; font-size: 75%; font-weight: bold; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: 0.25em;">삭제</button>
 									</c:if>
-
 
 									<h2 class="panel-title">${s.title }</h2>
 

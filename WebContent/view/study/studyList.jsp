@@ -12,16 +12,16 @@
 </head>
 <body style="padding-top: 70px;">
 	<div class="layout-container" style="padding-top: 34px;">
-	
-		<div class="class_header"  >
+
+		<div class="class_header">
 			<a class="create btn btn-success btn-wide pull-right" href="<%=request.getContextPath()%>/study/studyWrite" style="background-color: #37d3c0; border-color: #37d3c0;"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
 			<div class="bottom-line">
-				<h2 id="font">스터디</h2> 
+				<h2 id="font">스터디</h2>
 			</div>
 		</div>
 		<div class="wrapper">
 			<div id="list-article" class="content scaffold-list gathering-list" role="main">
-			
+
 
 				<div class="nav" role="navigation">
 
@@ -30,17 +30,17 @@
 						<hr style="border: 0; margin-top: 4px; height: 3px; background: #b8e6e1" />
 					</div> --%>
 
-					<form id="category-filter-form" name="category-filter-form" method="get" action="<%=request.getContextPath() %>/study/studyList">
+					<form id="category-filter-form" name="category-filter-form" method="get" action="<%=request.getContextPath()%>/study/studyList">
 						<div class="category-filter-wrapper">
 							<div class="category-filter-query pull-right">
 								<div class="input-group input-group-sm">
-				
+
 									<input type="search" name="keyword" id="search-field" class="form-control" placeholder="검색어" value="" /> <span class="input-group-btn">
 										<button type="submit" class="btn btn-default">
 											<i class="fa fa-search">검색</i>
 										</button>
 									</span>
-								
+
 								</div>
 							</div>
 
@@ -54,59 +54,66 @@
 					</form>
 				</div>
 
-				<div class="okkys-choice">
-					<div class="panel panel-default">
-						<!-- Table -->
-						<ul class="list-group">
-						<c:forEach var="s" items="${list }" varStatus="status"> 
-							<li class="list-group-item list-group-item-question list-group-no-note clearfix">
-								<div class="list-title-wrapper clearfix">
-									<div class="list-tag clearfix">
-										<c:if test="${s.process==1}"><a href="<%=request.getContextPath()%>/study/studyList?process=1" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i>모집중</a></c:if>
-										<c:if test="${s.process==2}"><a href="<%=request.getContextPath()%>/study/studyList?process=2" class="list-group-item-text item-tag label label-gray">모집완료</a></c:if>
-									</div>
+				<c:if test="${(s.list!=0)}">
+					<div class="okkys-choice">
+						<div class="panel panel-default">
+							<!-- Table -->
+							<ul class="list-group">
+								<c:forEach var="s" items="${list }" varStatus="status">
+									<li class="list-group-item list-group-item-question list-group-no-note clearfix">
+										<div class="list-title-wrapper clearfix">
+											<div class="list-tag clearfix">
+												<c:if test="${s.process==1}">
+													<a href="<%=request.getContextPath()%>/study/studyList?process=1" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i>모집중</a>
+												</c:if>
+												<c:if test="${s.process==2}">
+													<a href="<%=request.getContextPath()%>/study/studyList?process=2" class="list-group-item-text item-tag label label-gray">모집완료</a>
+												</c:if>
+											</div>
 
-									<h5 class="list-group-item-heading list-group-item-evaluate">
-										<a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.study_Id}"> ${s.title} </a>
-									</h5>
-								</div>
+											<h5 class="list-group-item-heading list-group-item-evaluate">
+												<a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.study_Id}"> ${s.title} </a>
+											</h5>
+										</div>
 
-								<div class="list-group-item-author clearfix">
-									<div class="avatar clearfix avatar-list">
-										<a href="/user/info/45597" class="avatar-photo">
-										
-										<c:choose>
-										<c:when test="${profileList[status.index]!=null}"><img src="<%=request.getContextPath() %>/profile/${profileList[status.index]}" /></c:when>
-										<c:otherwise><img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" /></c:otherwise>
-										</c:choose>
-										
-										</a>
-										<div class="avatar-info">
-											<a class="nickname" href="/user/info/45597" title="KNOC">${s.leader_Id}</a>
-											<div class="date-created">
-												<span class="timeago" title="2022-03-02T14:33:59">${s.regDate}</span>
+										<div class="list-group-item-author clearfix">
+											<div class="avatar clearfix avatar-list">
+												<a href="#" class="avatar-photo"> <c:choose>
+														<c:when test="${profileList[status.index]!=null}">
+															<img src="<%=request.getContextPath() %>/profile/${profileList[status.index]}" />
+														</c:when>
+														<c:otherwise>
+															<img src="//www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40" />
+														</c:otherwise>
+													</c:choose>
+
+												</a>
+												<div class="avatar-info">
+													<a class="nickname" href="#" title="KNOC">${s.leader_Id}</a>
+													<div class="date-created">
+														<span class="timeago" title="2022-03-02T14:33:59">${s.regDate}</span>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-							</li>
-							
-							</c:forEach>
-						</ul>
-					</div>   <!-- "javascript:void(0)" -->
-					<div class="text-center">
-						<ul class="pagination pagination-sm">
-							<li class='prev <c:if test="${startPage <= bottomLine }"> disabled</c:if>'>
-							<a href="<c:if test="${startPage <= bottomLine }"> javascript:void(0)</c:if><%=request.getContextPath() %>/study/studyList?pageNum=${startPage-bottomLine}">«</a></li>
-							<c:forEach var="i" begin="${startPage }" end="${endPage }">
-							<li class='<c:if test="${i==pageInt }"> active </c:if>'>
-							<a href="<%=request.getContextPath()%>/study/studyList?pageNum=${i}">${i}</a></li>
-							</c:forEach>
-							<li class='next <c:if test="${endPage >= maxPage }"> disabled </c:if>' >
-							<a href="<c:if test="${endPage >= maxPage }"> javascript:void(0) </c:if><%=request.getContextPath() %>/study/studyList?pageNum=${startPage+bottomLine}">»</a></li>
-						</ul>
+									</li>
+
+								</c:forEach>
+							</ul>
+						</div>
+						<!-- "javascript:void(0)" -->
+						<div class="text-center">
+							<ul class="pagination pagination-sm">
+								<li class='prev <c:if test="${startPage <= bottomLine }"> disabled</c:if>'><a href="<c:if test="${startPage <= bottomLine }"> javascript:void(0)</c:if><%=request.getContextPath() %>/study/studyList?pageNum=${startPage-bottomLine}">«</a></li>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<li class='<c:if test="${i==pageInt }"> active </c:if>'><a href="<%=request.getContextPath()%>/study/studyList?pageNum=${i}">${i}</a></li>
+								</c:forEach>
+								<li class='next <c:if test="${endPage >= maxPage }"> disabled </c:if>'><a href="<c:if test="${endPage >= maxPage }"> javascript:void(0) </c:if><%=request.getContextPath() %>/study/studyList?pageNum=${startPage+bottomLine}">»</a></li>
+							</ul>
+						</div>
 					</div>
-				</div>
+
+				</c:if>
 			</div>
 		</div>
 	</div>
