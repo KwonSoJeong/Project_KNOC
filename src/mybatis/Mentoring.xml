@@ -31,4 +31,12 @@ select profile from mentoring m, knoc_member mem where mentor_id = id order by r
 select profile from mentoring m, knoc_member mem where mentor_id = id and title like '%${keyword}%' order by regdate desc
 </select>
 
+<delete id="delete" parameterType="string">
+delete from mentoring where mentoring_Id = #{mentoring_Id}
+</delete>
+
+<update id="update" parameterType="map">
+update mentoring set title = #{title}, content = #{content}, intro = #{intro} where mentoring_Id = #{mentoring_Id}
+</update>
+
 </mapper>

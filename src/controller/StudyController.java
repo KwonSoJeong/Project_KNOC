@@ -369,9 +369,7 @@ public class StudyController extends MskimRequestMapping {
 			}
 					
 			StudyDao sd = new StudyDao();
-			Study s = new Study();
 			String study_Id = request.getParameter("study_Id");
-			s = sd.selectOne(study_Id);
 			String title = request.getParameter("title");
 			String content = request.getParameter("text");
 			

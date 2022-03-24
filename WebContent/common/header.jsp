@@ -67,7 +67,7 @@
 						<a href="" id="fsfc" class="nav-link">지식공유참여</a>
 						<ul id="subnav" class="submenu">
 
-							<li><a href="<%=request.getContextPath() %>/view/mentor/mentorRegister.jsp">멘토 등록하기</a></li>
+							<li><a href="<%=request.getContextPath() %>/mentor/mentorRegister">멘토 등록하기</a></li>
 							<li><a href="<%=request.getContextPath() %>/classes/classUpload">클래스 개설하기</a></li>
 
 						</ul>

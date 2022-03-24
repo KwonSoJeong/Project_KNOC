@@ -8,12 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Qna;
 import model.Qna_Comment;
-import model.Study;
-import model.Study_Comment;
 import service.QnaDao;
 import service.Qna_CommentDao;
 import service.StudyDao;
-import service.Study_CommentDao;
 
 //@WebServlet("/help/*")
 public class HelpController extends MskimRequestMapping {
@@ -101,7 +98,6 @@ public class HelpController extends MskimRequestMapping {
 		// !equals가 적용이 안됨 // 왜 안되는지 모르겠음 ㅠ
 		if(q.getSecret()==2) {	//게시글이 비밀글일때
 			if(memid.equals("admin") || memid.equals(q.getWriter())){ //admin, 작성자인 경우 접속
-				Qna_Comment qc = new Qna_Comment();
 				Qna_CommentDao qcd = new Qna_CommentDao();
 				
 				//comment count
@@ -124,7 +120,6 @@ public class HelpController extends MskimRequestMapping {
 			}
 		}	//일반게시글
 			
-		Qna_Comment qc = new Qna_Comment();
 		Qna_CommentDao qcd = new Qna_CommentDao();
 		
 		//comment count
@@ -265,13 +260,12 @@ public class HelpController extends MskimRequestMapping {
 					
 			QnaDao qd = new QnaDao();
 			Qna q = new Qna();
-			StudyDao sd = new StudyDao();
 			String qna_Id = request.getParameter("qna_Id");
 			String id = (String)request.getSession().getAttribute("memid");
 			q = qd.selectOne(qna_Id);
 					
 			if(id==null || !id.equals(q.getWriter())) { //작성자인지 체크
-				msg = "게시글 삭제는 작성자만 할 수 있습니다.";
+				msg = "게시글 수정은 작성자만 할 수 있습니다.";
 				url = request.getContextPath()+"/help/qnaInfo";
 				request.setAttribute("msg", msg);
 				request.setAttribute("url", url);
@@ -293,9 +287,7 @@ public class HelpController extends MskimRequestMapping {
 			}
 							
 			QnaDao qd = new QnaDao();
-			Qna q = new Qna();
 			String qna_Id = request.getParameter("qna_Id");
-			q = qd.selectOne(qna_Id);
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			int secret = Integer.parseInt(request.getParameter("secret"));

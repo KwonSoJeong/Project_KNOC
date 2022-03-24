@@ -265,7 +265,7 @@ public class StudyDao {
 			map.put("study_Id", study_Id);
 			map.put("title", title);
 			map.put("content", content);
-			return sqlSession.delete(ns + "update",map);
+			return sqlSession.update(ns + "update",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

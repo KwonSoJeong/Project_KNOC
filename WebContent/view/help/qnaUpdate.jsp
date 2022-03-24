@@ -64,7 +64,7 @@ if(document.getElementById("input_Check2").checked) {
 														<input name="secret" type="hidden" value ="1" id="input_Check1">
 													</div>
 														<button type="submit"
-															class="ac-button is-md is-solid is-primary e-post-comment ">답변	등록</button>
+															class="ac-button is-md is-solid is-primary e-post-comment ">수정</button>
 													</div>
 												</div>
 											</div>

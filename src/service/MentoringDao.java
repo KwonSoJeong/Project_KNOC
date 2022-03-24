@@ -63,10 +63,10 @@ public class MentoringDao {
 		return null;
 	}
 	
-	public Mentoring selectOne(String id) {
+	public Mentoring selectOne(String mentoring_Id) {
 		SqlSession sqlSession = MyBatisConnection.getConnection();
 		try {
-			return sqlSession.selectOne(ns + "selectOne",id);
+			return sqlSession.selectOne(ns + "selectOne",mentoring_Id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -101,8 +101,33 @@ public class MentoringDao {
 		return null;
 	}
 	
+	public int delete(String mentoring_Id) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			return sqlSession.delete(ns + "delete",mentoring_Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
 	
-	
-	
+	public int update(String title, String content, String mentoring_Id, String intro) {
+		SqlSession sqlSession = MyBatisConnection.getConnection();
+		try {
+			map.clear();
+			map.put("mentoring_Id", mentoring_Id);
+			map.put("title", title);
+			map.put("content", content);
+			map.put("intro", intro);
+			return sqlSession.update(ns + "update",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MyBatisConnection.close(sqlSession);
+		}
+		return 0;
+	}
 	
 }

@@ -44,6 +44,10 @@
 						<button id="mentro-bung2" type="submit">멘토링신청</button>
 					</form>	
 				</div>
+				<c:if test="${memid==m.mentor_Id }">
+				<button id="mentro-bung2" onclick="location.href='mentorUpdate?mentoring_Id=${m.mentoring_Id}'" type="button">수정</button>
+				<button id="mentro-bung2" onclick="location.href='mentorDeletePro?mentoring_Id=${m.mentoring_Id}'" type="button">삭제</button>
+				</c:if>
 			</div>		
 		</div>
 	</div>

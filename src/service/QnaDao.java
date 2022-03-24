@@ -89,7 +89,7 @@ public class QnaDao {
 			map.put("title", title);
 			map.put("content", content);
 			map.put("secret", secret);
-			return sqlSession.delete(ns + "update",map);
+			return sqlSession.update(ns + "update",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
