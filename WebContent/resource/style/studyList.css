@@ -4935,7 +4935,7 @@ a.label:focus {
   background-color: #449d44;
 }
 .label-info {
-  background-color: #b8e6e1;
+  background-color: #37d3c0;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
@@ -10084,6 +10084,7 @@ span.filter-count {
   float: left;
   width: 450px;
   margin-right: 10px;
+  /* margin-top: 9px; */
 }
 .list-group-item.list-group-body {
   padding: 15px;
@@ -11088,7 +11089,7 @@ span.filter-count {
   margin-top: 25px;
 }
 .okkys-choice .panel {
-  padding-bottom: 1em;
+  /* padding-bottom: 1em; */
 }
 .okkys-choice .list-group-item-heading {
   font-weight: bold;
