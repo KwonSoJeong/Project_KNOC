@@ -72,7 +72,7 @@
 											</div>
 
 											<h5 class="list-group-item-heading list-group-item-evaluate">
-												<a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.study_Id}"> ${s.title} </a>
+												<a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.study_Id}" style="cursor: pointer;"> ${s.title} </a>
 											</h5>
 										</div>
 
