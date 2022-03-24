@@ -699,7 +699,11 @@ svg:not(:root) {
 }
 
 .pagination.is-small {
+	margin-top: 25px;
 	font-size: .75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media print , screen and (min-width: 769px) {
