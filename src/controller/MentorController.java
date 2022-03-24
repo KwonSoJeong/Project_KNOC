@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import model.Knoc_Member;
 import model.Member_Study_Info;
 import model.Mentoring;
-import model.Study;
+import model.Qna;
 import service.Knoc_MemberDao;
 import service.Member_Study_InfoDao;
 import service.MentoringDao;
+import service.QnaDao;
 import service.StudyDao;
-import service.Study_CommentDao;
 
 //@WebServlet("/mentor/*")
 public class MentorController extends MskimRequestMapping {
@@ -199,7 +199,103 @@ public class MentorController extends MskimRequestMapping {
 		return "/view/alert.jsp";
 	}
 	
-	
+	//멘토링 게시글 수정
+	@RequestMapping("mentorUpdate")
+	public String mentorUpdate(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		MentoringDao md = new MentoringDao();
+		Mentoring m = new Mentoring();
+		String mentoring_Id = request.getParameter("mentoring_Id");
+		String id = (String)request.getSession().getAttribute("memid");
+		m = md.selectOne(mentoring_Id);
+						
+		if(id==null || !id.equals(m.getMentor_Id())) { //작성자인지 체크
+			msg = "게시글 수정은 작성자만 할 수 있습니다.";
+			url = request.getContextPath()+"/mentor/mentorInfo";
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
+
+		request.setAttribute("m", m);
+		return "/view/mentor/mentorUpdate.jsp";
+	}
+					
+	//qna 게시글 수정 pro
+	@RequestMapping("mentorUpdatePro")
+	public String mentorUpdatePro(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+								
+		MentoringDao md = new MentoringDao();
+		String mentoring_Id = request.getParameter("mentoring_Id");
+		String title = request.getParameter("input");
+		String content = request.getParameter("content");
+		String intro = request.getParameter("intro");
+						
+		int num = md.update(title,content,mentoring_Id,intro);
+						
+		if(num>0) {		//성공적으로 수정이 되었을 경우
+			msg = "수정이 되었습니다";
+			url = request.getContextPath()+"/mentor/mentorInfo";
+		}else {			//수정에 오류 발생
+			msg = "수정에 실패하였습니다";
+			url = request.getContextPath()+"/mentor/mentorInfo?mentoring_Id="+mentoring_Id;
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "/view/alert.jsp";
+	}
+					
+	//qna 게시글 삭제
+	@RequestMapping("mentorDeletePro")
+	public String mentorDeletePro(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		MentoringDao md = new MentoringDao();
+		Mentoring m = new Mentoring();
+		String mentoring_Id = request.getParameter("mentoring_Id");
+		m = md.selectOne(mentoring_Id);			
+		String id = (String)request.getSession().getAttribute("memid");
+
+		if(id==null || !id.equals(m.getMentor_Id())) { //작성자인지 체크
+			msg = "게시글 삭제는 작성자만 할 수 있습니다.";
+			url = request.getContextPath()+"/mentor/mentorInfo";
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			return "/view/alert.jsp";
+		}
+						
+		int num = md.delete(mentoring_Id);
+						
+		if(num>0) {		//성공적으로 삭제가 되었을 경우
+			msg = "삭제가 되었습니다";
+			url = request.getContextPath()+"/mentor/mentorList";
+		}else {			//삭제에 오류 발생
+			msg = "삭제에 실패하였습니다";
+			url = request.getContextPath()+"/mentor/mentorInfo";
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		return "/view/alert.jsp";
+	}
 	
 
 }
