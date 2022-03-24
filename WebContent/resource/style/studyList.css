@@ -5426,6 +5426,11 @@ a.thumbnail.active {
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
+.list-group-item:hover {
+	background-color: #f1f3f5;
+}
+	
 .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
