@@ -81,7 +81,7 @@ function next_load(pageInt){
        					var addContent = document.createElement("div");
        					
        					for (let cls of classList) {
-       						addContent.innerHTML += '<div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id='+cls.id+'" ><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/'+cls.thumbnail+'"  onerror="none" style="width: 100%; height: 100%;"></div><div class="cc-title">'+cls.title +'</div></a></div>'								
+       						addContent.innerHTML += '<div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id='+cls.class_id+'" ><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/'+cls.thumbnail+'"  onerror="none" style="width: 100%; height: 100%;"></div><div class="cc-title">'+cls.title +'</div></a></div>'								
        	       				
        					}
        					document.querySelector('.class_List').appendChild(addContent);
