@@ -116,16 +116,16 @@ public class ClassesController extends MskimRequestMapping {
 	// 클래스 리스트 view
 	@RequestMapping("classList")
 	public String classList(HttpServletRequest request, HttpServletResponse response) {
-		// HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		ClassesDao cd = new ClassesDao();
 		String pageNum = request.getParameter("pageInt");
+		String userId = (String) session.getAttribute("memid");
 		
 		// page 번호를 지정하지 않았을 시 1페이지부터 시작
 		int pageInt = 1;//얘를 2로 바꿔서 다오에서 리미트가 2인채로 받아오고싶은건데
 		// 한 페이지 당 최대 12개 요소까지 출력
 		int limit = 12;
-		
-		
+
 		if (pageNum != null) {
 			// session.setAttribute("pageNum", pageNum);
 			pageInt = Integer.parseInt(pageNum);
@@ -148,9 +148,16 @@ public class ClassesController extends MskimRequestMapping {
 			classList = cd.searchedList(title, pageInt, limit);
 		}
 		
+		WishListDao wld = new WishListDao();
+		if (userId != null) {
+			List<Map<String, Object>> wishList = wld.wishListOne(userId);
+			request.setAttribute("wishList", wishList);
+		}
+		
 	//	request.setAttribute("pageInt", pageInt);
 	//	request.setAttribute("limit", limit);
 	//	request.setAttribute("size", classList.size());
+		request.setAttribute("userId", userId);
 		request.setAttribute("classList", classList);
 		if (pageInt==1)  {
 			return "/view/classes/classList.jsp";

@@ -122,14 +122,7 @@ function favoriteCntUp(class_id, cnt) {
                         <img src="<%=request.getContextPath()%>/resource/image/noheart.png">
                         </button>
 					</c:if>
-					
-					<!-- 
-					<button class="noheartbtn n${status.count}" type="submit" onclick="favoriteCntUp()">
-						<img src="<%=request.getContextPath()%>/resource/image/noheart.png">
-					</button>
-					<button class="heartbtn y${status.count}" type="submit" onclick="favoriteCntUp()">
-						<img src="<%=request.getContextPath()%>/resource/image/heart.png">
-					</button> -->
+
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
@@ -179,7 +172,7 @@ function favoriteCntUp(class_id, cnt) {
 					<div class="mnc-thumbnail" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">
 						<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}">
 					</div>
-<!-- 					<div class="mnc-heart"></div> -->
+
 				</div>
 				<div class="mnc-creator" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.lec_id }</div>
 				<div class="mnc-title" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'">${c.title }</div>
