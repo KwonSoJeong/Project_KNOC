@@ -112,7 +112,7 @@ section{
 .box{
     display: inline-block;
     width: 280px;
-	height: 320px;
+	height: 330px;
     margin-left: 18px;
 }
 
@@ -127,24 +127,54 @@ section{
     margin-left: 18px;
 }
 
+.heart_img{
+	display: flex;
+    justify-content: flex-end;
+}
+
+.noheartbtn{
+	z-index:5;
+	background: none;
+	border: none;
+	position: absolute;
+	margin: 5px 5px 0 0;
+}
+
+.heartbtn{
+	z-index:5;
+	background: none;
+	border: none;
+	position: absolute;
+/* 	display: none; */
+	margin: 5px 5px 0 0;
+}
+
 .cc-cc{
 	cursor: pointer;
 	height: 215px;
 	background-color: #b4b4b4;
 }
 
+.cc-creator{
+    width: 260px;
+	font-size: 12px;
+	color: #000;
+	font-weight: 550;
+	margin: 5px 0;
+}
+
+
 .cc-title{
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 50px;
+    height: 25px;
     width: 280px;
-	font-size: 14px;
-	color: #000;
-	font-weight: 450;	
-	padding: 7px 0;
+    font-size: 14px;
+    color: #000;
+    font-weight: 450;
 }
 
 .cc-heartcnt{
@@ -153,7 +183,7 @@ section{
     font-size: 11px;
     color: #787878;
     font-weight: 1000;
-    margin: 5px 0;	
+    margin: 3px 0;	
 }
 
 .cc-bor-bot {
@@ -163,7 +193,7 @@ section{
 
 .cc-price{
     width: 280px;
-	font-size: 13px;
+	font-size: 12px;
 	color: #000;
 	font-weight: 650;
 	margin: 2px 0;	
