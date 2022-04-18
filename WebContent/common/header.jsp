@@ -11,20 +11,21 @@
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');</script>
+<style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');</style>
 <link href="<%=request.getContextPath() %>/resource/style/header.css" rel='stylesheet' type='text/css'/>
 <script src="../js/hover.js"></script>
 
 <body>
 <div id="wrapper">
 	<div class="header">
-		<nav class="hnav navbar-expand-lg navbar-light">
+		<nav class="hnav">
 			<!-- logo -->
 			<a class="navbar-brand1" href="<%=request.getContextPath() %>/classes/main">
 				<img src="<%=request.getContextPath() %>/resource/image/logo.png">
 			</a>
+			<div class="hdiv">
 			<!-- 좌측헤더 -->
-			<ul class="navbar-nav drop" style="flex-direction: row;" >			
+			<ul class="hnavbar-nav drop" style="flex-direction: row;" >			
 				<c:if test="${memid==null}">			
 					<li id="num1" class="nav-it">
 						<a href="<%=request.getContextPath() %>/classes/classList" id="fsfc" class="nav-link">클래스 ▼</a>
@@ -75,7 +76,7 @@
 				</c:if>	
 			</ul>				
 			<!-- 우측헤더 -->	
-			<ul id="navbar-nav2" class="navbar-nav justify-content-end">			
+			<ul id="navbar-nav2" class="hnavbar-nav justify-content-end">			
 				<c:if test="${memid==null}">
 					<li class="nav-it">
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/member/login">로그인</a>
@@ -99,7 +100,13 @@
 						<a id="fsfc" class="nav-link" href="<%=request.getContextPath() %>/help/qnaList">고객센터</a>
 					</li>				
 				</c:if>	
-			</ul>			
+			</ul>	
+			</div>	
 		</nav>
 	</div>
+	<span class="menu-toggle-btn">
+			<span></span>
+		   	<span></span>
+		   	<span></span>
+		</span>	
 <!-- ㅡㅡㅡㅡㅡㅡㅡㅡEDN HEADERㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->

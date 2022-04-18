@@ -37,8 +37,11 @@
 					<div class="box">
 							
 						<div class="heart_img">
+							
+<%-- 						<!-- doneLoop변경조건문 -->
 							<c:set var="class_id" value="${c.class_id}"/>
 							<c:set var="doneLoop" value="false" />
+
 							<c:forEach var="w" items="${wishList}">
 							 <c:if test="${not doneLoop}">
 							       <c:if test="${w.CLASS_ID.equals(class_id)}">
@@ -46,17 +49,20 @@
 							       </c:if>
 							 </c:if>
 							</c:forEach>
+						<!-- doneLoop변경조건문 끝-->
 							
+						<!-- true일때 관심버튼 꽉찬하트 -->
 							<c:if test="${doneLoop==true}">
 							   <button class="heartbtn" id="n${status.count}" type="button" onclick="favoriteCntUp('${class_id}', '${status.count}')">
 		                        <img src="<%=request.getContextPath()%>/resource/image/heart.png">
-		                        </button>
+		                       </button>
 							</c:if>
+						<!-- false일때 관심버튼 빈하트 -->
 							<c:if test="${doneLoop==false}">
 							   <button class="noheartbtn" id="n${status.count}" type="button" onclick="favoriteCntUp('${class_id}', '${status.count}')">
 		                        <img src="<%=request.getContextPath()%>/resource/image/noheart.png">
 		                       </button>
-							</c:if>
+							</c:if> --%>
 						
 							<div class="cc-cc">
 								<img src="<%=request.getContextPath()%>/thumbnail/${c.thumbnail}" onclick="location.href='<%=request.getContextPath()%>/classes/classInfo?class_id=${c.class_id }'" style="width: 280px; height: 215px;">
@@ -72,55 +78,109 @@
 					</c:forEach> 
 				</div>						
 			</div>
+			<!-- classList 테스트용 코드입니다! <c:forEach var = "c" items="${classList}">${c}</c:forEach>-->
 		</section>	
-			
-			
-			
-			
-			
-			<!-- classList 테스트용 코드입니다! <c:forEach var = "classes" items="${classList}">${classes}</c:forEach>--> 		
+
 		</div>
 	</div>
 
 <script>
+
+function favoriteCntUp(class_id, cnt) {
+	console.log(class_id)
+	console.log(cnt)
+	// ajax를 이용하여 관심등록/해제 구현
+    let httpreq = new XMLHttpRequest()
+	let param = "?class_id=" + encodeURIComponent(class_id)
+    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite"+param, true)
+    httpreq.send()
+    
+    // callback
+    httpreq.onreadystatechange = function() {
+       
+        if (httpreq.readyState == 4 && httpreq.status == 200) {
+            let result = document.querySelector("#result")
+            let heartButton = document.querySelector("#n" + cnt)
+            // responseText = status,favoriteCnt
+            let arr = this.responseText.trim().split(",")
+            let status = arr[0]
+            let favoriteCnt = arr[1]
+            let fav = document.querySelector("#fav" + cnt)
+            
+            if (status == "login-null") {
+                alert("관심 등록은 로그인 후 이용 가능합니다.")
+            } else if (status == "favorite-Cnt-Up") {
+                alert("관심 클래스로 추가되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/heart.png'>"
+            } else if (status == "favorite-Cnt-Down"){
+                alert("관심 등록이 해제되었습니다.")
+                fav.innerHTML = "♥ " + favoriteCnt
+                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/noheart.png'>"
+            }
+        }
+    }
+}
+
 /*무한스크롤*/
 var loading = false;    //중복실행여부 확인 변수
 let pageInt = 1;
-function next_load(pageInt){
-        $.ajax({
-                type:"GET",
-                url:"classes/classList?pageInt="+pageInt,
-                data : '',
-                dataType : "json",
-                success: function(classList)
-                {   
-                	console.log(classList)
-                	let classes = classList;
-                	console.log(classes[0])
-                	
-                	
-                	
-                	if(classList.length > 1){
 
-       					var addContent = document.createElement("div");
-       					
-       					for (let cls of classList) {
-       						addContent.innerHTML += '<div class="box"><a href="<%=request.getContextPath()%>/classes/classInfo?class_id='+cls.class_id+'" ><div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/'+cls.thumbnail+'" style="width: 280px; height: 215px;"></div><div class="cc-title">'+cls.title +'</div></a></div>'								
-       	       				
-       					}
-       					document.querySelector('.class_List').appendChild(addContent);
+
+function next_load(pageInt){
+	
+	$.ajax({
+	        type:"GET",
+	        url:"classes/classList?pageInt="+pageInt,
+	        data : '',
+	        dataType : "json",
+	        success: function(classList){
+	        	let c = classList;
+	        	console.log(c[0])
+	        	
+	        	if(classList.length > 1){                		
+	        		var Loopdiv = document.createElement("div");				
+	        		var thumdiv = document.createElement("div");      					
+					var firstdiv = document.createElement("div");					
+					var seconddiv = document.createElement("div");       					
+					var addContent = document.createElement("div");					
+					let count = 13; 
+					let doneLoop = false;
+					
+					for (let cls of classList) {
+						<%-- for(let w of wishList){//doneLoop변경조건문을 만들어야하는데 이 조건문이 wishList가 필요해서 
+							doneLoop = false;
+							if(doneLoop==false){
+								if(w.CLASS_ID==cls.class_id){
+										doneLoop = true;
+								}
+							}
+						}	
 						
-       					
-       					//pageInt++;
-       					//pageplus(pageInt); //증가한 페이지를 컨트롤러로 전송
-                        loading = false;    //실행 가능 상태로 변경
-                    }
-                }
-                ,error: function(request,status,error) 
-                {
-                	alert(" message = " + request.responseText + " error = " + error); // 실패 시
-                }
-            });
+						if(doneLoop==true){
+							Loopdiv.innerHTML ='<button class="heartbtn" id="n' +count+ '" type="button" onclick="favoriteCntUp(' + "'" + cls.class_id+ "', '" + count + "'" + ')"><img src="<%=request.getContextPath()%>/resource/image/heart.png"></button>'
+						}else{
+							Loopdiv.innerHTML ='<button class="noheartbtn" id="n' +count+ '" type="button" onclick="favoriteCntUp(' + "'" + cls.class_id+ "', '" + count + "'" + ')"><img src="<%=request.getContextPath()%>/resource/image/noheart.png"></button>'
+						} --%>
+						
+						
+						thumdiv.innerHTML ='<div class="cc-cc"><img src="<%=request.getContextPath()%>/thumbnail/'+cls.thumbnail+'" onclick="location.href='+"'<%=request.getContextPath()%>/classes/classInfo?class_id=" +cls.class_id+ "'"  +'" style="width: 280px; height: 215px;"></div>' 						
+						
+						firstdiv.innerHTML ='<div class="heart_img">' +thumdiv.innerHTML+  '</div>' 						  						
+					    seconddiv.innerHTML = '<div class="cc-title" onclick="location.href=' + "'<%=request.getContextPath()%>/classes/classInfo?class_id="+cls.class_id+"'" + '">' + cls.title + '</div><div id="fav'  +count+ '" class="cc-heartcnt" onclick="location.href=' + "'<%=request.getContextPath()%>/classes/classInfo?class_id=" + cls.class_id+"'" + '">♥' + cls.favorite+ '</div><div class="cc-bor-bot" onclick="location.href='+"'<%=request.getContextPath()%>/classes/classInfo?class_id="+cls.class_id+"'"+'"></div><div class="cc-price" onclick="location.href='+"'<%=request.getContextPath()%>/classes/classInfo?class_id="+cls.class_id+"'"+'">'+cls.price+'원</div>'
+						
+					    addContent.innerHTML += '<div class="box">'	+ firstdiv.innerHTML + seconddiv.innerHTML + '</div>'
+						count++;
+						
+					}
+					document.querySelector('.class_List').appendChild(addContent);			
+		            loading = false;    //실행 가능 상태로 변경
+	        	}
+	        }
+	        ,error: function(request,status,error) {
+	        	alert(" cmessage = " + request.responseText + " error = " + error); // 실패 시
+	        }
+	    });
 }
 
 function pageplus(pageInt){
@@ -132,21 +192,20 @@ function pageplus(pageInt){
          dataType : "text",
          success: function(result){console.log("success!")}
          ,error: function(request,status,error) {
-         	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+         	alert("pcode = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
-     });
-	
+     });	
 }
 
 $(window).scroll(function(){
-    if($(window).scrollTop()+200>=$(document).height() - $(window).height())
-    {
+   	if($(window).scrollTop()+200>=$(document).height() - $(window).height())
+   	{
         if(!loading)//실행 가능
         {
             loading = true;//실행 불가능 상태로 변경
             next_load(++pageInt); 
         }
-    }
+   	}
 });
 
 
@@ -185,41 +244,6 @@ $(function(){
 });
 
 
-function favoriteCntUp(class_id, cnt) {
-	console.log(class_id)
-	console.log(cnt)
-	// ajax를 이용하여 관심등록/해제 구현
-    let httpreq = new XMLHttpRequest()
-	let param = "?class_id=" + encodeURIComponent(class_id)
-    httpreq.open("GET", "<%=request.getContextPath()%>/classes/classFavorite"+param, true)
-    httpreq.send()
-    
-    // callback
-    httpreq.onreadystatechange = function() {
-       
-        if (httpreq.readyState == 4 && httpreq.status == 200) {
-            let result = document.querySelector("#result")
-            let heartButton = document.querySelector("#n" + cnt)
-            // responseText = status,favoriteCnt
-            let arr = this.responseText.trim().split(",")
-            let status = arr[0]
-            let favoriteCnt = arr[1]
-            let fav = document.querySelector("#fav" + cnt)
-            
-            if (status == "login-null") {
-                alert("관심 등록은 로그인 후 이용 가능합니다.")
-            } else if (status == "favorite-Cnt-Up") {
-                alert("관심 클래스로 추가되었습니다.")
-                fav.innerHTML = "♥ " + favoriteCnt
-                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/heart.png'>"
-            } else if (status == "favorite-Cnt-Down"){
-                alert("관심 등록이 해제되었습니다.")
-                fav.innerHTML = "♥ " + favoriteCnt
-                heartButton.innerHTML = "<img src='<%=request.getContextPath()%>/resource/image/noheart.png'>"
-            }
-        }
-    }
-}
 </script>	
 </body>
 </html>

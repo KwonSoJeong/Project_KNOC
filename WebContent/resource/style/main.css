@@ -51,6 +51,7 @@ h1{
 	border: none;
 	height: 35px;
 	width: 35vw;
+    border-radius: 20px;
 }
 
 .carousel-bcc{
