@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/classList.css">
 <meta charset="UTF-8">
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<div class="cl-wrapper">
 		<div class="class_header">
 			<h2 id ="font">클래스</h2>

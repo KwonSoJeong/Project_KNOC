@@ -45,7 +45,7 @@ function favoriteCntUp(class_id, cnt) {
 }
 </script>
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡ배너ㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<div class="carousel-bcc">
 		<div class="container">

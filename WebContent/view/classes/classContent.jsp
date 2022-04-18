@@ -10,7 +10,7 @@
 <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/classContent.css">
 </head>
-<body style="padding-top: 70px;">
+<body>
 
 	<div class="cc-wrapper">
 		<div class="cc-just">

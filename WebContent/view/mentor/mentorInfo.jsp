@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/style/mentorInfo.css">
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<div class="mti-wrapper">
 	
 	

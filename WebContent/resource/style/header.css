@@ -29,8 +29,8 @@ h1{
 
 
 /* ------header------ */
-#num1{
-	height: 75px;
+#num1, #num2{
+	height: auto;
 }
 
 #navbar-nav1{
@@ -40,7 +40,7 @@ h1{
 
 
 #navbar-nav2{
-    padding-right: 5vw;
+    /* padding-right: 5vw; */
     /* padding-left: 18vw; */
     flex-direction: row;
 }
@@ -153,14 +153,15 @@ h1{
 	}
 	
 .menu-toggle-btn {
-    transform: translate(0%,-157%);
-	float: right;
+    transform: translate(0%,-103%);
+	/* float: right; */
     width: 40px;
     padding-top: 20px;
     padding-right: 10px;
-    position: relative;
+    position: fixed;
     cursor: pointer;
     z-index: 1000;
+    right: 0;
 }
 .menu-toggle-btn span {
 	display: block;
@@ -188,7 +189,10 @@ h1{
 	    border: 1px solid rgb(239,239,239);
 	    border-radius: 0 0 20px 20px;
 	}	
-	
+	#num1, #num2{
+		height: 75px;
+		cursor: pointer;
+	}	
 	.hnav {
 	    position: relative;
 	    display: flex;

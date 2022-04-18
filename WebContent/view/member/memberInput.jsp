@@ -86,21 +86,12 @@ function submitChk() {
     }
 }
 </script>
-<style>
-.user-input {
-    display : inline-block;
-    height: 80px;
-}
-#input-id-chk, #input-pwd-chk {
-    font-size: 14px;
-    text-align: center;
-}
-</style>
+
+
 </head>
 <body>
-<main>
-        <div class="container">
-            <div id="member-input" class="center-align">
+	<main id =minput-main>
+		<div id="member-input" class="center-align">
             <h1 id="member-input-h1">회원가입</h1>
                 <form action="<%=request.getContextPath()%>/member/memberInputPro" autocomplete="off" method="post" name="inputform" onsubmit="return submitChk()">
                 <div id="member-input-profile">
@@ -132,8 +123,7 @@ function submitChk() {
                 </div>
                 </form>
                 
-            </div>
-        </div>
-    </main>
+		</div>
+	</main>
 </body>
 </html>

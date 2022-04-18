@@ -64,8 +64,8 @@
 					<li class="nav-it">
 						<a href="<%=request.getContextPath() %>/study/studyList" id="fsfc" class="nav-link">스터디</a>
 					</li>
-					<li class="nav-it">
-						<a href="" id="fsfc" class="nav-link">지식공유참여</a>
+					<li id="num2" class="nav-it">
+						<div id="fsfc" class="nav-link">지식공유참여</div>
 						<ul id="subnav" class="submenu">
 
 							<li><a href="<%=request.getContextPath() %>/mentor/mentorRegister">멘토 등록하기</a></li>
