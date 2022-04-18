@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/myPage.css">
 </head>
-<body style="padding-top: 70px;">
+<body>
 
 	<div class="mp-wrapper">
 		<div class="mp-fsfc">마이페이지</div>
@@ -17,7 +17,7 @@
 
 	
 	
-		<div style="margin: 50px 0">
+		<div class="mp-margin">
 			<div class="mp-lcontainer">
 			
 				<div class="mp-thumbnail">
@@ -32,7 +32,7 @@
 						<a class="mp-bottom_right" href="<%=request.getContextPath() %>/member/memberUpdate">프로필 수정하기</a>					
 					</div>
 				</div>
-				
+				<span></span>
 				<div class="mp-thumbnail">
 					<div class="mp-cdtitle">나의 클래스</div>
 					<div class="mp-cljust">
@@ -43,22 +43,14 @@
 							     <li><a href="<%=request.getContextPath()%>/classes/classUpdate?class_id=${c.member_study_id}">${c.title}</a></li>
 							     </c:if>
 							</c:forEach>
-							 <!--  
-								<li><a href="#">클래스리스트1......</a></li>
-								<li><a href="#">클래스리스트2......</a></li>
-								<li><a href="#">클래스리스트3......</a></li>
-                              -->
 							</ul>
 						</div>	
 						<div class="mp-justf">
-							<%-- <div onclick="'#'">수정</div>
-							|
-							<div>삭제</div> --%>	
 							<div class="cur" onclick="#">관리</div>
 						</div>					
 					</div>				
 				</div>
-				
+				<span></span>
 				<div class="mp-thumbnail">
 					<div class="mp-cdtitle">수강중인 클래스</div>	
 					<div class="mp-cljust">
@@ -69,13 +61,6 @@
                                 <li><a href="<%=request.getContextPath()%>/classes/classContent?class_id=${c.member_study_id}">${c.title}</a></li>
                                  </c:if>
                             </c:forEach>
-                            <!--  
-								<li><a href="#">클래스리스트1......</a></li>
-								<li><a href="#">클래스리스트2......</a></li>
-								<li><a href="#">클래스리스트3......</a></li>
-								<li><a href="#">클래스리스트4....................</a></li>
-								<li><a href="#">클래스리스트5......</a></li>
-							-->
 							</ul>
 						</div>	
 						<div class="mp-justf">
@@ -99,19 +84,11 @@
 							<c:forEach var="w" items="${wishList}">
                                 <li><a href="<%=request.getContextPath()%>/classes/classInfo?class_id=${w.CLASS_ID}">${w.TITLE}</a></li>
                             </c:forEach> 
-                            <!-- 
-								<li><a href="#">클래스리스트1......</a></li>
-								<li><a href="#">클래스리스트2......</a></li>
-								<li><a href="#">클래스리스트3......</a></li>
-								<li><a href="#">클래스리스트4....................</a></li>
-								<li><a href="#">클래스리스트5......</a></li>
-								<li><a href="#">클래스리스트6......</a></li>
-								 -->
 							</ul>
 						</div>					
 					</div>		
 				</div>
-
+				<span></span>
 				<div class="mp-thumbnail">
 					<div class="mp-cdtitle">멘토링 현황</div>	
 					<div class="mp-cljust">
@@ -120,17 +97,11 @@
 							<c:forEach var="m" items="${mentoringList}">
                             <li><a href="<%=request.getContextPath()%>/mentor/mentorInfo?mentoring_Id=${m.member_study_id}">${m.title}</a></li>
                             </c:forEach>
-                                <!-- 
-								<li><a href="#">멘토링리스트1......</a></li>
-								<li><a href="#">멘토링리스트2......</a></li>
-								<li><a href="#">멘토링리스트3......</a></li>
-								<li><a href="#">멘토링리스트4....................</a></li>
-								 -->
 							</ul>
 						</div>					
 					</div>			
 				</div>
-
+				<span></span>
 				<div class="mp-thumbnail">
 					<div class="mp-cdtitle">스터디 현황</div>			
 					<div class="mp-cljust">
@@ -139,9 +110,6 @@
 							<c:forEach var="s" items="${studyList}">
                             <li><a href="<%=request.getContextPath()%>/study/studyInfo?study_Id=${s.member_study_id}">${s.title}</a></li>
                             </c:forEach>
-							<!-- 
-								<li><a href="#">스터디리스트1......</a></li>
-								 -->
 							</ul>
 						</div>					
 					</div>	

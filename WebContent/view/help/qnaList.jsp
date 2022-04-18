@@ -17,7 +17,7 @@
 		document.getElementById("input_Check1").disabled = true;
 	}
 </script>
-<body style="padding-top: 70px;">
+<body>
 
 	<!-- 모달창  -->
 	<div class="modal fade" id="mo1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

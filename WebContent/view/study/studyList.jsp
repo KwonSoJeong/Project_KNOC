@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/Project_KNOC/resource/style/swiper-bundle.min.css" />
 <link href="/Project_KNOC/resource/style/main.css" rel='stylesheet' type='text/css' />
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<div class="layout-container" style="padding-top: 34px;">
 
 		<div class="class_header">

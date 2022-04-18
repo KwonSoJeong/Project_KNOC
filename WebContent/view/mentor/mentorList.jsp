@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/style/mentorlist.css">
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<div class="ml-wrapper">
 		<div class="mentor_header">
 			<h2>멘토링</h2>

@@ -29,9 +29,10 @@ h1{
 
 /* ------footer------ */
 .footer{
+	z-index: 102;
 	background-color: #fff;
 	height: 10vh;
-	width: 1180px;
+	width: 100%;
     margin: 75px auto 0;
 	padding-right: 10px;
 	left: 0;
@@ -52,6 +53,7 @@ h1{
 }
 
 #wrapper{
+    padding-top: 45px;
 /*   height: 100vh; */
   min-height: 90vh;
 /*   padding-bottom: 10vh; */

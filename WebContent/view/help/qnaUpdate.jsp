@@ -15,7 +15,7 @@
 		document.getElementById("input_Check1").disabled = true;
 	}
 </script>
-<body style="padding-top: 70px;">
+<body>
 
 	<div class="layout-container">
 		<div class="class_header" style="padding-top: 56px;">

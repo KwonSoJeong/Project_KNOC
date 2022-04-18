@@ -8,7 +8,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="/Project_KNOC/resource/style/studyInfo.css" />
 </head>
-<body style="padding-top: 70px;">
+<body>
 	<div class="layout-container" style="padding-top: 34px;">
 
 		<div class="class_header">
