@@ -17,9 +17,13 @@
 	<include-prelude>/common/header.jsp</include-prelude>
 	<include-coda>/common/footer.jsp</include-coda>
 	</jsp-property-group>
+	
+	<jsp-property-group>
+	<url-pattern>/admin/*</url-pattern>
+	<include-prelude>/common/adNavigation.jsp</include-prelude>
+	</jsp-property-group>
   </jsp-config>
-  
-  
+ 
   <servlet>
     <servlet-name>classesController</servlet-name>
     <servlet-class>controller.ClassesController</servlet-class>
